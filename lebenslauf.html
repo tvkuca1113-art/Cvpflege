@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lebenslauf i Anschreiben besplatno, bez registracije | Njega u Njemačkoj</title>
-<meta name="description" content="Napravi njemački Lebenslauf i Anschreiben besplatno, bez registracije i bez plaćanja. Šest dizajna, provjera rupa u godinama, PDF odmah. Za zdravstvene radnike iz BiH.">
+<meta name="description" content="Napravi njemački Lebenslauf i Anschreiben besplatno, bez registracije i bez plaćanja. Dvanaest dizajna, provjera rupa u godinama, PDF odmah. Za zdravstvene radnike iz BiH.">
 <link rel="stylesheet" href="style.css">
 <style>
 :root{--ac:#14524a}
@@ -52,6 +52,12 @@ textarea{resize:vertical;min-height:62px}
 .th .cols{display:flex;gap:3px;flex:1}
 .th .side{width:34%;background:#eef1f0;border-radius:2px;padding:3px;display:flex;flex-direction:column;gap:2px}
 .th .main{flex:1;display:flex;flex-direction:column;gap:2.5px}
+.th .band{height:15px;background:var(--ac);border-radius:2px;margin:-5px -5px 3px}
+.th .boxr{background:#f2f5f4;border-radius:2px;padding:2.5px;display:flex;flex-direction:column;gap:2px}
+.th .tl{display:flex;gap:3.5px;align-items:center}
+.th .tld{width:4px;height:4px;border-radius:50%;background:var(--ac);flex:0 0 auto}
+.th .tl .ln{flex:1}
+.th .gr{display:flex;gap:3px}.th .gr .ln:first-child{width:26%;flex:0 0 auto;background:#b9c2c0}
 .th span{display:block;font-size:10.5px;margin-top:4px;color:#4a5754;font-weight:600}
 .th.on span{color:var(--ac)}
 .colors{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap;align-items:center}
@@ -80,7 +86,7 @@ textarea{resize:vertical;min-height:62px}
 .paper .contact{font-size:10.8px;color:#444;overflow-wrap:anywhere}
 .paper .contact span{margin-right:13px}
 .paper section{margin-bottom:15px}
-.paper h3{font-size:10.8px;text-transform:uppercase;letter-spacing:1.5px;color:#111;margin:0 0 7px;padding-bottom:3px;border-bottom:.6px solid #c9cfce}
+.paper h3{font-size:10.8px;text-transform:uppercase;letter-spacing:1.5px;color:#111;margin:0 0 7px;padding-bottom:3px;border-bottom:.6px solid #c9cfce;page-break-after:avoid;break-after:avoid}
 .entry{display:grid;grid-template-columns:122px 1fr;gap:13px;margin-bottom:8px;page-break-inside:avoid}
 .entry .when{color:#666;font-size:10.5px;padding-top:1px}
 .entry .what b{display:block;font-size:11.6px}
@@ -123,6 +129,60 @@ textarea{resize:vertical;min-height:62px}
 .paper.t6 .entry{grid-template-columns:104px 1fr;gap:10px;margin-bottom:5px}
 .paper.t6 .entry .what b{font-size:10.7px}
 
+/* T7 Bern — bočna traka desno */
+.paper.t7{padding:0;display:flex;flex-direction:row-reverse;overflow:hidden}
+.paper.t7 .sidecol{width:33%;background:#f0f4f3;padding:30px 20px;border-left:3px solid var(--ac)}
+.paper.t7 .maincol{flex:1;padding:32px 30px;min-width:0}
+.paper.t7 .sidecol img{width:100%;max-width:118px;height:auto;aspect-ratio:3/4;object-fit:cover;border:1px solid #ccc;margin-bottom:13px;display:block}
+.paper.t7 h2{font-size:22px;color:var(--ac);line-height:1.15}
+.paper.t7 .role{font-size:11.8px;margin-bottom:13px}
+.paper.t7 h3{font-size:9.8px;color:var(--ac);border-bottom:1px solid rgba(0,0,0,.14);letter-spacing:1.3px}
+.paper.t7 .blk{margin-bottom:15px;font-size:10.4px;white-space:pre-line;color:#333;overflow-wrap:anywhere}
+.paper.t7 .entry{grid-template-columns:96px 1fr;gap:10px}
+
+/* T8 Traka — puna traka u boji */
+.paper.t8 .phead{background:var(--ac);color:#fff;margin:-44px -48px 22px;padding:32px 48px 26px;border-bottom:none;align-items:center}
+.paper.t8 .phead h2{color:#fff;font-size:27px}
+.paper.t8 .phead .role{color:rgba(255,255,255,.86);margin-bottom:7px}
+.paper.t8 .phead .contact{color:rgba(255,255,255,.92)}
+.paper.t8 .phead img{border:2px solid rgba(255,255,255,.55)}
+.paper.t8 h3{color:var(--ac);border-bottom:2px solid var(--ac);display:inline-block;padding-right:26px}
+
+/* T9 Linija — vremenska osa */
+.paper.t9 h2{color:var(--ac)}
+.paper.t9 .phead{border-bottom:2px solid var(--ac)}
+.paper.t9 h3{color:var(--ac);border-bottom:none;margin-bottom:9px}
+.paper.t9 section .entry{position:relative;padding-left:19px;border-left:1.5px solid #dfe6e4;margin-left:4px;padding-bottom:4px}
+.paper.t9 section .entry:before{content:"";position:absolute;left:-5.5px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--ac);border:2px solid #fff}
+.paper.t9 .entry{grid-template-columns:104px 1fr;gap:11px}
+
+/* T10 Elegant — serif naslovi, sans tekst */
+.paper.t10 h2{font-family:"Times New Roman",Georgia,serif;font-size:29px;font-weight:400;letter-spacing:0;color:var(--ac)}
+.paper.t10 .role{font-style:italic;font-size:12.4px}
+.paper.t10 .phead{border-bottom:none;box-shadow:inset 0 -3px 0 -1.5px #16181d,inset 0 -1px 0 0 #16181d;padding-bottom:15px}
+.paper.t10 h3{font-family:"Times New Roman",Georgia,serif;font-size:13px;text-transform:none;letter-spacing:.3px;font-weight:400;font-style:italic;color:var(--ac);border-bottom:.6px solid #d8dedd}
+.paper.t10 .entry{grid-template-columns:118px 1fr}
+
+/* T11 Ploče — sekcije u okvirima */
+.paper.t11{background:#fbfcfc}
+.paper.t11 .phead{background:#fff;border:1px solid #e3e8e7;border-left:4px solid var(--ac);border-bottom:1px solid #e3e8e7;padding:16px 18px;margin-bottom:13px;border-radius:6px}
+.paper.t11 section{background:#fff;border:1px solid #e3e8e7;border-radius:6px;padding:13px 16px;margin-bottom:11px;page-break-inside:avoid;break-inside:avoid}
+.paper.t11 h2{color:var(--ac)}
+.paper.t11 h3{color:var(--ac);border-bottom:1px solid #eaefee}
+.paper.t11 .sig{background:#fff;border:1px solid #e3e8e7;border-radius:6px;padding:13px 16px;margin-top:11px}
+
+/* T12 Formular — strogi obrazac */
+.paper.t12{font-size:11px}
+.paper.t12 .phead{border:1.5px solid #16181d;padding:14px 16px;margin-bottom:0}
+.paper.t12 h2{font-size:21px}
+.paper.t12 section{margin-bottom:0}
+.paper.t12 h3{background:#eef1f0;border:1.5px solid #16181d;border-top:none;margin:0;padding:5px 16px;letter-spacing:1.2px;color:#111}
+.paper.t12 .entry{grid-template-columns:118px 1fr;gap:0;margin:0;border:1.5px solid #16181d;border-top:none}
+.paper.t12 .entry .when{padding:7px 12px;background:#f8faf9;border-right:1px solid #d8dedd}
+.paper.t12 .entry .what{padding:7px 12px}
+.paper.t12 .sig{margin-top:18px}
+
+
 .letter{background:#fff;border:1px solid var(--line);border-radius:4px;padding:46px 50px;font-family:"Carlito",Calibri,"Segoe UI",sans-serif;font-size:11.4px;line-height:1.62;color:#16181d;max-width:840px;margin:0 auto}
 .letter .lsender{font-size:10.4px;color:#555;text-align:right;line-height:1.5;margin-bottom:22px;overflow-wrap:anywhere}
 .letter .lsender b{color:#111;font-size:12.4px;display:block;margin-bottom:2px}
@@ -132,7 +192,10 @@ textarea{resize:vertical;min-height:62px}
 .letter p{margin:0 0 11px;white-space:pre-line}
 .letter .lsig{margin-top:22px}
 .letter .lsig .nm{margin-top:26px;font-weight:600}
-.letter.t2 .lsub,.letter.t2 .lsender b,.letter.t4 .lsender b,.letter.t6 .lsender b{color:var(--ac)}
+.letter.t2 .lsub,.letter.t2 .lsender b,.letter.t4 .lsender b,.letter.t6 .lsender b,.letter.t7 .lsender b,.letter.t8 .lsub,.letter.t8 .lsender b,.letter.t9 .lsender b,.letter.t11 .lsender b,.letter.t12 .lsender b{color:var(--ac)}
+.letter.t10{font-size:11.6px}
+.letter.t10 .lsender b{font-family:"Times New Roman",Georgia,serif;font-size:19px;font-weight:400;color:var(--ac)}
+.letter.t10 .lsub{font-family:"Times New Roman",Georgia,serif;font-style:italic;font-weight:400;font-size:14px;color:var(--ac)}
 .letter.t3{font-family:"Times New Roman",Georgia,serif;font-size:12.2px}
 .letter.t5 .lsender b{font-size:22px;font-weight:300;color:var(--ac);letter-spacing:-.5px}
 
@@ -146,6 +209,14 @@ textarea{resize:vertical;min-height:62px}
   .paper.t4 .sidecol{width:100%;border-right:none;border-bottom:3px solid var(--ac);padding:20px}
   .paper.t4 .maincol{padding:20px}
   .paper.t5{padding:24px 22px}.paper.t5 h2{font-size:26px}
+  .paper.t7{flex-direction:column}
+  .paper.t7 .sidecol{width:100%;border-left:none;border-bottom:3px solid var(--ac);padding:20px}
+  .paper.t7 .maincol{padding:20px}
+  .paper.t8 .phead{margin:-22px -20px 18px;padding:20px;display:block}
+  .paper.t8 .phead img{margin-top:10px}
+  .paper.t11,.paper.t12{padding:16px 14px}
+  .paper.t12 .entry{grid-template-columns:1fr}
+  .paper.t12 .entry .when{border-right:none;border-bottom:1px solid #d8dedd}
   .letter{padding:24px 22px}
 }
 
@@ -160,8 +231,12 @@ textarea{resize:vertical;min-height:62px}
   body.pr-lt #wrapCv{display:none!important}
   @page{size:A4;margin:17mm 15mm}
   .paper.t4{margin:-17mm -15mm;padding:0}
-  .paper.t4 .sidecol{padding:17mm 8mm}
-  .paper.t4 .maincol{padding:17mm 10mm}
+  .paper.t4 .sidecol{padding:17mm 9mm 17mm 15mm}
+  .paper.t4 .maincol{padding:17mm 15mm 17mm 11mm}
+  .paper.t7{margin:-17mm -15mm;padding:0}
+  .paper.t7 .sidecol{padding:17mm 15mm 17mm 9mm}
+  .paper.t7 .maincol{padding:17mm 11mm 17mm 15mm}
+  .paper.t8 .phead{margin:-17mm -15mm 8mm;padding:14mm 15mm 9mm}
 }
 </style>
 </head>
@@ -305,7 +380,13 @@ var TPLS=[
  {id:'t3',name:'Serif',mock:'<div class="nm" style="margin:0 auto;width:56%"></div><div class="ln" style="width:40%;margin:1px auto"></div><div class="rule"></div><div class="hd" style="background:#333;margin:2px auto;width:34%"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd" style="background:#333;margin:2px auto;width:34%"></div><div class="ln" style="width:72%"></div>'},
  {id:'t4',name:'Dvije kolone',mock:'<div class="cols"><div class="side"><div class="ln" style="height:14px;background:#c3ccca"></div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:66%"></div></div><div class="main"><div class="nm" style="background:var(--ac);width:74%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd"></div><div class="ln" style="width:70%"></div></div></div>'},
  {id:'t5',name:'Moderno',mock:'<div class="nm" style="height:9px;width:76%;background:var(--ac)"></div><div class="ln" style="width:44%;margin-top:3px"></div><div class="hd" style="margin-top:6px"></div><div class="ln"></div><div class="ln" style="width:84%"></div><div class="hd" style="margin-top:4px"></div><div class="ln" style="width:64%"></div>'},
- {id:'t6',name:'Kompakt',mock:'<div class="nm" style="height:5px"></div><div class="rule"></div><div class="hd" style="background:#333;height:2.5px"></div><div class="ln"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:86%"></div><div class="hd" style="background:#333;height:2.5px"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:74%"></div>'}
+ {id:'t6',name:'Kompakt',mock:'<div class="nm" style="height:5px"></div><div class="rule"></div><div class="hd" style="background:#333;height:2.5px"></div><div class="ln"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:86%"></div><div class="hd" style="background:#333;height:2.5px"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:74%"></div>'},
+ {id:'t7',name:'Traka desno',mock:'<div class="cols"><div class="main"><div class="nm" style="background:var(--ac);width:74%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd"></div><div class="ln" style="width:70%"></div></div><div class="side"><div class="ln" style="height:14px;background:#c3ccca"></div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:66%"></div></div></div>'},
+ {id:'t8',name:'Banner',mock:'<div class="band"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:72%"></div>'},
+ {id:'t9',name:'Vremenska osa',mock:'<div class="nm" style="background:var(--ac)"></div><div class="rule" style="background:var(--ac);height:2px"></div><div class="hd"></div><div class="tl"><div class="tld"></div><div class="ln"></div></div><div class="tl"><div class="tld"></div><div class="ln" style="width:84%"></div></div><div class="hd"></div><div class="tl"><div class="tld"></div><div class="ln" style="width:72%"></div></div>'},
+ {id:'t10',name:'Elegant',mock:'<div class="nm" style="height:7px;width:66%;background:var(--ac)"></div><div class="ln" style="width:36%"></div><div class="rule" style="height:2.5px"></div><div class="hd" style="width:46%"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd" style="width:38%"></div><div class="ln" style="width:68%"></div>'},
+ {id:'t11',name:'Ploče',mock:'<div class="boxr"><div class="nm" style="width:70%"></div><div class="ln" style="width:50%"></div></div><div class="boxr"><div class="hd"></div><div class="ln"></div><div class="ln" style="width:82%"></div></div><div class="boxr"><div class="hd"></div><div class="ln" style="width:74%"></div></div>'},
+ {id:'t12',name:'Obrazac',mock:'<div class="nm" style="height:5px"></div><div class="rule"></div><div class="hd" style="background:#333;width:100%;height:4px"></div><div class="gr"><div class="ln"></div><div class="ln"></div></div><div class="gr"><div class="ln"></div><div class="ln" style="width:80%"></div></div><div class="hd" style="background:#333;width:100%;height:4px"></div><div class="gr"><div class="ln"></div><div class="ln" style="width:72%"></div></div>'}
 ];
 
 function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -368,7 +449,7 @@ function sigBlock(){return '<div class="sig">'+esc(val('place'))+(val('place')&&
 function drawCv(){
   var p=document.getElementById('paper');
   p.className='paper '+TPL;
-  if(TPL==='t4'){
+  if(TPL==='t4'||TPL==='t7'){
     p.innerHTML='<div class="sidecol">'+(PIC?'<img src="'+PIC+'" alt="">':'')+
       '<h3>Kontakt</h3><div class="blk">'+[val('addr'),val('phone'),val('mail')].filter(Boolean).map(esc).join('\n')+'</div>'+
       ((val('dob')||val('nat'))?'<h3>Persönliches</h3><div class="blk">'+[val('dob')?'geb. '+esc(val('dob')):'',val('nat')?esc(val('nat')):''].filter(Boolean).join('\n')+'</div>':'')+
