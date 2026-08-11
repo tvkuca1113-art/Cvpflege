@@ -3,362 +3,499 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lebenslauf besplatno, bez registracije — za zdravstvene radnike | Njega u Njemačkoj</title>
-<meta name="description" content="Napravi njemački Lebenslauf besplatno, bez registracije i bez plaćanja. Prilagođen medicinskim sestrama i tehničarima iz BiH: Anerkennung, B2, iskustvo iz Bosne. PDF odmah.">
+<title>Lebenslauf i Anschreiben besplatno, bez registracije | Njega u Njemačkoj</title>
+<meta name="description" content="Napravi njemački Lebenslauf i Anschreiben besplatno, bez registracije i bez plaćanja. Šest dizajna, provjera rupa u godinama, PDF odmah. Za zdravstvene radnike iz BiH.">
 <link rel="stylesheet" href="style.css">
 <style>
-  .app{max-width:1240px;margin:0 auto;padding:16px;
-       display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
-  .app > *{min-width:0}
-  @media(min-width:1040px){.app{grid-template-columns:410px minmax(0,1fr);
-       align-items:start}
-       .panel.form{position:sticky;top:14px;max-height:calc(100vh - 28px);
-       overflow-y:auto}}
-  @media(max-width:560px){
-    .app{padding:10px;gap:12px}
-    .panel{padding:13px}
-    .row{grid-template-columns:1fr}
-    .paper{padding:22px 20px;font-size:11px}
-    .entry{grid-template-columns:96px 1fr;gap:9px}
-    .phead{gap:13px}
-    .phead img{width:74px;height:92px}
-    .paper h2{font-size:20px}
-    .paper .contact span{white-space:normal;display:block;margin:0 0 2px}
-    .paper .contact{overflow-wrap:anywhere}
-  }
-  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;
-         padding:16px}
+:root{--ac:#14524a}
+.app{max-width:1300px;margin:0 auto;padding:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.app > *{min-width:0}
+@media(min-width:1060px){.app{grid-template-columns:420px minmax(0,1fr);align-items:start}.panel.form{position:sticky;top:14px;max-height:calc(100vh - 28px);overflow-y:auto}}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+@media(max-width:560px){.app{padding:10px;gap:12px}.panel{padding:13px}.row{grid-template-columns:1fr}}
 
-  fieldset{border:none;padding:0;margin:0 0 20px}
-  legend{font-size:11.5px;font-weight:800;letter-spacing:1.2px;
-    text-transform:uppercase;color:var(--brand);margin-bottom:8px;padding:0}
-  label{display:block;font-size:12.5px;color:var(--muted);margin:10px 0 3px}
-  input,textarea,select{width:100%;padding:9px 11px;border:1px solid var(--line);
-    border-radius:7px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
-  input:focus,textarea:focus{outline:2px solid var(--focus);outline-offset:-1px;
-    border-color:var(--focus)}
-  textarea{resize:vertical;min-height:62px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tabs{display:flex;gap:6px;margin-bottom:14px;border-bottom:2px solid var(--line)}
+.tabs button{border:none;background:none;font:inherit;font-size:14.5px;font-weight:700;color:var(--muted);padding:9px 14px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
+.tabs button.on{color:var(--ac);border-bottom-color:var(--ac)}
 
-  .item{border:1px solid var(--line);border-radius:9px;padding:11px;
-    margin-bottom:10px;background:#fbfcfc}
-  .item .top{display:flex;justify-content:space-between;align-items:center;
-    gap:6px;margin-bottom:3px}
-  .item .num{font-size:11.5px;font-weight:800;color:var(--brand);
-    letter-spacing:.6px}
-  .item .acts{display:flex;gap:4px}
-  .mini{border:1px solid var(--line);background:#fff;border-radius:6px;
-    padding:3px 9px;font:inherit;font-size:13px;cursor:pointer;line-height:1.3}
-  .mini:hover{background:var(--soft);border-color:var(--brand)}
-  .mini.del{color:var(--warn);border-color:#f0d5d5}
-  .mini.del:hover{background:var(--warnbg);border-color:var(--warn)}
-  .add{width:100%;border:1px dashed var(--brand);background:#fff;
-    border-radius:8px;padding:10px;font:inherit;font-size:14.5px;
-    color:var(--brand);font-weight:700;cursor:pointer}
-  .add:hover{background:var(--soft)}
+fieldset{border:none;padding:0;margin:0 0 20px}
+legend{font-size:11.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--ac);margin-bottom:8px;padding:0}
+label{display:block;font-size:12.5px;color:var(--muted);margin:10px 0 3px}
+input,textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:7px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus{outline:2px solid var(--focus);outline-offset:-1px;border-color:var(--focus)}
+textarea{resize:vertical;min-height:62px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.item{border:1px solid var(--line);border-radius:9px;padding:11px;margin-bottom:10px;background:#fbfcfc}
+.item .top{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:3px}
+.item .num{font-size:11.5px;font-weight:800;color:var(--ac)}
+.item .acts{display:flex;gap:4px}
+.mini{border:1px solid var(--line);background:#fff;border-radius:6px;padding:3px 9px;font:inherit;font-size:13px;cursor:pointer;line-height:1.3}
+.mini:hover{background:#eef4f3;border-color:var(--ac)}
+.mini.del{color:var(--warn);border-color:#f0d5d5}
+.add{width:100%;border:1px dashed var(--ac);background:#fff;border-radius:8px;padding:10px;font:inherit;font-size:14.5px;color:var(--ac);font-weight:700;cursor:pointer}
+.hint{font-size:12.5px;color:var(--muted);margin:5px 0 0;line-height:1.5}
+.hint.warn{color:var(--warn)}
+.photo{display:flex;gap:11px;align-items:center;margin-top:8px}
+.photo img{width:56px;height:70px;object-fit:cover;border:1px solid var(--line);border-radius:4px;background:#eef4f3}
 
-  .hint{font-size:12.5px;color:var(--muted);margin:5px 0 0;line-height:1.5}
-  .hint.warn{color:var(--warn)}
+.designer{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.designer .cap{font-size:11.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--ac);margin-bottom:9px}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media(min-width:700px){.thumbs{grid-template-columns:repeat(6,1fr)}}
+.th{border:2px solid var(--line);border-radius:8px;padding:5px;background:#fff;cursor:pointer;text-align:center}
+.th.on{border-color:var(--ac);box-shadow:0 0 0 3px rgba(20,82,74,.11)}
+.th .mock{height:62px;background:#fff;border:1px solid #e6eae9;border-radius:3px;padding:5px;overflow:hidden;display:flex;flex-direction:column;gap:2.5px}
+.th .nm{height:6px;background:#333;border-radius:1px;width:62%}
+.th .ln{height:2.5px;background:#d3d8d7;border-radius:1px}
+.th .hd{height:3px;background:var(--ac);border-radius:1px;width:40%;margin-top:2px}
+.th .rule{height:1.5px;background:#333;margin:1px 0}
+.th .cols{display:flex;gap:3px;flex:1}
+.th .side{width:34%;background:#eef1f0;border-radius:2px;padding:3px;display:flex;flex-direction:column;gap:2px}
+.th .main{flex:1;display:flex;flex-direction:column;gap:2.5px}
+.th span{display:block;font-size:10.5px;margin-top:4px;color:#4a5754;font-weight:600}
+.th.on span{color:var(--ac)}
+.colors{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.colors .lbl{font-size:12.5px;color:var(--muted)}
+.dot{width:25px;height:25px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer}
+.dot.on{box-shadow:0 0 0 2.5px var(--ink)}
 
-  .tools{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-  .tools .lbl{font-size:13px;color:var(--muted)}
-  .tools .btn.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.check{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:14px;background:#fff;font-size:13.5px}
+.check .cap{font-size:11.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--ac);margin-bottom:7px}
+.check ul{margin:0;padding-left:17px}
+.check li{margin-bottom:5px}
+.check .ok{color:#2c5530;font-weight:600}
+.check .bad li{color:var(--warn)}
 
-  .photo{display:flex;gap:11px;align-items:center;margin-top:8px}
-  .photo img{width:56px;height:70px;object-fit:cover;border:1px solid var(--line);
-    border-radius:4px;background:var(--soft)}
+.actions{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:12px}
+@media(min-width:520px){.actions{grid-template-columns:1fr 1fr}}
+.filebtns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.filebtns .btn{flex:1;text-align:center;font-size:13.5px;padding:8px}
 
-  /* ---------- paper ---------- */
-  .paper{background:#fff;border:1px solid var(--line);border-radius:4px;
-    padding:44px 48px;font-family:"Carlito",Calibri,"Segoe UI",sans-serif;
-    color:#16181d;font-size:11.4px;line-height:1.5;max-width:830px;margin:0 auto}
-  .phead{display:flex;gap:20px;align-items:flex-start;
-    border-bottom:1.6px solid #16181d;padding-bottom:13px;margin-bottom:17px}
-  .phead .who{flex:1;min-width:0}
-  .phead img{width:96px;height:120px;object-fit:cover;border:1px solid #ccc;
-    flex:0 0 auto}
-  .paper h2{font-size:24px;margin:0 0 2px;letter-spacing:-.5px;color:#111}
-  .paper .role{font-size:12.8px;color:#555;margin-bottom:9px}
-  .paper .contact{font-size:10.8px;color:#444}
-  .paper .contact span{margin-right:13px;white-space:nowrap}
-  .paper section{margin-bottom:15px}
-  .paper h3{font-size:10.8px;text-transform:uppercase;letter-spacing:1.5px;
-    color:#111;margin:0 0 7px;padding-bottom:3px;border-bottom:.6px solid #c9cfce}
-  .entry{display:grid;grid-template-columns:122px 1fr;gap:13px;
-    margin-bottom:8px;page-break-inside:avoid}
-  .entry .when{color:#666;font-size:10.5px;padding-top:1px}
-  .entry .what b{display:block;font-size:11.6px}
-  .entry .what .org{color:#555;font-size:11px}
-  .entry .what .desc{margin-top:2px;color:#333;font-size:10.8px;
-    white-space:pre-line}
-  .sig{margin-top:28px;font-size:10.6px;color:#555}
+.paper{background:#fff;border:1px solid var(--line);border-radius:4px;padding:44px 48px;font-family:"Carlito",Calibri,"Segoe UI",sans-serif;color:#16181d;font-size:11.4px;line-height:1.5;max-width:840px;margin:0 auto}
+.phead{display:flex;gap:20px;align-items:flex-start;border-bottom:1.6px solid #16181d;padding-bottom:13px;margin-bottom:17px}
+.phead .who{flex:1;min-width:0}
+.phead img{width:96px;height:120px;object-fit:cover;border:1px solid #ccc;flex:0 0 auto}
+.paper h2{font-size:24px;margin:0 0 2px;letter-spacing:-.5px;color:#111}
+.paper .role{font-size:12.8px;color:#555;margin-bottom:9px}
+.paper .contact{font-size:10.8px;color:#444;overflow-wrap:anywhere}
+.paper .contact span{margin-right:13px}
+.paper section{margin-bottom:15px}
+.paper h3{font-size:10.8px;text-transform:uppercase;letter-spacing:1.5px;color:#111;margin:0 0 7px;padding-bottom:3px;border-bottom:.6px solid #c9cfce}
+.entry{display:grid;grid-template-columns:122px 1fr;gap:13px;margin-bottom:8px;page-break-inside:avoid}
+.entry .when{color:#666;font-size:10.5px;padding-top:1px}
+.entry .what b{display:block;font-size:11.6px}
+.entry .what .org{color:#555;font-size:11px}
+.entry .what .desc{margin-top:2px;color:#333;font-size:10.8px;white-space:pre-line}
+.sig{margin-top:28px;font-size:10.6px;color:#555}
 
-  .paper.accent h2,.paper.accent h3{color:var(--brand)}
-  .paper.accent .phead{border-bottom-color:var(--brand)}
-  .paper.accent h3{border-bottom-color:#a9c4bf}
-  .paper.serif{font-family:"Times New Roman",Georgia,serif;font-size:12px}
+.paper.t2 h2,.paper.t2 h3{color:var(--ac)}
+.paper.t2 .phead{border-bottom:2.5px solid var(--ac)}
+.paper.t2 h3{border-bottom-color:rgba(0,0,0,.13)}
 
-  @media print{
-    body{background:#fff}
-    .nav,.trust,footer.site,.panel.form,.tools,.noprint{display:none!important}
-    .app{display:block;padding:0;max-width:none}
-    .panel.out{border:none;padding:0;background:none;border-radius:0}
-    .paper{border:none;border-radius:0;padding:0;max-width:none;font-size:11pt}
-    @page{size:A4;margin:17mm 15mm}
-  }
+.paper.t3{font-family:"Times New Roman",Georgia,serif;font-size:12.2px}
+.paper.t3 .phead{display:block;text-align:center;border-bottom:1px solid #16181d}
+.paper.t3 .phead img{display:none}
+.paper.t3 h2{font-size:26px;letter-spacing:.5px}
+.paper.t3 h3{letter-spacing:2px;font-size:11px;text-align:center;border-bottom:none;border-top:.6px solid #c9cfce;padding:5px 0 0}
+
+.paper.t4{padding:0;display:flex;overflow:hidden}
+.paper.t4 .sidecol{width:34%;background:#f0f4f3;padding:30px 20px;border-right:3px solid var(--ac)}
+.paper.t4 .maincol{flex:1;padding:32px 30px;min-width:0}
+.paper.t4 .sidecol img{width:100%;max-width:118px;height:auto;aspect-ratio:3/4;object-fit:cover;border:1px solid #ccc;margin-bottom:13px;display:block}
+.paper.t4 h2{font-size:21px;color:var(--ac);line-height:1.15}
+.paper.t4 .role{font-size:11.8px;margin-bottom:13px}
+.paper.t4 h3{font-size:9.8px;color:var(--ac);border-bottom:1px solid rgba(0,0,0,.14);letter-spacing:1.3px}
+.paper.t4 .blk{margin-bottom:15px;font-size:10.4px;white-space:pre-line;color:#333;overflow-wrap:anywhere}
+.paper.t4 .entry{grid-template-columns:96px 1fr;gap:10px}
+
+.paper.t5{padding:48px 52px}
+.paper.t5 .phead{border-bottom:none;padding-bottom:4px;margin-bottom:22px}
+.paper.t5 h2{font-size:34px;font-weight:300;letter-spacing:-1px;color:var(--ac)}
+.paper.t5 .role{font-size:11.5px;text-transform:uppercase;letter-spacing:2.4px;color:#777;margin-top:5px}
+.paper.t5 h3{border-bottom:none;color:var(--ac);letter-spacing:2.6px;font-size:10px;margin-bottom:9px}
+.paper.t5 .entry{grid-template-columns:112px 1fr;border-left:2px solid #e7ecea;padding-left:14px}
+
+.paper.t6{padding:32px 36px;font-size:10.5px;line-height:1.42}
+.paper.t6 h2{font-size:20px}
+.paper.t6 .phead{padding-bottom:9px;margin-bottom:12px}
+.paper.t6 section{margin-bottom:10px}
+.paper.t6 h3{font-size:9.8px;margin-bottom:5px}
+.paper.t6 .entry{grid-template-columns:104px 1fr;gap:10px;margin-bottom:5px}
+.paper.t6 .entry .what b{font-size:10.7px}
+
+.letter{background:#fff;border:1px solid var(--line);border-radius:4px;padding:46px 50px;font-family:"Carlito",Calibri,"Segoe UI",sans-serif;font-size:11.4px;line-height:1.62;color:#16181d;max-width:840px;margin:0 auto}
+.letter .lsender{font-size:10.4px;color:#555;text-align:right;line-height:1.5;margin-bottom:22px;overflow-wrap:anywhere}
+.letter .lsender b{color:#111;font-size:12.4px;display:block;margin-bottom:2px}
+.letter .lto{margin-bottom:26px;line-height:1.5}
+.letter .ldate{text-align:right;margin-bottom:20px;font-size:10.8px;color:#555}
+.letter .lsub{font-weight:700;margin-bottom:16px;font-size:12px}
+.letter p{margin:0 0 11px;white-space:pre-line}
+.letter .lsig{margin-top:22px}
+.letter .lsig .nm{margin-top:26px;font-weight:600}
+.letter.t2 .lsub,.letter.t2 .lsender b,.letter.t4 .lsender b,.letter.t6 .lsender b{color:var(--ac)}
+.letter.t3{font-family:"Times New Roman",Georgia,serif;font-size:12.2px}
+.letter.t5 .lsender b{font-size:22px;font-weight:300;color:var(--ac);letter-spacing:-.5px}
+
+@media(max-width:560px){
+  .paper{padding:22px 20px;font-size:11px}
+  .paper .contact span{display:block;margin:0 0 2px}
+  .entry{grid-template-columns:92px 1fr;gap:9px}
+  .phead{gap:13px}.phead img{width:74px;height:92px}
+  .paper h2{font-size:20px}
+  .paper.t4{flex-direction:column}
+  .paper.t4 .sidecol{width:100%;border-right:none;border-bottom:3px solid var(--ac);padding:20px}
+  .paper.t4 .maincol{padding:20px}
+  .paper.t5{padding:24px 22px}.paper.t5 h2{font-size:26px}
+  .letter{padding:24px 22px}
+}
+
+@media print{
+  body{background:#fff}
+  .nav,.trust,footer.site,.panel.form,.designer,.check,.actions,.filebtns,.noprint{display:none!important}
+  .app{display:block;padding:0;max-width:none}
+  .panel.out{border:none;padding:0;background:none;border-radius:0}
+  .paper,.letter{border:none;border-radius:0;max-width:none;font-size:11pt;padding:0}
+  #wrapLetter{margin-top:0!important}
+  body.pr-cv #wrapLetter{display:none!important}
+  body.pr-lt #wrapCv{display:none!important}
+  @page{size:A4;margin:17mm 15mm}
+  .paper.t4{margin:-17mm -15mm;padding:0}
+  .paper.t4 .sidecol{padding:17mm 8mm}
+  .paper.t4 .maincol{padding:17mm 10mm}
+}
 </style>
 </head>
 <body>
 
 <nav class="nav"><div class="in">
   <a class="logo" href="index.html">Njega u Njemačkoj<small>Pflege in Deutschland · na našem jeziku</small></a>
-  <div class="links">
-    <a href="lebenslauf.html" class="on">Lebenslauf</a>
-    <a href="anerkennung.html">Anerkennung</a>
-  </div>
+  <div class="links"><a href="lebenslauf.html" class="on">Lebenslauf</a><a href="anerkennung.html">Anerkennung</a></div>
 </div></nav>
 <div class="trust"><div class="in">
-  <span><b>Bez registracije</b></span><span><b>Bez plaćanja</b></span>
-  <span><b>Podaci ostaju u tvom telefonu</b></span>
+  <span><b>Bez registracije</b></span><span><b>Bez plaćanja</b></span><span><b>Podaci ostaju u tvom telefonu</b></span>
 </div></div>
 
 <div class="app">
 
-  <!-- =============== FORM =============== -->
-  <div class="panel form">
-    <div class="tip" style="margin-top:0">
-      <b>Ništa se ne šalje na internet.</b> Sve se računa kod tebe. Zatvoriš
-      stranicu — nema traga. Zato i nema registracije.
-    </div>
+<div class="panel form">
+  <div class="tabs">
+    <button id="tb-cv" class="on" onclick="tab('cv')">Lebenslauf</button>
+    <button id="tb-lt" onclick="tab('lt')">Anschreiben</button>
+  </div>
 
-    <fieldset>
-      <legend>Lični podaci</legend>
-      <div class="row">
-        <div><label>Ime</label><input id="fname" value="Amina"></div>
-        <div><label>Prezime</label><input id="lname" value="Hodžić"></div>
-      </div>
-      <label>Zanimanje na njemačkom</label>
-      <input id="role" value="Pflegefachkraft (Anerkennung läuft)">
-      <p class="hint">Ako Anerkennung još traje — napiši to otvoreno.
-      Poslodavci to cijene više nego da saznaju kasnije.</p>
-      <div class="row">
-        <div><label>Telefon</label><input id="phone" value="+49 176 12345678"></div>
-        <div><label>E-mail</label><input id="mail" value="amina.hodzic@email.de"></div>
-      </div>
-      <label>Adresa u Njemačkoj</label>
-      <input id="addr" value="Musterstraße 12, 80331 München">
-      <div class="row">
-        <div><label>Datum rođenja</label><input id="dob" value="14.03.1993"></div>
-        <div><label>Državljanstvo</label><input id="nat" value="bosnisch"></div>
-      </div>
-      <p class="hint">Datum rođenja, državljanstvo i slika <b>nisu obavezni</b>
-      u Njemačkoj. Ostaviš prazno — polje nestane sa životopisa.</p>
+  <div id="pane-cv">
+    <div class="tip" style="margin-top:0"><b>Ništa se ne šalje na internet.</b> Sve se računa kod tebe. Zatvoriš stranicu — nema traga.</div>
 
+    <fieldset><legend>Lični podaci</legend>
+      <div class="row"><div><label>Ime</label><input id="fname" value="Amina"></div><div><label>Prezime</label><input id="lname" value="Hodžić"></div></div>
+      <label>Zanimanje na njemačkom</label><input id="role" value="Pflegefachkraft (Anerkennung läuft)">
+      <p class="hint">Ako Anerkennung još traje — napiši to otvoreno. Poslodavci to cijene više nego da saznaju kasnije.</p>
+      <div class="row"><div><label>Telefon</label><input id="phone" value="+49 176 12345678"></div><div><label>E-mail</label><input id="mail" value="amina.hodzic@email.de"></div></div>
+      <label>Adresa u Njemačkoj</label><input id="addr" value="Musterstraße 12, 80331 München">
+      <div class="row"><div><label>Datum rođenja</label><input id="dob" value="14.03.1993"></div><div><label>Državljanstvo</label><input id="nat" value="bosnisch"></div></div>
+      <p class="hint">Datum rođenja, državljanstvo i slika <b>nisu obavezni</b> u Njemačkoj.</p>
       <label>Slika (nije obavezna)</label>
-      <div class="photo">
-        <img id="thumb" alt="">
-        <div style="flex:1">
-          <input type="file" id="pic" accept="image/*" style="font-size:13px;padding:6px">
-          <button class="mini del" onclick="clearPic()" style="margin-top:6px">ukloni sliku</button>
-        </div>
-      </div>
-      <p class="hint">Slika se ne šalje nigdje — samo se prikaže na tvom ekranu.</p>
+      <div class="photo"><img id="thumb" alt=""><div style="flex:1"><input type="file" id="pic" accept="image/*" style="font-size:13px;padding:6px"><button class="mini del" onclick="clearPic()" style="margin-top:6px">ukloni sliku</button></div></div>
     </fieldset>
 
-    <fieldset>
-      <legend>Anerkennung i kvalifikacije</legend>
-      <div id="qual"></div>
+    <fieldset><legend>Anerkennung i kvalifikacije</legend><div id="qual"></div>
       <button class="add" onclick="add('qual')">+ dodaj stavku</button>
-      <p class="hint">Status priznavanja, B2, Kenntnisprüfung, licence.
-      Njemački poslodavac ovo gleda prvo — zato stoji na vrhu.</p>
-    </fieldset>
+      <p class="hint">Status priznavanja, B2, Kenntnisprüfung, licence. Njemački poslodavac ovo gleda prvo.</p></fieldset>
 
-    <fieldset>
-      <legend>Radno iskustvo</legend>
-      <div id="work"></div>
+    <fieldset><legend>Radno iskustvo</legend><div id="work"></div>
       <button class="add" onclick="add('work')">+ dodaj posao</button>
-      <p class="hint warn">Bez rupa u godinama. Bio si bez posla, na
-      porodiljskom, na kursu? Napiši to kao stavku. Rupa izaziva pitanja —
-      iskren odgovor ne.</p>
-    </fieldset>
+      <p class="hint warn">Bez rupa u godinama. Bio si bez posla, na porodiljskom, na kursu? Napiši to kao stavku.</p></fieldset>
 
-    <fieldset>
-      <legend>Školovanje</legend>
-      <div id="edu"></div>
-      <button class="add" onclick="add('edu')">+ dodaj školu</button>
-    </fieldset>
+    <fieldset><legend>Školovanje</legend><div id="edu"></div><button class="add" onclick="add('edu')">+ dodaj školu</button></fieldset>
+    <fieldset><legend>Kursevi i usavršavanja</legend><div id="fort"></div><button class="add" onclick="add('fort')">+ dodaj kurs</button></fieldset>
 
-    <fieldset>
-      <legend>Kursevi i usavršavanja</legend>
-      <div id="fort"></div>
-      <button class="add" onclick="add('fort')">+ dodaj kurs</button>
-    </fieldset>
-
-    <fieldset>
-      <legend>Jezici i vještine</legend>
-      <label>Jezici</label>
-      <textarea id="langs">Bosnisch/Kroatisch/Serbisch – Muttersprache
+    <fieldset><legend>Jezici i vještine</legend>
+      <label>Jezici</label><textarea id="langs">Bosnisch/Kroatisch/Serbisch – Muttersprache
 Deutsch – B2 (telc, 2025)
 Englisch – Grundkenntnisse</textarea>
-      <label>Vještine i znanja</label>
-      <textarea id="skills">Grund- und Behandlungspflege · Wundversorgung · Medikamentengabe · Dokumentation (ORBIS) · Umgang mit demenzerkrankten Patienten</textarea>
-    </fieldset>
+      <label>Vještine i znanja</label><textarea id="skills">Grund- und Behandlungspflege
+Wundversorgung
+Medikamentengabe
+Dokumentation (ORBIS)
+Umgang mit demenzerkrankten Patienten</textarea></fieldset>
 
-    <fieldset>
-      <legend>Potpis</legend>
-      <div class="row">
-        <div><label>Mjesto</label><input id="place" value="München"></div>
-        <div><label>Datum</label><input id="sdate" value=""></div>
-      </div>
-    </fieldset>
+    <fieldset><legend>Potpis</legend><div class="row"><div><label>Mjesto</label><input id="place" value="München"></div><div><label>Datum</label><input id="sdate" value=""></div></div></fieldset>
   </div>
 
-  <!-- =============== OUTPUT =============== -->
-  <div class="panel out">
-    <div class="tools noprint">
-      <span class="lbl">Izgled:</span>
-      <button class="btn on" id="s0" onclick="skin('',0)">Klasičan</button>
-      <button class="btn" id="s1" onclick="skin('accent',1)">Sa bojom</button>
-      <button class="btn" id="s2" onclick="skin('serif',2)">Serif</button>
+  <div id="pane-lt" style="display:none">
+    <div class="tip" style="margin-top:0"><b>Anschreiben je u Njemačkoj obavezan.</b> Bez njega prijava izgleda nedovršeno. Ime, adresa i dizajn se preuzimaju iz Lebenslaufa.</div>
+    <fieldset><legend>Kome pišeš</legend>
+      <label>Ustanova</label><input id="lFirm" value="München Klinik Schwabing">
+      <label>Kontakt osoba (ako je znaš)</label><input id="lPers" value="Frau Sabine Weber">
+      <label>Adresa</label><input id="lAddr" value="Kölner Platz 1, 80804 München">
+      <p class="hint">Ako ne znaš ime, ostavi prazno — pozdrav se sam mijenja u „Sehr geehrte Damen und Herren".</p>
+    </fieldset>
+    <fieldset><legend>Radno mjesto</legend>
+      <label>Pozicija</label><input id="lPos" value="Pflegefachkraft (m/w/d), Innere Medizin">
+      <label>Gdje si vidio oglas</label><input id="lRef" value="Ihre Stellenanzeige auf indeed.de vom 04.08.2026">
+    </fieldset>
+    <fieldset><legend>Tekst pisma</legend>
+      <label>Uvod — zašto pišeš</label>
+      <textarea id="lP1" style="min-height:78px">mit großem Interesse habe ich Ihre Stellenanzeige gelesen. Als examinierte Pflegekraft mit neun Jahren Berufserfahrung auf einer chirurgischen Station suche ich eine Position, in der ich meine Erfahrung einbringen und meine Anerkennung als Pflegefachkraft abschließen kann.</textarea>
+      <label>Šta donosiš — iskustvo</label>
+      <textarea id="lP2" style="min-height:96px">In Bosnien und Herzegowina habe ich neun Jahre auf einer chirurgischen Station mit 40 Betten im Schichtdienst gearbeitet und war für die Wundversorgung sowie die prä- und postoperative Betreuung verantwortlich. Seit September 2025 arbeite ich als Pflegehelferin auf einer internistischen Station in München und kenne den deutschen Stationsalltag, die Dokumentation und die Abläufe im Team.</textarea>
+      <label>Anerkennung i jezik</label>
+      <textarea id="lP3" style="min-height:78px">Mein Anerkennungsverfahren läuft beim Bayerischen Landesamt für Pflege. Den Defizitbescheid habe ich erhalten, die Kenntnisprüfung ist für November 2026 geplant. Mein Deutschzertifikat B2 habe ich im März 2025 erworben und besuche derzeit einen Fachsprachkurs.</textarea>
+      <label>Završetak</label>
+      <textarea id="lP4">Über die Einladung zu einem persönlichen Gespräch würde ich mich sehr freuen.</textarea>
+      <p class="hint warn">Ovo su primjeri — prepiši ih svojim slučajem. Kadrovska prepozna prepisan tekst iz sto metara.</p>
+    </fieldset>
+  </div>
+</div>
+
+<div class="panel out">
+
+  <div class="designer noprint">
+    <div class="cap">Izaberi dizajn — primjer se mijenja odmah</div>
+    <div class="thumbs" id="thumbs"></div>
+    <div class="colors">
+      <span class="lbl">Boja:</span>
+      <div class="dot" style="background:#14524a" onclick="setColor('#14524a',this)" title="Zelena"></div>
+      <div class="dot" style="background:#1a3a5c" onclick="setColor('#1a3a5c',this)" title="Plava"></div>
+      <div class="dot" style="background:#7a2e39" onclick="setColor('#7a2e39',this)" title="Bordo"></div>
+      <div class="dot" style="background:#2f3437" onclick="setColor('#2f3437',this)" title="Grafit"></div>
+      <div class="dot" style="background:#5a3a63" onclick="setColor('#5a3a63',this)" title="Šljiva"></div>
+      <div class="dot" style="background:#8a5a1e" onclick="setColor('#8a5a1e',this)" title="Oker"></div>
     </div>
-    <button class="btn primary big noprint" onclick="window.print()">
-      Preuzmi kao PDF — besplatno, bez registracije
-    </button>
-    <p class="hint noprint" style="margin:8px 0 16px">
-      Otvori se prozor za štampu → izaberi <b>„Sačuvaj kao PDF"</b>.<br>
-      Na telefonu: dugme za dijeljenje → Štampaj → Sačuvaj kao PDF.
-    </p>
-    <div class="paper" id="paper"></div>
   </div>
+
+  <div class="check noprint" id="check"></div>
+
+  <div class="actions noprint">
+    <button class="btn primary" onclick="doPrint('cv')">Preuzmi Lebenslauf (PDF)</button>
+    <button class="btn primary" onclick="doPrint('lt')">Preuzmi Anschreiben (PDF)</button>
+  </div>
+  <div class="filebtns noprint">
+    <button class="btn" onclick="saveData()">Sačuvaj podatke u fajl</button>
+    <label class="btn" style="cursor:pointer">Učitaj iz fajla<input type="file" id="loadf" accept=".json,application/json" style="display:none"></label>
+  </div>
+  <p class="hint noprint" style="margin:0 0 16px">Pošto ništa ne čuvamo na serveru, sačuvaj podatke u fajl da ih ne kucaš ponovo. Kod štampe izaberi <b>„Sačuvaj kao PDF"</b>.</p>
+
+  <div id="wrapCv"><div class="paper t1" id="paper"></div></div>
+  <div id="wrapLetter" style="margin-top:22px"><div class="letter t1" id="letter"></div></div>
+</div>
 </div>
 
 <footer class="site"><div class="in">
   <b>Njega u Njemačkoj</b> — besplatno i bez registracije.<br>
-  Orijentacija, a ne pravni savjet. O priznavanju kvalifikacije u Bavarskoj
-  odlučuje isključivo Bayerisches Landesamt für Pflege.
+  Orijentacija, a ne pravni savjet. O priznavanju kvalifikacije u Bavarskoj odlučuje isključivo Bayerisches Landesamt für Pflege.
 </div></footer>
 
 <script>
-var PIC = "";
-var S = {
-  qual:[
-    {a:'seit 06/2025',b:'Anerkennungsverfahren Pflegefachkraft',
-     c:'Bayerisches Landesamt für Pflege (LfP), Amberg',
-     d:'Defizitbescheid erhalten · Kenntnisprüfung geplant für 11/2026'},
-    {a:'03/2025',b:'Deutschzertifikat B2',c:'telc GmbH',d:''}
-  ],
-  work:[
-    {a:'seit 09/2025',b:'Pflegehelferin',c:'München Klinik Schwabing, München',
-     d:'Grundpflege auf einer internistischen Station mit 32 Betten\nUnterstützung bei Behandlungspflege und Dokumentation'},
-    {a:'08/2025 – 08/2025',b:'Umzug nach Deutschland, Wohnungssuche und Behördengänge',c:'',d:''},
-    {a:'10/2016 – 07/2025',b:'Medizinische Schwester',
-     c:'Kantonsspital Zenica, Bosnien und Herzegowina',
-     d:'Chirurgische Station, 40 Betten, Schichtdienst\nWundversorgung, prä- und postoperative Betreuung'}
-  ],
-  edu:[
-    {a:'09/2012 – 06/2016',b:'Medizinische Fachschule — Krankenpflege',
-     c:'Srednja medicinska škola Zenica, Bosnien und Herzegowina',
-     d:'Abschluss: Medizinische Schwester / Krankenpflegerin'}
-  ],
-  fort:[
-    {a:'02/2026',b:'Fachsprachkurs Pflege B2/C1',c:'Volkshochschule München',d:''}
-  ]
-};
-var FIELDS = {
-  qual:['Period','Šta','Ko je izdao','Detalji'],
-  work:['Period','Radno mjesto','Poslodavac i grad','Šta si radio'],
-  edu:['Period','Škola / smjer','Ustanova i mjesto','Zvanje'],
-  fort:['Period','Naziv kursa','Organizator','Detalji']
-};
-var TITLES = {
-  qual:'Anerkennung und Qualifikationen', work:'Berufserfahrung',
-  edu:'Ausbildung', fort:'Fort- und Weiterbildungen'
-};
+var PIC='', TPL='t1', AC='#14524a';
+var S={
+qual:[{a:'seit 06/2025',b:'Anerkennungsverfahren Pflegefachkraft',c:'Bayerisches Landesamt für Pflege (LfP), Amberg',d:'Defizitbescheid erhalten · Kenntnisprüfung geplant für 11/2026'},
+      {a:'03/2025',b:'Deutschzertifikat B2',c:'telc GmbH',d:''}],
+work:[{a:'seit 09/2025',b:'Pflegehelferin',c:'München Klinik Schwabing, München',d:'Grundpflege auf einer internistischen Station mit 32 Betten\nUnterstützung bei Behandlungspflege und Dokumentation'},
+      {a:'08/2025 – 08/2025',b:'Umzug nach Deutschland, Wohnungssuche und Behördengänge',c:'',d:''},
+      {a:'07/2016 – 07/2025',b:'Medizinische Schwester',c:'Kantonsspital Zenica, Bosnien und Herzegowina',d:'Chirurgische Station, 40 Betten, Schichtdienst\nWundversorgung, prä- und postoperative Betreuung'}],
+edu:[{a:'09/2012 – 06/2016',b:'Medizinische Fachschule — Krankenpflege',c:'Srednja medicinska škola Zenica, Bosnien und Herzegowina',d:'Abschluss: Medizinische Schwester / Krankenpflegerin'}],
+fort:[{a:'02/2026',b:'Fachsprachkurs Pflege B2/C1',c:'Volkshochschule München',d:''}]};
+var FIELDS={qual:['Period','Šta','Ko je izdao','Detalji'],work:['Period','Radno mjesto','Poslodavac i grad','Šta si radio'],
+  edu:['Period','Škola / smjer','Ustanova i mjesto','Zvanje'],fort:['Period','Naziv kursa','Organizator','Detalji']};
+var TITLES={qual:'Anerkennung und Qualifikationen',work:'Berufserfahrung',edu:'Ausbildung',fort:'Fort- und Weiterbildungen'};
+var TPLS=[
+ {id:'t1',name:'Klasik',mock:'<div class="nm"></div><div class="rule"></div><div class="ln" style="width:80%"></div><div class="hd" style="background:#333"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd" style="background:#333"></div><div class="ln" style="width:70%"></div>'},
+ {id:'t2',name:'Minhen',mock:'<div class="nm" style="background:var(--ac)"></div><div class="rule" style="background:var(--ac);height:2px"></div><div class="ln" style="width:80%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd"></div><div class="ln" style="width:66%"></div>'},
+ {id:'t3',name:'Serif',mock:'<div class="nm" style="margin:0 auto;width:56%"></div><div class="ln" style="width:40%;margin:1px auto"></div><div class="rule"></div><div class="hd" style="background:#333;margin:2px auto;width:34%"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd" style="background:#333;margin:2px auto;width:34%"></div><div class="ln" style="width:72%"></div>'},
+ {id:'t4',name:'Dvije kolone',mock:'<div class="cols"><div class="side"><div class="ln" style="height:14px;background:#c3ccca"></div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:66%"></div></div><div class="main"><div class="nm" style="background:var(--ac);width:74%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd"></div><div class="ln" style="width:70%"></div></div></div>'},
+ {id:'t5',name:'Moderno',mock:'<div class="nm" style="height:9px;width:76%;background:var(--ac)"></div><div class="ln" style="width:44%;margin-top:3px"></div><div class="hd" style="margin-top:6px"></div><div class="ln"></div><div class="ln" style="width:84%"></div><div class="hd" style="margin-top:4px"></div><div class="ln" style="width:64%"></div>'},
+ {id:'t6',name:'Kompakt',mock:'<div class="nm" style="height:5px"></div><div class="rule"></div><div class="hd" style="background:#333;height:2.5px"></div><div class="ln"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:86%"></div><div class="hd" style="background:#333;height:2.5px"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:74%"></div>'}
+];
 
-function esc(s){return (s||'').replace(/[&<>"]/g,function(c){
-  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-function val(id){return document.getElementById(id).value.trim();}
+function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function val(id){var e=document.getElementById(id);return e?e.value.trim():'';}
+
+function tab(w){
+  document.getElementById('pane-cv').style.display = w==='cv'?'':'none';
+  document.getElementById('pane-lt').style.display = w==='lt'?'':'none';
+  document.getElementById('tb-cv').className = w==='cv'?'on':'';
+  document.getElementById('tb-lt').className = w==='lt'?'on':'';
+}
+function renderThumbs(){
+  document.getElementById('thumbs').innerHTML = TPLS.map(function(t){
+    return '<div class="th'+(t.id===TPL?' on':'')+'" onclick="setTpl(\''+t.id+'\')"><div class="mock">'+t.mock+'</div><span>'+t.name+'</span></div>';
+  }).join('');
+}
+function setTpl(id){TPL=id;renderThumbs();draw();}
+function setColor(c,el){AC=c;document.documentElement.style.setProperty('--ac',c);
+  var d=document.querySelectorAll('.dot');for(var i=0;i<d.length;i++)d[i].className='dot';
+  el.className='dot on';draw();}
 
 function renderForm(k){
-  var F=FIELDS[k], n=S[k].length;
-  document.getElementById(k).innerHTML = S[k].map(function(it,i){
-    return '<div class="item"><div class="top"><span class="num">'+(i+1)+'.</span>'+
-      '<span class="acts">'+
+  var F=FIELDS[k],n=S[k].length;
+  document.getElementById(k).innerHTML=S[k].map(function(it,i){
+    return '<div class="item"><div class="top"><span class="num">'+(i+1)+'.</span><span class="acts">'+
       (i>0?'<button class="mini" onclick="mv(\''+k+'\','+i+',-1)">&uarr;</button>':'')+
       (i<n-1?'<button class="mini" onclick="mv(\''+k+'\','+i+',1)">&darr;</button>':'')+
-      '<button class="mini del" onclick="del(\''+k+'\','+i+')">ukloni</button>'+
-      '</span></div>'+
+      '<button class="mini del" onclick="del(\''+k+'\','+i+')">ukloni</button></span></div>'+
       '<label>'+F[0]+'</label><input value="'+esc(it.a)+'" oninput="upd(\''+k+'\','+i+',\'a\',this.value)">'+
       '<label>'+F[1]+'</label><input value="'+esc(it.b)+'" oninput="upd(\''+k+'\','+i+',\'b\',this.value)">'+
       '<label>'+F[2]+'</label><input value="'+esc(it.c)+'" oninput="upd(\''+k+'\','+i+',\'c\',this.value)">'+
-      '<label>'+F[3]+'</label><textarea oninput="upd(\''+k+'\','+i+',\'d\',this.value)">'+esc(it.d)+'</textarea>'+
-      '</div>';
+      '<label>'+F[3]+'</label><textarea oninput="upd(\''+k+'\','+i+',\'d\',this.value)">'+esc(it.d)+'</textarea></div>';
   }).join('');
 }
 function add(k){S[k].push({a:'',b:'',c:'',d:''});renderForm(k);draw();}
 function del(k,i){S[k].splice(i,1);renderForm(k);draw();}
 function mv(k,i,d){var t=S[k][i];S[k][i]=S[k][i+d];S[k][i+d]=t;renderForm(k);draw();}
 function upd(k,i,f,v){S[k][i][f]=v;draw();}
-function skin(c,n){document.getElementById('paper').className='paper '+c;
-  [0,1,2].forEach(function(i){document.getElementById('s'+i).className=
-    'btn'+(i===n?' on':'');});}
-function clearPic(){PIC='';document.getElementById('pic').value='';
-  document.getElementById('thumb').removeAttribute('src');draw();}
-
+function clearPic(){PIC='';document.getElementById('pic').value='';document.getElementById('thumb').removeAttribute('src');draw();}
 document.getElementById('pic').addEventListener('change',function(e){
-  var f=e.target.files[0]; if(!f) return;
-  var r=new FileReader();
-  r.onload=function(ev){PIC=ev.target.result;
-    document.getElementById('thumb').src=PIC;draw();};
-  r.readAsDataURL(f);
+  var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  r.onload=function(ev){PIC=ev.target.result;document.getElementById('thumb').src=PIC;draw();};r.readAsDataURL(f);});
+
+function entries(k){
+  return S[k].filter(function(it){return it.a||it.b||it.c||it.d;}).map(function(it){
+    return '<div class="entry"><div class="when">'+esc(it.a)+'</div><div class="what">'+
+      (it.b?'<b>'+esc(it.b)+'</b>':'')+(it.c?'<div class="org">'+esc(it.c)+'</div>':'')+
+      (it.d?'<div class="desc">'+esc(it.d)+'</div>':'')+'</div></div>';}).join('');
+}
+function block(k){var e=entries(k);return e?'<section><h3>'+TITLES[k]+'</h3>'+e+'</section>':'';}
+function freeBlock(t,x){return x?'<section><h3>'+t+'</h3><div class="entry"><div class="when"></div><div class="what"><div class="desc">'+esc(x)+'</div></div></div></section>':'';}
+function fullName(){return (esc(val('fname'))+' '+esc(val('lname'))).trim();}
+function contactHtml(){return [val('addr'),val('phone'),val('mail')].filter(Boolean).map(function(x){return '<span>'+esc(x)+'</span>';}).join('');}
+function persBlock(){
+  var p=[];if(val('dob'))p.push(['Geburtsdatum',val('dob')]);if(val('nat'))p.push(['Staatsangehörigkeit',val('nat')]);
+  return p.length?'<section><h3>Persönliche Daten</h3>'+p.map(function(x){return '<div class="entry"><div class="when">'+x[0]+'</div><div class="what">'+esc(x[1])+'</div></div>';}).join('')+'</section>':'';
+}
+function sigBlock(){return '<div class="sig">'+esc(val('place'))+(val('place')&&val('sdate')?', ':'')+esc(val('sdate'))+'<br><br>'+fullName()+'</div>';}
+
+function drawCv(){
+  var p=document.getElementById('paper');
+  p.className='paper '+TPL;
+  if(TPL==='t4'){
+    p.innerHTML='<div class="sidecol">'+(PIC?'<img src="'+PIC+'" alt="">':'')+
+      '<h3>Kontakt</h3><div class="blk">'+[val('addr'),val('phone'),val('mail')].filter(Boolean).map(esc).join('\n')+'</div>'+
+      ((val('dob')||val('nat'))?'<h3>Persönliches</h3><div class="blk">'+[val('dob')?'geb. '+esc(val('dob')):'',val('nat')?esc(val('nat')):''].filter(Boolean).join('\n')+'</div>':'')+
+      (val('langs')?'<h3>Sprachen</h3><div class="blk">'+esc(val('langs'))+'</div>':'')+
+      (val('skills')?'<h3>Kenntnisse</h3><div class="blk">'+esc(val('skills'))+'</div>':'')+
+      '</div><div class="maincol"><h2>'+fullName()+'</h2>'+
+      (val('role')?'<div class="role">'+esc(val('role'))+'</div>':'')+
+      block('qual')+block('work')+block('edu')+block('fort')+sigBlock()+'</div>';
+  } else {
+    p.innerHTML='<div class="phead"><div class="who"><h2>'+fullName()+'</h2>'+
+      (val('role')?'<div class="role">'+esc(val('role'))+'</div>':'')+
+      '<div class="contact">'+contactHtml()+'</div></div>'+(PIC?'<img src="'+PIC+'" alt="">':'')+'</div>'+
+      persBlock()+block('qual')+block('work')+block('edu')+block('fort')+
+      freeBlock('Sprachkenntnisse',val('langs'))+freeBlock('Kenntnisse und Fähigkeiten',val('skills'))+sigBlock();
+  }
+}
+
+function drawLetter(){
+  var l=document.getElementById('letter');
+  l.className='letter '+TPL;
+  var per=val('lPers'), greet;
+  if(per){
+    var clean=per.replace(/^\s*(Frau|Fr\.|Herr|Hr\.)\s*/i,'').split(',')[0].trim();
+    if(/^\s*(Frau|Fr\.)/i.test(per)) greet='Sehr geehrte Frau '+esc(clean)+',';
+    else if(/^\s*(Herr|Hr\.)/i.test(per)) greet='Sehr geehrter Herr '+esc(clean)+',';
+    else greet='Sehr geehrte(r) '+esc(clean)+',';
+  } else greet='Sehr geehrte Damen und Herren,';
+  var paras=[val('lP1'),val('lP2'),val('lP3'),val('lP4')].filter(Boolean).map(function(t){return '<p>'+esc(t)+'</p>';}).join('');
+  l.innerHTML='<div class="lsender"><b>'+fullName()+'</b>'+
+      [val('addr'),val('phone'),val('mail')].filter(Boolean).map(esc).join('<br>')+'</div>'+
+    '<div class="lto">'+[val('lFirm'),val('lPers'),val('lAddr')].filter(Boolean).map(esc).join('<br>')+'</div>'+
+    '<div class="ldate">'+esc(val('place'))+(val('place')&&val('sdate')?', ':'')+esc(val('sdate'))+'</div>'+
+    '<div class="lsub">Bewerbung als '+esc(val('lPos'))+
+      (val('lRef')?'<br><span style="font-weight:400;font-size:11px">'+esc(val('lRef'))+'</span>':'')+'</div>'+
+    '<p>'+greet+'</p>'+paras+
+    '<div class="lsig">Mit freundlichen Grüßen<div class="nm">'+fullName()+'</div></div>';
+}
+
+function months(s){
+  var m=s.match(/(\d{1,2})\/(\d{4})/g);
+  var open=/seit|heute|jetzt|aktuell|derzeit/i.test(s);
+  if(!m||!m.length) return null;
+  function idx(x){var p=x.split('/');var mo=parseInt(p[0],10),yr=parseInt(p[1],10);
+    if(mo<1||mo>12||yr<1950||yr>2100) return null; return yr*12+mo-1;}
+  var a=idx(m[0]); if(a===null) return null;
+  var b=a;
+  if(m.length>1){var t=idx(m[1]); if(t!==null) b=t;}
+  else if(open) b=9999999;
+  if(b<a) b=a;
+  return [a,b];
+}
+function fmt(i){return ('0'+((i%12)+1)).slice(-2)+'/'+Math.floor(i/12);}
+function runCheck(){
+  var bad=[];
+  if(!val('phone')||!val('mail')) bad.push('Fali telefon ili e-mail — poslodavac te ne može kontaktirati.');
+  if(!val('addr')) bad.push('Fali adresa u Njemačkoj.');
+  if(!/\b(a1|a2|b1|b2|c1|c2)\b/i.test(val('langs')+' '+JSON.stringify(S.qual)))
+    bad.push('Nigdje ne stoji nivo njemačkog. Dodaj B2 ili koji već imaš — to je prvo što gledaju.');
+  if(!S.qual.filter(function(x){return x.b;}).length)
+    bad.push('Nema nijedne stavke pod Anerkennung — njemački poslodavac to traži prvo.');
+
+  var iv=[];
+  S.work.concat(S.edu).forEach(function(it){var r=months(it.a);if(r)iv.push(r);});
+  iv.sort(function(x,y){return x[0]-y[0];});
+  var gaps=[], reach=null;
+  for(var i=0;i<iv.length;i++){
+    if(reach===null){reach=iv[i][1];continue;}
+    if(iv[i][0]-reach>2 && reach<9999999) gaps.push(fmt(reach)+' → '+fmt(iv[i][0]));
+    if(iv[i][1]>reach) reach=iv[i][1];
+  }
+  if(gaps.length) bad.push('<b>Rupa u godinama:</b> '+gaps.join(' · ')+
+    '. I LfP i poslodavac traže životopis bez rupa — dodaj stavku za taj period, makar pisalo „Elternzeit", „Sprachkurs" ili „Umzug nach Deutschland".');
+
+  var chars=(document.getElementById('paper').innerText||'').length;
+  if(chars>3600) bad.push('Životopis je vjerovatno duži od dvije stranice. Probaj dizajn „Kompakt" ili skrati opise starijih poslova.');
+
+  document.getElementById('check').innerHTML='<div class="cap">Provjera prije slanja</div>'+
+    (bad.length ? '<ul class="bad"><li>'+bad.join('</li><li>')+'</li></ul>'
+                : '<div class="ok">Sve osnovno je tu — nema rupa u godinama, kontakt i nivo jezika su navedeni.</div>');
+}
+
+function collect(){
+  var o={S:S,PIC:PIC,TPL:TPL,AC:AC,f:{}};
+  ['fname','lname','role','phone','mail','addr','dob','nat','langs','skills','place','sdate',
+   'lFirm','lPers','lAddr','lPos','lRef','lP1','lP2','lP3','lP4'].forEach(function(id){o.f[id]=val(id);});
+  return o;
+}
+function saveData(){
+  var blob=new Blob([JSON.stringify(collect(),null,1)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=((val('fname')+'-'+val('lname')) || 'lebenslauf').replace(/\s+/g,'-')+'-podaci.json';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(a.href);},1500);
+}
+document.getElementById('loadf').addEventListener('change',function(e){
+  var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  r.onload=function(ev){
+    try{
+      var o=JSON.parse(ev.target.result);
+      if(o.S)S=o.S;
+      if(typeof o.PIC==='string')PIC=o.PIC;
+      if(o.TPL)TPL=o.TPL;
+      if(o.AC){AC=o.AC;document.documentElement.style.setProperty('--ac',AC);}
+      if(o.f)Object.keys(o.f).forEach(function(id){var el=document.getElementById(id);if(el)el.value=o.f[id];});
+      if(PIC)document.getElementById('thumb').src=PIC;
+      renderThumbs();['qual','work','edu','fort'].forEach(renderForm);draw();
+    }catch(err){alert('Fajl nije ispravan. Učitaj onaj koji si ranije sačuvao ovdje.');}
+  };
+  r.readAsText(f);
 });
 
-function block(k){
-  var rows=S[k].filter(function(it){return it.a||it.b||it.c||it.d;});
-  if(!rows.length) return '';
-  return '<section><h3>'+TITLES[k]+'</h3>'+rows.map(function(it){
-    return '<div class="entry"><div class="when">'+esc(it.a)+'</div><div class="what">'+
-      (it.b?'<b>'+esc(it.b)+'</b>':'')+
-      (it.c?'<div class="org">'+esc(it.c)+'</div>':'')+
-      (it.d?'<div class="desc">'+esc(it.d)+'</div>':'')+
-      '</div></div>';}).join('')+'</section>';
-}
-function freeBlock(title,txt){
-  if(!txt) return '';
-  return '<section><h3>'+title+'</h3><div class="entry"><div class="when"></div>'+
-    '<div class="what"><div class="desc">'+esc(txt)+'</div></div></div></section>';
+function doPrint(which){
+  document.body.className = which==='cv'?'pr-cv':'pr-lt';
+  window.print();
+  setTimeout(function(){document.body.className='';},800);
 }
 
-function draw(){
-  var contact=[val('addr'),val('phone'),val('mail')].filter(Boolean)
-    .map(function(x){return '<span>'+esc(x)+'</span>';}).join('');
-  var pers=[];
-  if(val('dob')) pers.push(['Geburtsdatum',val('dob')]);
-  if(val('nat')) pers.push(['Staatsangehörigkeit',val('nat')]);
+function draw(){drawCv();drawLetter();runCheck();}
 
-  document.getElementById('paper').innerHTML =
-    '<div class="phead"><div class="who">'+
-      '<h2>'+esc(val('fname'))+' '+esc(val('lname'))+'</h2>'+
-      (val('role')?'<div class="role">'+esc(val('role'))+'</div>':'')+
-      '<div class="contact">'+contact+'</div>'+
-    '</div>'+(PIC?'<img src="'+PIC+'" alt="">':'')+'</div>'+
-    (pers.length?'<section><h3>Persönliche Daten</h3>'+pers.map(function(p){
-      return '<div class="entry"><div class="when">'+p[0]+'</div><div class="what">'+esc(p[1])+'</div></div>';
-    }).join('')+'</section>':'')+
-    block('qual')+block('work')+block('edu')+block('fort')+
-    freeBlock('Sprachkenntnisse',val('langs'))+
-    freeBlock('Kenntnisse und Fähigkeiten',val('skills'))+
-    '<div class="sig">'+esc(val('place'))+
-      (val('place')&&val('sdate')?', ':'')+esc(val('sdate'))+
-      '<br><br>'+esc(val('fname'))+' '+esc(val('lname'))+'</div>';
-}
-
-(function(){
-  var d=new Date(), p=function(n){return (n<10?'0':'')+n;};
-  document.getElementById('sdate').value=p(d.getDate())+'.'+p(d.getMonth()+1)+'.'+d.getFullYear();
-})();
-['fname','lname','role','phone','mail','addr','dob','nat','langs','skills','place','sdate']
-  .forEach(function(id){document.getElementById(id).addEventListener('input',draw);});
+(function(){var d=new Date(),p=function(n){return (n<10?'0':'')+n;};
+  document.getElementById('sdate').value=p(d.getDate())+'.'+p(d.getMonth()+1)+'.'+d.getFullYear();})();
+['fname','lname','role','phone','mail','addr','dob','nat','langs','skills','place','sdate',
+ 'lFirm','lPers','lAddr','lPos','lRef','lP1','lP2','lP3','lP4'].forEach(function(id){
+  var el=document.getElementById(id); if(el) el.addEventListener('input',draw);});
+document.querySelector('.dot').className='dot on';
+renderThumbs();
 ['qual','work','edu','fort'].forEach(renderForm);
 draw();
 </script>
