@@ -111,6 +111,19 @@ select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);out
 .dot{padding:0;display:block}
 .atsflag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.4px;
   background:#fdf3e3;color:#8a5a1e;border-radius:4px;padding:1px 5px;margin-top:3px}
+.picker{border:1px solid var(--line);border-radius:10px;padding:12px 13px;background:#f7faf9;margin-bottom:14px}
+.picker .cap{font-size:11.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--ac);margin-bottom:4px}
+.picker .sub{font-size:12.8px;color:var(--muted);margin:0 0 9px;line-height:1.5}
+.picker .list{display:grid;grid-template-columns:1fr;gap:7px}
+@media(min-width:520px){.picker .list{grid-template-columns:1fr 1fr}}
+.lt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;
+  border-radius:8px;padding:9px 11px;font:inherit;cursor:pointer;line-height:1.35}
+.lt:hover{border-color:var(--ac);background:#f2f8f6}
+.lt b{display:block;font-size:14px;color:var(--ac);margin-bottom:2px}
+.lt span{font-size:12.3px;color:var(--muted)}
+.picker .warn{font-size:12.3px;color:#8a5a1e;margin:9px 0 0;line-height:1.5}
+.descsel{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:7px;
+  font:inherit;font-size:13.5px;background:#fff;color:var(--muted);margin-bottom:2px}
 .picmsg{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
 .picmsg.bad{color:var(--warn)}
 .zoombar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:12.5px;
@@ -366,6 +379,16 @@ select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);out
       <label for="lRef">Gdje si vidio oglas</label><input id="lRef" placeholder="npr. Ihre Stellenanzeige auf indeed.de vom …">
     </fieldset>
     <fieldset><legend>Tekst pisma</legend>
+      <div class="picker">
+        <div class="cap">Počni od gotovog pisma</div>
+        <p class="sub">Izaberi situaciju koja ti najviše odgovara — sva četiri polja
+        se popune gotovim njemačkim tekstom. Onda samo zamijeniš ono što je u
+        <b>[uglastim zagradama]</b> svojim podacima.</p>
+        <div class="list" id="ltlist"></div>
+        <p class="warn"><b>Nemoj ostaviti tekst kakav jeste.</b> Ovo je kostur, ne
+        gotova prijava — kadrovska prepozna prepisan tekst. Zamijeni zagrade i dodaj
+        bar jednu rečenicu koja je samo tvoja.</p>
+      </div>
       <label for="lP1">Uvod — zašto pišeš</label>
       <textarea id="lP1" style="min-height:78px" placeholder="mit großem Interesse habe ich Ihre Stellenanzeige gelesen. Als examinierte Krankenschwester mit … Jahren Berufserfahrung suche ich eine Position, in der ich meine Erfahrung einbringen und meine Anerkennung abschließen kann."></textarea>
       <label for="lP2">Šta donosiš — iskustvo</label>
@@ -461,6 +484,8 @@ var PHV={
  work:['Period','Radno mjesto','Poslodavac i grad',''],
  edu:['Period','Škola ili smjer','Ustanova i mjesto',''],
  fort:['Period','Naziv kursa','Organizator','']};
+var LETTERS=[{"id": "l1", "name": "Anerkennung je u toku", "desc": "Već si u Njemačkoj, postupak priznavanja traje", "p1": "mit großem Interesse habe ich Ihre Stellenanzeige für [Position] gelesen. Ich habe in [Land] eine dreijährige Ausbildung in der Krankenpflege abgeschlossen, verfüge über [X] Jahre Berufserfahrung und lebe seit [Monat/Jahr] in Deutschland. Mein Anerkennungsverfahren läuft derzeit.", "p2": "Zuletzt war ich [X] Jahre im [Name der Einrichtung] auf einer [Fachbereich]-Station mit [Y] Betten tätig. Zu meinen Aufgaben gehörten die Grund- und Behandlungspflege, Wundversorgung und Verbandwechsel, die Medikamentengabe nach ärztlicher Anordnung, Blutentnahmen sowie die vollständige Pflegedokumentation. Ich bin den Drei-Schicht-Dienst gewohnt und habe regelmäßig neue Kolleginnen und Kollegen eingearbeitet.", "p3": "Mein Antrag auf Anerkennung liegt seit [Monat/Jahr] beim [Name der zuständigen Behörde]. [Ich habe einen Defizitbescheid erhalten und bereite mich auf die Kenntnisprüfung vor. / Der Bescheid steht noch aus.] Das Sprachzertifikat Deutsch B2 habe ich im [Monat/Jahr] bei [telc / Goethe-Institut / ÖSD] erworben. Bis zum Abschluss des Verfahrens kann ich als Pflegehelferin eingesetzt werden und würde die Anerkennung sehr gerne in Ihrem Haus abschließen.", "p4": "Über eine Einladung zu einem persönlichen Gespräch freue ich mich sehr. Meine Zeugnisse und Nachweise lege ich Ihnen gerne vollständig vor."}, {"id": "l2", "name": "Priznavanje je gotovo", "desc": "Imaš rješenje i smiješ nositi zvanje", "p1": "mit großem Interesse habe ich Ihre Stellenanzeige für [Position] auf [Portal / Ihrer Website] gelesen. Meine Berufsqualifikation wurde im [Monat/Jahr] vom [Name der Behörde] als gleichwertig anerkannt; die Erlaubnis zum Führen der Berufsbezeichnung Pflegefachfrau liegt vor.", "p2": "Ich bringe [X] Jahre Berufserfahrung mit, davon [X] Jahre im Bereich [Fachbereich]. In meiner letzten Stelle im [Name der Einrichtung] war ich zuständig für die Grund- und Behandlungspflege, die Medikamentengabe, Infusionen und Blutentnahmen, die Wundversorgung sowie die Pflegeplanung und -dokumentation. Die Zusammenarbeit im interdisziplinären Team und die Anleitung von Auszubildenden gehörten für mich selbstverständlich dazu.", "p3": "Ich verfüge über das Sprachzertifikat Deutsch B2 ([telc / Goethe-Institut], [Jahr]) und arbeite seit [Jahr] in Deutschland. An Ihrer Stelle interessiert mich besonders [konkreter Grund aus der Anzeige — zum Beispiel der Fachbereich, das Einarbeitungskonzept, die Dienstplansicherheit oder die Fortbildungsmöglichkeiten].", "p4": "Über eine Einladung zu einem persönlichen Gespräch würde ich mich sehr freuen. Gern stelle ich Ihnen meine Unterlagen vollständig zur Verfügung."}, {"id": "l3", "name": "Javljaš se iz BiH", "desc": "Još nisi u Njemačkoj, tražiš posao izdaleka", "p1": "über [Portal / Ihre Website] bin ich auf Ihre Stellenanzeige für [Position] aufmerksam geworden. Ich lebe derzeit in [Stadt, Land] und möchte meine Tätigkeit in der Pflege in Deutschland fortsetzen. Ihre Einrichtung hat mich angesprochen, weil [konkreter Grund aus der Anzeige].", "p2": "Ich habe in [Land] eine dreijährige Ausbildung in der Krankenpflege abgeschlossen und arbeite seit [Jahr] in diesem Beruf, zuletzt [X] Jahre im [Name der Einrichtung] auf der Station für [Fachbereich]. Meine Schwerpunkte waren die Grund- und Behandlungspflege, Wundversorgung, Medikamentengabe nach ärztlicher Anordnung, Blutentnahmen und die Pflegedokumentation. Der Schichtdienst ist mir vertraut.", "p3": "Deutsch lerne ich seit [Monat/Jahr] und befinde mich aktuell auf Niveau [A2 / B1 / B2]; die Prüfung [telc B2 Pflege / Goethe B2] lege ich voraussichtlich im [Monat/Jahr] ab. Über das Anerkennungsverfahren und die Formalitäten für die Einreise habe ich mich informiert und bin bereit, sie unverzüglich einzuleiten. Für eine Unterstützung bei diesen Schritten wäre ich sehr dankbar.", "p4": "Über ein erstes Gespräch würde ich mich sehr freuen — gerne auch als Videotelefonat. Für Rückfragen zu meinen Unterlagen stehe ich Ihnen jederzeit zur Verfügung."}, {"id": "l4", "name": "Dom ili ambulantna njega", "desc": "Pflegeheim, Wohnbereich ili Pflegedienst", "p1": "mit großem Interesse habe ich Ihre Anzeige für [Position] in Ihrer Einrichtung gelesen. Die Arbeit mit älteren und pflegebedürftigen Menschen ist der Bereich, in dem ich seit [X] Jahren zu Hause bin — und genau dort möchte ich weiterarbeiten.", "p2": "Zuletzt war ich [X] Jahre im [Name der Einrichtung] in einem Wohnbereich mit [Y] Bewohnerinnen und Bewohnern tätig. Zu meinen Aufgaben gehörten die Grund- und Körperpflege, die Unterstützung beim Essen und Trinken, Mobilisation und Sturzprophylaxe, die Betreuung von Menschen mit Demenz, die Medikamentengabe nach ärztlicher Anordnung sowie die Pflegedokumentation. Ein ruhiger Ton im Team und ein respektvoller Umgang mit den Bewohnern sind mir dabei besonders wichtig.", "p3": "[Mein Anerkennungsverfahren läuft seit [Monat/Jahr] beim [Behörde]. / Meine Qualifikation wurde im [Monat/Jahr] anerkannt.] Das Sprachzertifikat Deutsch B2 habe ich im [Monat/Jahr] erworben. Ich arbeite zuverlässig im Schichtdienst, auch an Wochenenden und Feiertagen.", "p4": "Über eine Einladung zu einem persönlichen Gespräch würde ich mich sehr freuen. Gern lerne ich Ihre Einrichtung auch bei einem Probetag kennen."}, {"id": "l5", "name": "Pflegehelfer / početak", "desc": "Radiš kao pomoćno osoblje ili tek počinješ", "p1": "auf [Portal / Ihrer Website] habe ich die Stelle als [Position] gefunden und bewerbe mich hiermit. Ich arbeite seit [Monat/Jahr] als Pflegehelferin und möchte in diesem Beruf langfristig Fuß fassen.", "p2": "Zu meinen täglichen Aufgaben gehören die Unterstützung bei der Körperpflege, beim An- und Auskleiden und beim Essen, die Lagerung und Mobilisation der Patienten, die Begleitung zu Untersuchungen sowie die Beobachtung des Allgemeinzustands und die Weitergabe von Veränderungen an die Pflegefachkraft. Ich arbeite zuverlässig im Schichtdienst und springe ein, wenn das Team Unterstützung braucht.", "p3": "Deutsch spreche ich auf Niveau [B1 / B2] ([Zertifikat], [Jahr]). [Mein Anerkennungsverfahren als Pflegefachkraft läuft seit [Monat/Jahr]. / Ich möchte die Ausbildung zur Pflegefachfrau beginnen.] Ich lerne schnell, arbeite gern im Team und nehme Rückmeldungen dankbar an.", "p4": "Über die Möglichkeit, mich persönlich vorzustellen, würde ich mich sehr freuen. Gern komme ich auch zu einem Probearbeitstag."}, {"id": "l6", "name": "Inicijativna prijava", "desc": "Nema oglasa — pišeš sam, na svoju ruku", "p1": "auch ohne eine ausgeschriebene Stelle wende ich mich heute an Sie. [Name der Einrichtung] ist mir [durch Kolleginnen / während eines Praktikums / durch meine Recherche] als Haus mit gutem Ruf in der Pflege bekannt, und ich würde sehr gern Teil Ihres Teams werden.", "p2": "Ich habe in [Land] eine dreijährige Ausbildung in der Krankenpflege abgeschlossen und bringe [X] Jahre Berufserfahrung mit, zuletzt [X] Jahre im Bereich [Fachbereich]. Vertraut bin ich mit der Grund- und Behandlungspflege, der Wundversorgung, der Medikamentengabe nach ärztlicher Anordnung und der Pflegedokumentation. Der Drei-Schicht-Dienst ist für mich selbstverständlich.", "p3": "[Mein Anerkennungsverfahren läuft seit [Monat/Jahr]. / Meine Qualifikation ist seit [Monat/Jahr] anerkannt.] Das Sprachzertifikat Deutsch B2 habe ich im [Monat/Jahr] erworben. Ich bin zeitlich flexibel und könnte ab [Monat/Jahr] beginnen.", "p4": "Sollte derzeit oder in absehbarer Zeit eine Stelle frei werden, würde ich mich über eine Nachricht sehr freuen. Für ein Gespräch stehe ich jederzeit gern zur Verfügung."}];
+var WORKDESC=[["Interna / opšta njega", "Grund- und Behandlungspflege, Medikamentengabe nach ärztlicher Anordnung, Blutentnahmen und Infusionen, Kontrolle der Vitalzeichen, Wundversorgung und Verbandwechsel, Aufnahme und Entlassung von Patienten, Begleitung der Visite, Pflegedokumentation, Drei-Schicht-Dienst"], ["Hirurgija", "Prä- und postoperative Pflege, Wundversorgung und Verbandwechsel, Versorgung von Drainagen und Kathetern, Schmerzerfassung und -dokumentation, Mobilisation nach Operationen, Vorbereitung der Patienten für den OP, Pflegedokumentation, Drei-Schicht-Dienst"], ["Intenzivna njega", "Überwachung intensivpflichtiger und beatmeter Patienten, Monitoring der Vitalparameter, Umgang mit Perfusoren und Infusionspumpen, endotracheales Absaugen und Tracheostomapflege, spezielle Lagerung und Dekubitusprophylaxe, enge Zusammenarbeit mit dem ärztlichen Dienst, lückenlose Dokumentation"], ["Dom za starije", "Grund- und Körperpflege, Unterstützung beim Essen und Trinken, Mobilisation und Sturzprophylaxe, Betreuung von Menschen mit Demenz, Medikamentengabe nach ärztlicher Anordnung, Dekubitus- und Kontrakturenprophylaxe, Pflegedokumentation, Kontakt zu Angehörigen"], ["Ambulantna njega", "Selbstständige Versorgung von Patienten in der häuslichen Umgebung nach Tourenplan, Grund- und Behandlungspflege, Medikamentengabe, Insulingabe und Blutzuckerkontrolle, Wundversorgung, Anleitung und Beratung von Angehörigen, Pflegedokumentation, Führen eines Dienstfahrzeugs"], ["Dječije odjeljenje", "Pflege von Säuglingen, Kindern und Jugendlichen, Beobachtung und Dokumentation des Krankheitsverlaufs, Medikamentengabe nach Gewicht und ärztlicher Anordnung, Vorbereitung auf Untersuchungen, Anleitung und Unterstützung der Eltern, Drei-Schicht-Dienst"], ["Ginekologija / porodilište", "Betreuung von Wöchnerinnen und Neugeborenen, Stillanleitung, Wundkontrolle und Nachsorge nach Kaiserschnitt, Kontrolle der Vitalzeichen bei Mutter und Kind, Beratung und Anleitung der Eltern, Pflegedokumentation"], ["Operaciona sala", "Instrumentieren und Springertätigkeit im OP, Vorbereitung der Operationssäle und Siebe, Lagerung der Patienten, Einhaltung der Hygiene- und Sterilitätsvorschriften, Zählkontrollen von Instrumenten und Materialien, Dokumentation, Rufbereitschaft"], ["Dijaliza", "Vorbereitung und Anschluss der Dialysegeräte, Punktion von Shunts und Kathetern, Überwachung der Patienten während der Behandlung, Bilanzierung, Einhaltung der Hygienemaßnahmen, Dokumentation"], ["Psihijatrija", "Betreuung und Begleitung psychisch erkrankter Menschen, Beobachtung und Dokumentation des psychischen Zustands, Medikamentengabe nach ärztlicher Anordnung, Deeskalation in Krisensituationen, Unterstützung bei der Tagesstruktur, Bezugspflege"], ["Pomoćno osoblje", "Unterstützung bei der Körperpflege, beim An- und Auskleiden und beim Essen, Lagerung und Mobilisation, Begleitung zu Untersuchungen, Vorbereitung der Mahlzeiten, Betten machen, Beobachtung des Allgemeinzustands und Weitergabe an die Pflegefachkraft"]];
 var TPLS=[
  {id:'t1',name:'Klasik',mock:'<div class="nm"></div><div class="rule"></div><div class="ln" style="width:80%"></div><div class="hd" style="background:#333"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd" style="background:#333"></div><div class="ln" style="width:70%"></div>'},
  {id:'t2',name:'Minhen',mock:'<div class="nm" style="background:var(--ac)"></div><div class="rule" style="background:var(--ac);height:2px"></div><div class="ln" style="width:80%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd"></div><div class="ln" style="width:66%"></div>'},
@@ -528,6 +553,13 @@ function renderForm(k){
       '<label for="'+f('a')+'">'+F[0]+'</label><input id="'+f('a')+'" value="'+esc(it.a)+'" placeholder="'+esc(PHF[k][0])+'" oninput="upd(\''+k+'\','+i+',\'a\',this.value)">'+
       '<label for="'+f('b')+'">'+F[1]+'</label><input id="'+f('b')+'" value="'+esc(it.b)+'" placeholder="'+esc(PHF[k][1])+'" oninput="upd(\''+k+'\','+i+',\'b\',this.value)">'+
       '<label for="'+f('c')+'">'+F[2]+'</label><input id="'+f('c')+'" value="'+esc(it.c)+'" placeholder="'+esc(PHF[k][2])+'" oninput="upd(\''+k+'\','+i+',\'c\',this.value)">'+
+      (k==='work'
+        ? '<label for="'+f('sel')+'">Ubaci gotov opis zadataka (njemački)</label>'+
+          '<select class="descsel" id="'+f('sel')+'" onchange="insDesc(\''+k+'\','+i+',this.value);this.value=\'\'">'+
+          '<option value="">— izaberi odjeljenje —</option>'+
+          WORKDESC.map(function(w,wi){return '<option value="'+wi+'">'+esc(w[0])+'</option>';}).join('')+
+          '</select>'
+        : '')+
       '<label for="'+f('d')+'">'+F[3]+'</label><textarea id="'+f('d')+'" placeholder="'+esc(PHF[k][3])+'" oninput="upd(\''+k+'\','+i+',\'d\',this.value)">'+esc(it.d)+'</textarea></div>';
   }).join('');
 }
@@ -565,6 +597,34 @@ document.getElementById('pic').addEventListener('change',function(e){
   };
   r.readAsDataURL(f);});
 
+function renderLetters(){
+  document.getElementById('ltlist').innerHTML = LETTERS.map(function(L){
+    return '<button type="button" class="lt" onclick="useLetter(\''+L.id+'\')">'+
+      '<b>'+esc(L.name)+'</b><span>'+esc(L.desc)+'</span></button>';
+  }).join('');
+}
+function useLetter(id){
+  var L=null;
+  for(var i=0;i<LETTERS.length;i++) if(LETTERS[i].id===id) L=LETTERS[i];
+  if(!L) return;
+  var puno=['lP1','lP2','lP3','lP4'].some(function(f){return val(f);});
+  if(puno && !confirm('Ovo će prebrisati tekst koji si već upisao u pismu.\n\nNastaviti?')) return;
+  ['p1','p2','p3','p4'].forEach(function(k,i){
+    document.getElementById('lP'+(i+1)).value = L[k];
+  });
+  draw();
+  var f=document.getElementById('lP1');
+  f.focus(); f.setSelectionRange(0,0);
+  f.scrollIntoView({block:'center',behavior:'smooth'});
+}
+function insDesc(k,i,key){
+  if(key==='') return;
+  var t=WORKDESC[parseInt(key,10)]; if(!t) return;
+  var cur=(S[k][i].d||'').replace(/\s+$/,'');
+  S[k][i].d = cur ? cur+'\n'+t[1] : t[1];
+  renderForm(k); draw();
+  var el=document.getElementById(k+'-'+i+'-d'); if(el) el.focus();
+}
 function ph(t){return '<span class="ph">'+esc(t)+'</span>';}
 function has(k){return S[k].some(function(it){return it.a||it.b||it.c||it.d;});}
 function entries(k){
@@ -676,12 +736,16 @@ function missingCv(){
   if(!has('work')&&!has('edu'))    m.push('bar jedan posao ili jedna škola');
   return m;
 }
+function bracketsLeft(){
+  return ['lP1','lP2','lP3','lP4'].some(function(f){return /\[[^\]]{2,}\]/.test(val(f));});
+}
 function missingLt(){
   var m=[];
   if(!val('fname')||!val('lname')) m.push('ime i prezime');
   if(!val('lFirm')) m.push('ustanova kojoj pišeš');
   if(!val('lPos'))  m.push('naziv pozicije (ide u Betreff)');
   if(!val('lP1')&&!val('lP2')&&!val('lP3')&&!val('lP4')) m.push('tekst pisma');
+  if(bracketsLeft()) m.push('u tekstu su ostale [uglaste zagrade] iz predloška — zamijeni ih svojim podacima');
   return m;
 }
 function runCheck(){
@@ -709,6 +773,8 @@ function runCheck(){
 
   var pg=pageCount();
   if(pg>2) bad.push('Dokument izlazi na oko <b>'+pg+' stranice</b>. Njemački Lebenslauf u pravilu staje na jednu do dvije — probaj dizajn „Kompakt" ili skrati opise starijih poslova.');
+
+  if(bracketsLeft()) bad.push('<b>U propratnom pismu su ostale [uglaste zagrade]</b> iz predloška. Zamijeni ih svojim podacima — inače poslodavac vidi da je tekst prepisan.');
 
   var t=TPLS.filter(function(x){return x.id===TPL;})[0];
   var extra = (t&&t.ats===0) ? '<p class="hint" style="margin-top:8px">Dizajn <b>'+t.name+
@@ -846,6 +912,7 @@ function draw(){drawCv();drawLetter();runCheck();applyZoom();}
  'lFirm','lPers','lAddr','lPos','lRef','lP1','lP2','lP3','lP4'].forEach(function(id){
   var el=document.getElementById(id); if(el) el.addEventListener('input',draw);});
 markColor();
+renderLetters();
 renderThumbs();
 ['qual','work','edu','fort'].forEach(renderForm);
 draw();
