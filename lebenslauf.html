@@ -14,6 +14,11 @@
 .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
 @media(max-width:560px){.app{padding:10px;gap:12px}.panel{padding:13px}.row{grid-template-columns:1fr}}
 
+.toolhead{background:#f1f6f5;border-bottom:1px solid var(--line)}
+.toolhead .in{max-width:1300px;margin:0 auto;padding:18px 16px 16px}
+.toolhead h1{font-size:23px;letter-spacing:-.6px;margin:0 0 5px;color:var(--brand)}
+@media(min-width:760px){.toolhead h1{font-size:27px}}
+.toolhead p{margin:0;font-size:14.5px;color:#4a5754;line-height:1.55;max-width:60em}
 .tabs{display:flex;gap:6px;margin-bottom:14px;border-bottom:2px solid var(--line)}
 .tabs button{border:none;background:none;font:inherit;font-size:14.5px;font-weight:700;color:var(--muted);padding:9px 14px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
 .tabs button.on{color:var(--ac);border-bottom-color:var(--ac)}
@@ -97,6 +102,25 @@ textarea{resize:vertical;min-height:62px}
 .filebtns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
 .filebtns .btn{flex:1;text-align:center;font-size:13.5px;padding:8px}
 
+.skip{position:absolute;left:-9999px;top:0;background:var(--ac);color:#fff;
+  padding:11px 18px;z-index:99;border-radius:0 0 8px 0;font-weight:700;text-decoration:none}
+.skip:focus{left:0}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
+select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.th{font:inherit;color:inherit;width:100%;display:block}
+.dot{padding:0;display:block}
+.atsflag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.4px;
+  background:#fdf3e3;color:#8a5a1e;border-radius:4px;padding:1px 5px;margin-top:3px}
+.picmsg{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+.picmsg.bad{color:var(--warn)}
+.zoombar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:12.5px;
+  color:var(--muted);margin:0 0 8px}
+.zoombar button{border:1px solid var(--line);background:#fff;border-radius:7px;
+  padding:5px 11px;font:inherit;font-size:13px;cursor:pointer;line-height:1.3}
+.zoombar button:hover{background:#eef4f3;border-color:var(--ac)}
+.zoombar .lvl{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink);min-width:44px;text-align:center}
+#wrapCv,#wrapLetter{overflow-x:hidden}
+.paper,.letter{transform-origin:top left}
 .paper{background:#fff;border:1px solid var(--line);border-radius:4px;padding:44px 48px;font-family:"Carlito",Calibri,"Segoe UI",sans-serif;color:#16181d;font-size:11.4px;line-height:1.5;max-width:840px;margin:0 auto}
 .phead{display:flex;gap:20px;align-items:flex-start;border-bottom:1.6px solid #16181d;padding-bottom:13px;margin-bottom:17px}
 .phead .who{flex:1;min-width:0}
@@ -221,30 +245,12 @@ textarea{resize:vertical;min-height:62px}
 .letter.t3{font-family:"Times New Roman",Georgia,serif;font-size:12.2px}
 .letter.t5 .lsender b{font-size:22px;font-weight:300;color:var(--ac);letter-spacing:-.5px}
 
-@media(max-width:560px){
-  .paper{padding:22px 20px;font-size:11px}
-  .paper .contact span{display:block;margin:0 0 2px}
-  .entry{grid-template-columns:92px 1fr;gap:9px}
-  .phead{gap:13px}.phead img{width:74px;height:92px}
-  .paper h2{font-size:20px}
-  .paper.t4{flex-direction:column}
-  .paper.t4 .sidecol{width:100%;border-right:none;border-bottom:3px solid var(--ac);padding:20px}
-  .paper.t4 .maincol{padding:20px}
-  .paper.t5{padding:24px 22px}.paper.t5 h2{font-size:26px}
-  .paper.t7{flex-direction:column}
-  .paper.t7 .sidecol{width:100%;border-left:none;border-bottom:3px solid var(--ac);padding:20px}
-  .paper.t7 .maincol{padding:20px}
-  .paper.t8 .phead{margin:-22px -20px 18px;padding:20px;display:block}
-  .paper.t8 .phead img{margin-top:10px}
-  .paper.t11,.paper.t12{padding:16px 14px}
-  .paper.t12 .entry{grid-template-columns:1fr}
-  .paper.t12 .entry .when{border-right:none;border-bottom:1px solid #d8dedd}
-  .letter{padding:24px 22px}
-}
+/* Pregled je uvijek prava A4 stranica (840 px = 210 mm) i skalira se na širinu ekrana,
+   pa dokument na telefonu izgleda tačno onako kako će izaći u PDF-u. */
 
 @media print{
   body{background:#fff}
-  .nav,.trust,footer.site,.panel.form,.designer,.check,.actions,.filebtns,.noprint{display:none!important}
+  .nav,.trust,.toolhead,footer.site,.panel.form,.designer,.check,.actions,.filebtns,.noprint{display:none!important}
   .app{display:block;padding:0;max-width:none}
   .panel.out{border:none;padding:0;background:none;border-radius:0}
   .paper,.letter{border:none;border-radius:0;max-width:none;font-size:11pt;padding:0}
@@ -261,114 +267,131 @@ textarea{resize:vertical;min-height:62px}
   .paper.t7 .sidecol{padding:17mm 15mm 17mm 9mm}
   .paper.t7 .maincol{padding:17mm 11mm 17mm 15mm}
   .paper.t8 .phead{margin:-17mm -15mm 8mm;padding:14mm 15mm 9mm}
+  #wrapCv,#wrapLetter{overflow:visible!important;height:auto!important}
+  .paper,.letter{transform:none!important;width:auto!important}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#pregled">Preskoči na pregled dokumenta</a>
 
 <nav class="nav"><div class="in">
   <a class="logo" href="index.html">Njega u Njemačkoj<small>Pflege in Deutschland · na našem jeziku</small></a>
   <div class="links"><a href="lebenslauf.html" class="on">Lebenslauf</a><a href="anerkennung.html">Anerkennung</a><a href="rjecnik.html">Rječnik</a></div>
 </div></nav>
 <div class="trust"><div class="in">
-  <span><b>Bez registracije</b></span><span><b>Bez plaćanja</b></span><span><b>Podaci ostaju u tvom telefonu</b></span>
+  <span><b>Bez registracije</b></span><span><b>Bez plaćanja</b></span><span><b>Podaci se ne šalju nama</b></span>
 </div></div>
+
+<header class="toolhead"><div class="in">
+  <h1>Lebenslauf i Anschreiben za Njemačku</h1>
+  <p>Popuni polja na našem jeziku — dokument izlazi na njemačkom, u dizajnu koji sam
+  izabereš. Bez registracije, bez naplate, i bez slanja tvojih podataka.</p>
+</div></header>
 
 <div class="app">
 
 <div class="panel form">
-  <div class="tabs">
-    <button id="tb-cv" class="on" onclick="tab('cv')">Lebenslauf</button>
-    <button id="tb-lt" onclick="tab('lt')">Anschreiben</button>
+  <div class="tabs" role="tablist" aria-label="Vrsta dokumenta">
+    <button id="tb-cv" type="button" class="on" role="tab" aria-selected="true" aria-controls="pane-cv" onclick="tab('cv')">Lebenslauf</button>
+    <button id="tb-lt" type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="pane-lt" onclick="tab('lt')">Anschreiben</button>
   </div>
 
-  <div id="pane-cv">
-    <div class="tip" style="margin-top:0"><b>Ništa ne odlazi sa tvog uređaja.</b> Dokument se sastavlja u tvom pregledniku i nestaje kad zatvoriš stranicu. Zato i nema registracije — nema šta da se registruje.</div>
+  <div id="pane-cv" role="tabpanel" aria-labelledby="tb-cv" tabindex="0">
+    <div class="tip" style="margin-top:0"><b>Ono što upišeš ostaje u tvom pregledniku.</b>
+    Dokument se sastavlja lokalno, na tvom uređaju — ni ime, ni slika, ni jedan podatak
+    ne šalju se nama i ništa se ne pamti kad zatvoriš stranicu. Kao i kod svake stranice
+    na internetu, hosting pritom obrađuje uobičajene tehničke podatke o posjeti (npr. IP adresu).
+    <a href="privatnost.html">Kako to tačno radi</a>.</div>
 
     <fieldset><legend>Lični podaci</legend>
-      <div class="row"><div><label>Ime</label><input id="fname" placeholder="Vaše ime"></div><div><label>Prezime</label><input id="lname" placeholder="Vaše prezime"></div></div>
-      <div class="lab"><label>Zanimanje na njemačkom</label><button class="x" onclick="wipe('role')">ukloni</button></div>
-      <input id="role" placeholder="Vaše zanimanje na njemačkom, npr. Gesundheits- und Krankenpflegerin">
+      <div class="row"><div><label for="fname">Ime</label><input id="fname" autocomplete="given-name" placeholder="Vaše ime"></div><div><label for="lname">Prezime</label><input id="lname" autocomplete="family-name" placeholder="Vaše prezime"></div></div>
+      <div class="lab"><label for="role">Zanimanje na njemačkom</label><button type="button" class="x" aria-label="Isprazni polje Zanimanje na njemačkom" onclick="wipe('role')">ukloni</button></div>
+      <input id="role" autocomplete="organization-title" placeholder="Vaše zanimanje na njemačkom, npr. Gesundheits- und Krankenpflegerin">
       <p class="hint">Ako priznavanje još traje, napiši to otvoreno. Poslodavci to cijene daleko više nego da saznaju kasnije.</p>
       <div class="row">
-        <div><div class="lab"><label>Telefon</label><button class="x" onclick="wipe('phone')">ukloni</button></div>
-          <input id="phone" placeholder="Vaš broj telefona"></div>
-        <div><div class="lab"><label>E-mail</label><button class="x" onclick="wipe('mail')">ukloni</button></div>
-          <input id="mail" placeholder="Vaš e-mail"></div>
+        <div><div class="lab"><label for="phone">Telefon</label><button type="button" class="x" aria-label="Isprazni polje Telefon" onclick="wipe('phone')">ukloni</button></div>
+          <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Vaš broj telefona"></div>
+        <div><div class="lab"><label for="mail">E-mail</label><button type="button" class="x" aria-label="Isprazni polje E-mail" onclick="wipe('mail')">ukloni</button></div>
+          <input id="mail" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="Vaš e-mail"></div>
       </div>
-      <div class="lab"><label>Adresa u Njemačkoj</label><button class="x" onclick="wipe('addr')">ukloni</button></div>
-      <input id="addr" placeholder="Vaša adresa u Njemačkoj">
+      <div class="lab"><label for="addr">Adresa u Njemačkoj</label><button type="button" class="x" aria-label="Isprazni polje Adresa" onclick="wipe('addr')">ukloni</button></div>
+      <input id="addr" autocomplete="street-address" placeholder="Vaša adresa u Njemačkoj">
       <div class="row">
-        <div><div class="lab"><label>Datum rođenja</label><button class="x" onclick="wipe('dob')">ukloni</button></div>
-          <input id="dob" placeholder="TT.MM.GGGG"></div>
-        <div><div class="lab"><label>Državljanstvo</label><button class="x" onclick="wipe('nat')">ukloni</button></div>
+        <div><div class="lab"><label for="dob">Datum rođenja</label><button type="button" class="x" aria-label="Isprazni polje Datum rođenja" onclick="wipe('dob')">ukloni</button></div>
+          <input id="dob" inputmode="numeric" autocomplete="bday" placeholder="TT.MM.GGGG"></div>
+        <div><div class="lab"><label for="nat">Državljanstvo</label><button type="button" class="x" aria-label="Isprazni polje Državljanstvo" onclick="wipe('nat')">ukloni</button></div>
           <input id="nat" placeholder="npr. bosnisch"></div>
       </div>
       <div class="optnote"><b>Šta smiješ izostaviti.</b> Po njemačkom zakonu o
       jednakom postupanju (AGG) datum rođenja, državljanstvo, bračno stanje i slika
       <b>nisu obavezni</b> i sve više ljudi ih izostavlja. Klikni <b>ukloni</b> pored
       polja — nestane i sa dokumenta. Ime, prezime i bar jedan kontakt moraju ostati.</div>
-      <label>Slika (nije obavezna)</label>
-      <div class="photo"><img id="thumb" alt=""><div style="flex:1"><input type="file" id="pic" accept="image/*" style="font-size:13px;padding:6px"><button class="mini del" onclick="clearPic()" style="margin-top:6px">ukloni sliku</button></div></div>
+      <label for="pic">Slika (nije obavezna)</label>
+      <div class="photo"><img id="thumb" alt=""><div style="flex:1"><input type="file" id="pic" accept="image/jpeg,image/png,image/webp" style="font-size:13px;padding:6px"><button type="button" class="mini del" onclick="clearPic()" style="margin-top:6px">ukloni sliku</button></div></div>
+      <p class="picmsg" id="picmsg">Slika se odmah smanjuje na tvom uređaju (najviše 600 × 800 piksela) da dokument ostane lagan. Nikuda se ne šalje.</p>
     </fieldset>
 
     <fieldset><legend>Anerkennung i kvalifikacije</legend><div id="qual"></div>
-      <button class="add" onclick="add('qual')">+ dodaj stavku</button>
+      <button type="button" class="add" onclick="add('qual')">+ dodaj stavku</button>
       <p class="hint">Status priznavanja, B2, Kenntnisprüfung, licence. To je prvo što njemački poslodavac traži — zato ova sekcija stoji na vrhu dokumenta.</p></fieldset>
 
     <fieldset><legend>Radno iskustvo</legend><div id="work"></div>
-      <button class="add" onclick="add('work')">+ dodaj posao</button>
+      <button type="button" class="add" onclick="add('work')">+ dodaj posao</button>
       <p class="hint warn">Nijedna godina ne smije ostati prazna. Bio si bez posla, na porodiljskom, na kursu, selio se? Upiši to kao stavku — prazan period izaziva pitanja, iskren odgovor ne.</p></fieldset>
 
-    <fieldset><legend>Školovanje</legend><div id="edu"></div><button class="add" onclick="add('edu')">+ dodaj školu</button></fieldset>
-    <fieldset><legend>Kursevi i usavršavanja</legend><div id="fort"></div><button class="add" onclick="add('fort')">+ dodaj kurs</button></fieldset>
+    <fieldset><legend>Školovanje</legend><div id="edu"></div><button type="button" class="add" onclick="add('edu')">+ dodaj školu</button></fieldset>
+    <fieldset><legend>Kursevi i usavršavanja</legend><div id="fort"></div><button type="button" class="add" onclick="add('fort')">+ dodaj kurs</button></fieldset>
 
     <fieldset><legend>Jezici i vještine</legend>
-      <label>Jezici</label><textarea id="langs" placeholder="Bosnisch/Kroatisch/Serbisch – Muttersprache&#10;Deutsch – B2 (telc, 2025)&#10;Englisch – Grundkenntnisse"></textarea>
-      <label>Vještine i znanja</label><textarea id="skills" placeholder="Grund- und Behandlungspflege&#10;Wundversorgung&#10;Medikamentengabe&#10;Pflegedokumentation&#10;Betreuung von Menschen mit Demenz"></textarea></fieldset>
+      <label for="langs">Jezici</label><textarea id="langs" placeholder="Bosnisch/Kroatisch/Serbisch – Muttersprache&#10;Deutsch – B2 (telc, 2025)&#10;Englisch – Grundkenntnisse"></textarea>
+      <label for="skills">Vještine i znanja</label><textarea id="skills" placeholder="Grund- und Behandlungspflege&#10;Wundversorgung&#10;Medikamentengabe&#10;Pflegedokumentation&#10;Betreuung von Menschen mit Demenz"></textarea></fieldset>
 
-    <fieldset><legend>Potpis</legend><div class="row"><div><label>Mjesto</label><input id="place" placeholder="Vaš grad"></div><div><label>Datum</label><input id="sdate" value=""></div></div></fieldset>
+    <fieldset><legend>Potpis</legend><div class="row"><div><label for="place">Mjesto</label><input id="place" autocomplete="address-level2" placeholder="Vaš grad"></div><div><label for="sdate">Datum</label><input id="sdate" inputmode="numeric" value=""></div></div></fieldset>
   </div>
 
-  <div id="pane-lt" style="display:none">
-    <div class="tip" style="margin-top:0"><b>U Njemačkoj se bez propratnog pisma prijava rijetko shvata ozbiljno.</b> Ime, adresa i dizajn se preuzimaju iz Lebenslaufa, pa dokumenti izgledaju kao komplet.</div>
+  <div id="pane-lt" role="tabpanel" aria-labelledby="tb-lt" tabindex="0" style="display:none">
+    <div class="tip" style="margin-top:0"><b>Propratno pismo ide uz gotovo svaku njemačku prijavu.</b>
+    Bundesagentur für Arbeit navodi Anschreiben i Lebenslauf kao standardne dijelove prijave,
+    ali i da poslodavac ponekad traži manje dokumenata — pa prvo pogledaj šta piše u oglasu.
+    Ime, adresa i dizajn se preuzimaju iz Lebenslaufa, pa dokumenti izgledaju kao komplet.</div>
     <fieldset><legend>Kome pišeš</legend>
-      <label>Ustanova</label><input id="lFirm" placeholder="Naziv klinike ili doma">
-      <label>Kontakt osoba (ako je znaš)</label><input id="lPers" placeholder="npr. Frau Weber — ako ne znaš, ostavi prazno">
-      <label>Adresa</label><input id="lAddr" placeholder="Ulica, poštanski broj i grad">
+      <label for="lFirm">Ustanova</label><input id="lFirm" placeholder="Naziv klinike ili doma">
+      <label for="lPers">Kontakt osoba (ako je znaš)</label><input id="lPers" placeholder="npr. Frau Weber — ako ne znaš, ostavi prazno">
+      <label for="lAddr">Adresa</label><input id="lAddr" placeholder="Ulica, poštanski broj i grad">
       <p class="hint">Ako ne znaš ime osobe, ostavi prazno — pozdrav se sam prebaci na „Sehr geehrte Damen und Herren".</p>
     </fieldset>
     <fieldset><legend>Radno mjesto</legend>
-      <label>Pozicija</label><input id="lPos" placeholder="Naziv pozicije iz oglasa, npr. Pflegefachfrau (m/w/d)">
-      <label>Gdje si vidio oglas</label><input id="lRef" placeholder="npr. Ihre Stellenanzeige auf indeed.de vom …">
+      <label for="lPos">Pozicija</label><input id="lPos" placeholder="Naziv pozicije iz oglasa, npr. Pflegefachfrau (m/w/d)">
+      <label for="lRef">Gdje si vidio oglas</label><input id="lRef" placeholder="npr. Ihre Stellenanzeige auf indeed.de vom …">
     </fieldset>
     <fieldset><legend>Tekst pisma</legend>
-      <label>Uvod — zašto pišeš</label>
+      <label for="lP1">Uvod — zašto pišeš</label>
       <textarea id="lP1" style="min-height:78px" placeholder="mit großem Interesse habe ich Ihre Stellenanzeige gelesen. Als examinierte Krankenschwester mit … Jahren Berufserfahrung suche ich eine Position, in der ich meine Erfahrung einbringen und meine Anerkennung abschließen kann."></textarea>
-      <label>Šta donosiš — iskustvo</label>
+      <label for="lP2">Šta donosiš — iskustvo</label>
       <textarea id="lP2" style="min-height:96px" placeholder="Beschreiben Sie hier kurz Ihre Erfahrung: Station, Fachbereich, Bettenzahl, Schichtdienst, besondere Aufgaben."></textarea>
-      <label>Anerkennung i jezik</label>
+      <label for="lP3">Anerkennung i jezik</label>
       <textarea id="lP3" style="min-height:78px" placeholder="Schreiben Sie hier den Stand Ihrer Anerkennung und Ihr Sprachniveau, zum Beispiel: Mein Anerkennungsverfahren läuft, das Zertifikat B2 habe ich im … erworben."></textarea>
-      <label>Završetak</label>
+      <label for="lP4">Završetak</label>
       <textarea id="lP4" placeholder="Über die Einladung zu einem persönlichen Gespräch würde ich mich sehr freuen."></textarea>
       <p class="hint warn">Ovo su samo primjeri. Prepiši ih svojim riječima i svojim slučajem — kadrovska prepozna prepisan tekst iz sto metara.</p>
     </fieldset>
   </div>
 </div>
 
-<div class="panel out">
+<div class="panel out" id="pregled" tabindex="-1">
 
   <div class="designer noprint">
     <div class="cap">Izaberi dizajn — pregled se mijenja odmah</div>
-    <div class="thumbs" id="thumbs"></div>
-    <div class="colors">
-      <span class="lbl">Boja:</span>
-      <div class="dot" style="background:#14524a" onclick="setColor('#14524a',this)" title="Zelena"></div>
-      <div class="dot" style="background:#1a3a5c" onclick="setColor('#1a3a5c',this)" title="Plava"></div>
-      <div class="dot" style="background:#7a2e39" onclick="setColor('#7a2e39',this)" title="Bordo"></div>
-      <div class="dot" style="background:#2f3437" onclick="setColor('#2f3437',this)" title="Grafit"></div>
-      <div class="dot" style="background:#5a3a63" onclick="setColor('#5a3a63',this)" title="Šljiva"></div>
-      <div class="dot" style="background:#8a5a1e" onclick="setColor('#8a5a1e',this)" title="Oker"></div>
+    <div class="thumbs" id="thumbs" role="group" aria-label="Dizajn dokumenta"></div>
+    <div class="colors" role="group" aria-labelledby="collbl">
+      <span class="lbl" id="collbl">Boja:</span>
+      <button type="button" class="dot" style="background:#14524a" onclick="setColor('#14524a',this)" title="Zelena" aria-label="Boja: Zelena" aria-pressed="false"></button>
+      <button type="button" class="dot" style="background:#1a3a5c" onclick="setColor('#1a3a5c',this)" title="Plava" aria-label="Boja: Plava" aria-pressed="false"></button>
+      <button type="button" class="dot" style="background:#7a2e39" onclick="setColor('#7a2e39',this)" title="Bordo" aria-label="Boja: Bordo" aria-pressed="false"></button>
+      <button type="button" class="dot" style="background:#2f3437" onclick="setColor('#2f3437',this)" title="Grafit" aria-label="Boja: Grafit" aria-pressed="false"></button>
+      <button type="button" class="dot" style="background:#5a3a63" onclick="setColor('#5a3a63',this)" title="Šljiva" aria-label="Boja: Šljiva" aria-pressed="false"></button>
+      <button type="button" class="dot" style="background:#8a5a1e" onclick="setColor('#8a5a1e',this)" title="Oker" aria-label="Boja: Oker" aria-pressed="false"></button>
     </div>
     <div class="point"><span class="arw">&#8595;</span>
       <span>Primjer dokumenta je odmah ispod
@@ -376,17 +399,22 @@ textarea{resize:vertical;min-height:62px}
       </span></div>
   </div>
 
-  <div class="check noprint" id="check"></div>
+  <div class="check noprint" id="check" role="status" aria-live="polite"></div>
 
   <div class="actions noprint">
-    <button class="btn primary" onclick="doPrint('cv')">Preuzmi Lebenslauf (PDF)</button>
-    <button class="btn primary" onclick="doPrint('lt')">Preuzmi Anschreiben (PDF)</button>
+    <button type="button" class="btn primary" onclick="doPrint('cv')">Sačuvaj kao PDF — Lebenslauf</button>
+    <button type="button" class="btn primary" onclick="doPrint('lt')">Sačuvaj kao PDF — Anschreiben</button>
   </div>
+  <p class="hint noprint" style="margin:0 0 12px">Ova dugmad otvaraju <b>prozor za štampu tvog preglednika</b> — drugog načina bez servera nema.
+  U tom prozoru pod <i>Odredište</i> (Ziel / Destination) izaberi <b>„Sačuvaj kao PDF"</b> ili <b>„Als PDF speichern"</b>,
+  ostavi format A4 i margine na zadanoj vrijednosti, pa potvrdi. Na iPhoneu: dugme za dijeljenje &rarr; <b>Ispiši</b> &rarr; razvuci pregled prstima &rarr; <b>Podijeli</b> &rarr; <b>Sačuvaj u datoteke</b>.</p>
   <div class="filebtns noprint">
-    <button class="btn" onclick="saveData()">Sačuvaj podatke u fajl</button>
-    <label class="btn" style="cursor:pointer">Učitaj iz fajla<input type="file" id="loadf" accept=".json,application/json" style="display:none"></label>
+    <button type="button" class="btn" onclick="saveData()">Sačuvaj podatke u fajl</button>
+    <label class="btn" style="cursor:pointer" for="loadf">Učitaj iz fajla</label>
+    <input type="file" id="loadf" accept=".json,application/json" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none">
   </div>
-  <p class="hint noprint" style="margin:0 0 16px">Pošto ništa ne čuvamo na serveru, sačuvaj podatke u fajl da ih drugi put ne kucaš iznova. U prozoru za štampu izaberi <b>„Sačuvaj kao PDF"</b>.</p>
+  <p class="hint noprint" style="margin:0 0 16px">Pošto ništa ne čuvamo na serveru, sačuvaj podatke u fajl da ih drugi put ne kucaš iznova.
+  <b>Taj fajl sadrži sve tvoje lične podatke i sliku, nešifrovano</b> — čuvaj ga kao i sam životopis.</p>
 
   <div class="sample noprint">
     <div class="st">Pregled</div>
@@ -396,6 +424,14 @@ textarea{resize:vertical;min-height:62px}
     upisao. Sive upute, ovaj okvir i dugmad se ne štampaju.</p>
     <button class="btn" onclick="clearAll()">Isprazni sva polja</button>
   </div>
+  <div class="zoombar noprint" role="group" aria-label="Uvećanje pregleda">
+    <span>Prikaz:</span>
+    <button type="button" onclick="zoom(-1)" aria-label="Smanji pregled">&minus;</button>
+    <span class="lvl" id="zlvl">100%</span>
+    <button type="button" onclick="zoom(1)" aria-label="Uvećaj pregled">+</button>
+    <button type="button" onclick="zoom(0)">Prilagodi širini</button>
+    <span id="zhint"></span>
+  </div>
   <div id="wrapCv"><div class="paper t1" id="paper"></div></div>
   <div id="wrapLetter" style="margin-top:22px"><div class="letter t1" id="letter"></div></div>
 </div>
@@ -403,7 +439,8 @@ textarea{resize:vertical;min-height:62px}
 
 <footer class="site"><div class="in">
   <b>Njega u Njemačkoj</b> — besplatno i bez registracije.<br>
-  Orijentacija, a ne pravni savjet. O priznavanju kvalifikacije u Bavarskoj odlučuje isključivo Bayerisches Landesamt für Pflege.
+  Orijentacija, a ne pravni savjet. O priznavanju kvalifikacije odlučuje isključivo nadležni organ tvoje pokrajine.<br><br>
+  <a href="privatnost.html">Privatnost i podaci</a>
 </div></footer>
 
 <script>
@@ -428,57 +465,105 @@ var TPLS=[
  {id:'t1',name:'Klasik',mock:'<div class="nm"></div><div class="rule"></div><div class="ln" style="width:80%"></div><div class="hd" style="background:#333"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd" style="background:#333"></div><div class="ln" style="width:70%"></div>'},
  {id:'t2',name:'Minhen',mock:'<div class="nm" style="background:var(--ac)"></div><div class="rule" style="background:var(--ac);height:2px"></div><div class="ln" style="width:80%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd"></div><div class="ln" style="width:66%"></div>'},
  {id:'t3',name:'Serif',mock:'<div class="nm" style="margin:0 auto;width:56%"></div><div class="ln" style="width:40%;margin:1px auto"></div><div class="rule"></div><div class="hd" style="background:#333;margin:2px auto;width:34%"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd" style="background:#333;margin:2px auto;width:34%"></div><div class="ln" style="width:72%"></div>'},
- {id:'t4',name:'Dvije kolone',mock:'<div class="cols"><div class="side"><div class="ln" style="height:14px;background:#c3ccca"></div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:66%"></div></div><div class="main"><div class="nm" style="background:var(--ac);width:74%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd"></div><div class="ln" style="width:70%"></div></div></div>'},
+ {id:'t4',ats:0,name:'Dvije kolone',mock:'<div class="cols"><div class="side"><div class="ln" style="height:14px;background:#c3ccca"></div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:66%"></div></div><div class="main"><div class="nm" style="background:var(--ac);width:74%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd"></div><div class="ln" style="width:70%"></div></div></div>'},
  {id:'t5',name:'Moderno',mock:'<div class="nm" style="height:9px;width:76%;background:var(--ac)"></div><div class="ln" style="width:44%;margin-top:3px"></div><div class="hd" style="margin-top:6px"></div><div class="ln"></div><div class="ln" style="width:84%"></div><div class="hd" style="margin-top:4px"></div><div class="ln" style="width:64%"></div>'},
  {id:'t6',name:'Kompakt',mock:'<div class="nm" style="height:5px"></div><div class="rule"></div><div class="hd" style="background:#333;height:2.5px"></div><div class="ln"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:86%"></div><div class="hd" style="background:#333;height:2.5px"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:74%"></div>'},
- {id:'t7',name:'Traka desno',mock:'<div class="cols"><div class="main"><div class="nm" style="background:var(--ac);width:74%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd"></div><div class="ln" style="width:70%"></div></div><div class="side"><div class="ln" style="height:14px;background:#c3ccca"></div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:66%"></div></div></div>'},
- {id:'t8',name:'Banner',mock:'<div class="band"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:72%"></div>'},
- {id:'t9',name:'Vremenska osa',mock:'<div class="nm" style="background:var(--ac)"></div><div class="rule" style="background:var(--ac);height:2px"></div><div class="hd"></div><div class="tl"><div class="tld"></div><div class="ln"></div></div><div class="tl"><div class="tld"></div><div class="ln" style="width:84%"></div></div><div class="hd"></div><div class="tl"><div class="tld"></div><div class="ln" style="width:72%"></div></div>'},
+ {id:'t7',ats:0,name:'Traka desno',mock:'<div class="cols"><div class="main"><div class="nm" style="background:var(--ac);width:74%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd"></div><div class="ln" style="width:70%"></div></div><div class="side"><div class="ln" style="height:14px;background:#c3ccca"></div><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:66%"></div></div></div>'},
+ {id:'t8',ats:0,name:'Banner',mock:'<div class="band"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:88%"></div><div class="hd"></div><div class="ln"></div><div class="ln" style="width:72%"></div>'},
+ {id:'t9',ats:0,name:'Vremenska osa',mock:'<div class="nm" style="background:var(--ac)"></div><div class="rule" style="background:var(--ac);height:2px"></div><div class="hd"></div><div class="tl"><div class="tld"></div><div class="ln"></div></div><div class="tl"><div class="tld"></div><div class="ln" style="width:84%"></div></div><div class="hd"></div><div class="tl"><div class="tld"></div><div class="ln" style="width:72%"></div></div>'},
  {id:'t10',name:'Elegant',mock:'<div class="nm" style="height:7px;width:66%;background:var(--ac)"></div><div class="ln" style="width:36%"></div><div class="rule" style="height:2.5px"></div><div class="hd" style="width:46%"></div><div class="ln"></div><div class="ln" style="width:86%"></div><div class="hd" style="width:38%"></div><div class="ln" style="width:68%"></div>'},
- {id:'t11',name:'Ploče',mock:'<div class="boxr"><div class="nm" style="width:70%"></div><div class="ln" style="width:50%"></div></div><div class="boxr"><div class="hd"></div><div class="ln"></div><div class="ln" style="width:82%"></div></div><div class="boxr"><div class="hd"></div><div class="ln" style="width:74%"></div></div>'},
+ {id:'t11',ats:0,name:'Ploče',mock:'<div class="boxr"><div class="nm" style="width:70%"></div><div class="ln" style="width:50%"></div></div><div class="boxr"><div class="hd"></div><div class="ln"></div><div class="ln" style="width:82%"></div></div><div class="boxr"><div class="hd"></div><div class="ln" style="width:74%"></div></div>'},
  {id:'t12',name:'Obrazac',mock:'<div class="nm" style="height:5px"></div><div class="rule"></div><div class="hd" style="background:#333;width:100%;height:4px"></div><div class="gr"><div class="ln"></div><div class="ln"></div></div><div class="gr"><div class="ln"></div><div class="ln" style="width:80%"></div></div><div class="hd" style="background:#333;width:100%;height:4px"></div><div class="gr"><div class="ln"></div><div class="ln" style="width:72%"></div></div>'}
 ];
 
 function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function val(id){var e=document.getElementById(id);return e?e.value.trim():'';}
 
-function tab(w){
-  document.getElementById('pane-cv').style.display = w==='cv'?'':'none';
-  document.getElementById('pane-lt').style.display = w==='lt'?'':'none';
-  document.getElementById('tb-cv').className = w==='cv'?'on':'';
-  document.getElementById('tb-lt').className = w==='lt'?'on':'';
+function tab(w,focus){
+  var cv=w==='cv';
+  document.getElementById('pane-cv').style.display = cv?'':'none';
+  document.getElementById('pane-lt').style.display = cv?'none':'';
+  [['tb-cv',cv],['tb-lt',!cv]].forEach(function(x){
+    var b=document.getElementById(x[0]);
+    b.className=x[1]?'on':'';
+    b.setAttribute('aria-selected',x[1]?'true':'false');
+    b.tabIndex=x[1]?0:-1;
+    if(x[1]&&focus)b.focus();
+  });
 }
+document.querySelector('.tabs').addEventListener('keydown',function(e){
+  if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft'&&e.key!=='Home'&&e.key!=='End')return;
+  e.preventDefault();
+  var on=document.getElementById('tb-cv').className==='on';
+  if(e.key==='Home')tab('cv',1); else if(e.key==='End')tab('lt',1); else tab(on?'lt':'cv',1);
+});
 function renderThumbs(){
   document.getElementById('thumbs').innerHTML = TPLS.map(function(t){
-    return '<div class="th'+(t.id===TPL?' on':'')+'" onclick="setTpl(\''+t.id+'\')"><div class="mock">'+t.mock+'</div><span>'+t.name+'</span></div>';
+    var sel=t.id===TPL;
+    return '<button type="button" class="th'+(sel?' on':'')+'" aria-pressed="'+(sel?'true':'false')+
+      '" onclick="setTpl(\''+t.id+'\')"><div class="mock" aria-hidden="true">'+t.mock+'</div><span>'+t.name+'</span>'+
+      (t.ats===0?'<span class="atsflag" title="Dekorativan raspored — neki automatski sistemi ga čitaju lošije">ukrasni</span>':'')+
+      '</button>';
   }).join('');
 }
 function setTpl(id){TPL=id;renderThumbs();draw();}
 function setColor(c,el){AC=c;document.documentElement.style.setProperty('--ac',c);
-  var d=document.querySelectorAll('.dot');for(var i=0;i<d.length;i++)d[i].className='dot';
-  el.className='dot on';draw();}
+  var d=document.querySelectorAll('.dot');
+  for(var i=0;i<d.length;i++){d[i].className='dot';d[i].setAttribute('aria-pressed','false');}
+  if(el){el.className='dot on';el.setAttribute('aria-pressed','true');}
+  draw();}
+function markColor(){var d=document.querySelectorAll('.dot');
+  for(var i=0;i<d.length;i++){var on=(d[i].style.backgroundColor&&d[i].getAttribute('style').indexOf(AC)>-1);
+    d[i].className=on?'dot on':'dot';d[i].setAttribute('aria-pressed',on?'true':'false');}}
 
+var SECN={qual:'kvalifikacija',work:'posao',edu:'škola',fort:'kurs'};
 function renderForm(k){
-  var F=FIELDS[k],n=S[k].length;
+  var F=FIELDS[k],n=S[k].length,sn=SECN[k];
   document.getElementById(k).innerHTML=S[k].map(function(it,i){
-    return '<div class="item"><div class="top"><span class="num">'+(i+1)+'.</span><span class="acts">'+
-      (i>0?'<button class="mini" onclick="mv(\''+k+'\','+i+',-1)">&uarr;</button>':'')+
-      (i<n-1?'<button class="mini" onclick="mv(\''+k+'\','+i+',1)">&darr;</button>':'')+
-      '<button class="mini del" onclick="del(\''+k+'\','+i+')">ukloni</button></span></div>'+
-      '<label>'+F[0]+'</label><input value="'+esc(it.a)+'" placeholder="'+esc(PHF[k][0])+'" oninput="upd(\''+k+'\','+i+',\'a\',this.value)">'+
-      '<label>'+F[1]+'</label><input value="'+esc(it.b)+'" placeholder="'+esc(PHF[k][1])+'" oninput="upd(\''+k+'\','+i+',\'b\',this.value)">'+
-      '<label>'+F[2]+'</label><input value="'+esc(it.c)+'" placeholder="'+esc(PHF[k][2])+'" oninput="upd(\''+k+'\','+i+',\'c\',this.value)">'+
-      '<label>'+F[3]+'</label><textarea placeholder="'+esc(PHF[k][3])+'" oninput="upd(\''+k+'\','+i+',\'d\',this.value)">'+esc(it.d)+'</textarea></div>';
+    var f=function(sfx){return k+'-'+i+'-'+sfx;};
+    return '<div class="item" role="group" aria-label="'+sn+' '+(i+1)+'"><div class="top"><span class="num">'+(i+1)+'.</span><span class="acts">'+
+      (i>0?'<button type="button" class="mini" aria-label="Pomjeri '+sn+' '+(i+1)+' gore" onclick="mv(\''+k+'\','+i+',-1)"><span aria-hidden="true">&uarr;</span></button>':'')+
+      (i<n-1?'<button type="button" class="mini" aria-label="Pomjeri '+sn+' '+(i+1)+' dole" onclick="mv(\''+k+'\','+i+',1)"><span aria-hidden="true">&darr;</span></button>':'')+
+      '<button type="button" class="mini del" aria-label="Ukloni '+sn+' '+(i+1)+'" onclick="del(\''+k+'\','+i+')">ukloni</button></span></div>'+
+      '<label for="'+f('a')+'">'+F[0]+'</label><input id="'+f('a')+'" value="'+esc(it.a)+'" placeholder="'+esc(PHF[k][0])+'" oninput="upd(\''+k+'\','+i+',\'a\',this.value)">'+
+      '<label for="'+f('b')+'">'+F[1]+'</label><input id="'+f('b')+'" value="'+esc(it.b)+'" placeholder="'+esc(PHF[k][1])+'" oninput="upd(\''+k+'\','+i+',\'b\',this.value)">'+
+      '<label for="'+f('c')+'">'+F[2]+'</label><input id="'+f('c')+'" value="'+esc(it.c)+'" placeholder="'+esc(PHF[k][2])+'" oninput="upd(\''+k+'\','+i+',\'c\',this.value)">'+
+      '<label for="'+f('d')+'">'+F[3]+'</label><textarea id="'+f('d')+'" placeholder="'+esc(PHF[k][3])+'" oninput="upd(\''+k+'\','+i+',\'d\',this.value)">'+esc(it.d)+'</textarea></div>';
   }).join('');
 }
 function add(k){S[k].push({a:'',b:'',c:'',d:''});renderForm(k);draw();}
 function del(k,i){S[k].splice(i,1);renderForm(k);draw();}
 function mv(k,i,d){var t=S[k][i];S[k][i]=S[k][i+d];S[k][i+d]=t;renderForm(k);draw();}
 function upd(k,i,f,v){S[k][i][f]=v;draw();}
-function clearPic(){PIC='';document.getElementById('pic').value='';document.getElementById('thumb').removeAttribute('src');draw();}
+var PICNOTE='Slika se odmah smanjuje na tvom uređaju (najviše 600 × 800 piksela) da dokument ostane lagan. Nikuda se ne šalje.';
+function picMsg(t,bad){var m=document.getElementById('picmsg');if(!m)return;
+  m.textContent=t;m.className='picmsg'+(bad?' bad':'');}
+function clearPic(){PIC='';document.getElementById('pic').value='';
+  document.getElementById('thumb').removeAttribute('src');picMsg(PICNOTE);draw();}
+var PICMAX=12*1024*1024;
 document.getElementById('pic').addEventListener('change',function(e){
-  var f=e.target.files[0];if(!f)return;var r=new FileReader();
-  r.onload=function(ev){PIC=ev.target.result;document.getElementById('thumb').src=PIC;draw();};r.readAsDataURL(f);});
+  var f=e.target.files[0];if(!f)return;
+  if(!/^image\//.test(f.type)){picMsg('To nije slika. Izaberi JPG, PNG ili WebP.',1);e.target.value='';return;}
+  if(f.size>PICMAX){picMsg('Slika je veća od 12 MB. Izaberi manju ili je prvo smanji u galeriji.',1);e.target.value='';return;}
+  picMsg('Obrađujem sliku…');
+  var r=new FileReader();
+  r.onerror=function(){picMsg('Slika se ne može pročitati.',1);};
+  r.onload=function(ev){
+    var img=new Image();
+    img.onerror=function(){picMsg('Slika je oštećena ili u formatu koji preglednik ne otvara.',1);};
+    img.onload=function(){
+      var MW=600,MH=800,sc=Math.min(1,MW/img.width,MH/img.height);
+      var w=Math.max(1,Math.round(img.width*sc)),h=Math.max(1,Math.round(img.height*sc));
+      var c=document.createElement('canvas');c.width=w;c.height=h;
+      var cx=c.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,w,h);cx.drawImage(img,0,0,w,h);
+      try{PIC=c.toDataURL('image/jpeg',0.82);}catch(err){picMsg('Slika se ne može obraditi u ovom pregledniku.',1);return;}
+      document.getElementById('thumb').src=PIC;
+      picMsg('Slika je spremna: '+w+' × '+h+' piksela, oko '+Math.round(PIC.length/1365)+' KB. Ostaje na tvom uređaju.');
+      draw();
+    };
+    img.src=ev.target.result;
+  };
+  r.readAsDataURL(f);});
 
 function ph(t){return '<span class="ph">'+esc(t)+'</span>';}
 function has(k){return S[k].some(function(it){return it.a||it.b||it.c||it.d;});}
@@ -536,11 +621,18 @@ function drawLetter(){
   if(per){
     // njemački standard: u pozdravu ide SAMO prezime, bez imena i bez titule funkcije
     var body=per.split(',')[0].trim();
-    var isFrau=/^\s*(Frau|Fr\.)\b/i.test(body), isHerr=/^\s*(Herr|Hr\.)\b/i.test(body);
-    var name=body.replace(/^\s*(Frau|Fr\.|Herr|Hr\.)\s*/i,'')
-                 .replace(/\b(Dr|Prof|med|Dipl|MSc|BSc)\.?\b/gi,'').trim();
+    // "Frau" / "Herr" se traži bilo gdje, jer ispred može stajati funkcija
+    var m=body.match(/(^|[\s(])(Frau|Fr\.|Herrn|Herr|Hr\.)[\s]+([^,()]+)/i);
+    var isFrau=false,isHerr=false,name='';
+    if(m){ isFrau=/^(Frau|Fr\.)$/i.test(m[2]); isHerr=!isFrau; name=m[3]; }
+    name=name.replace(/\b(Dr|Prof|med|dent|rer|nat|habil|Dipl|Ing|MSc|BSc|MBA|PD|h\.c)\.?\b/gi,'')
+             .replace(/\s+/g,' ').trim();
     var parts=name.split(/\s+/).filter(Boolean);
+    var PART=['von','van','de','der','den','del','della','di','da','du','zu','vom','ten','ter','al','el','bin','ben','mac','mc'];
     var last=parts.length?parts[parts.length-1]:'';
+    for(var pi=parts.length-2;pi>=0;pi--){
+      if(PART.indexOf(parts[pi].toLowerCase().replace(/\.$/,''))>-1) last=parts[pi]+' '+last; else break;
+    }
     var titel=/\bProf\./i.test(body)?'Prof. ':(/\bDr\./i.test(body)?'Dr. ':'');
     if(isFrau&&last) greet='Sehr geehrte Frau '+esc(titel+last)+',';
     else if(isHerr&&last) greet='Sehr geehrter Herr '+esc(titel+last)+',';
@@ -551,7 +643,7 @@ function drawLetter(){
       [val('addr'),val('phone'),val('mail')].filter(Boolean).map(esc).join('<br>')+'</div>'+
     '<div class="lto">'+[val('lFirm'),val('lPers'),val('lAddr')].filter(Boolean).map(esc).join('<br>')+'</div>'+
     '<div class="ldate">'+esc(val('place'))+(val('place')&&val('sdate')?', ':'')+esc(val('sdate'))+'</div>'+
-    '<div class="lsub">Bewerbung als '+esc(val('lPos'))+
+    '<div class="lsub">Bewerbung'+(val('lPos')?' als '+esc(val('lPos')):' '+ph('als … — upiši naziv pozicije iz oglasa'))+
       (val('lRef')?'<br><span style="font-weight:400;font-size:11px">'+esc(val('lRef'))+'</span>':'')+'</div>'+
     '<p>'+greet+'</p>'+paras+
     '<div class="lsig">Mit freundlichen Grüßen<div class="nm">'+fullName()+'</div></div>';
@@ -571,9 +663,31 @@ function months(s){
   return [a,b];
 }
 function fmt(i){return ('0'+((i%12)+1)).slice(-2)+'/'+Math.floor(i/12);}
+function pageCount(){
+  var p=document.getElementById('paper');
+  var w=p.offsetWidth||840;                 // 840 px u pregledu = 210 mm
+  var pageH=w*297/210;
+  return Math.max(1,Math.ceil((p.offsetHeight-4)/pageH));
+}
+function missingCv(){
+  var m=[];
+  if(!val('fname')||!val('lname')) m.push('ime i prezime');
+  if(!val('phone')&&!val('mail'))  m.push('bar jedan kontakt — telefon ili e-mail');
+  if(!has('work')&&!has('edu'))    m.push('bar jedan posao ili jedna škola');
+  return m;
+}
+function missingLt(){
+  var m=[];
+  if(!val('fname')||!val('lname')) m.push('ime i prezime');
+  if(!val('lFirm')) m.push('ustanova kojoj pišeš');
+  if(!val('lPos'))  m.push('naziv pozicije (ide u Betreff)');
+  if(!val('lP1')&&!val('lP2')&&!val('lP3')&&!val('lP4')) m.push('tekst pisma');
+  return m;
+}
 function runCheck(){
   var bad=[];
-  if(!val('phone')||!val('mail')) bad.push('Fali telefon ili e-mail — poslodavac te ne može kontaktirati.');
+  if(!val('fname')||!val('lname')) bad.push('Fali ime ili prezime.');
+  if(!val('phone')&&!val('mail')) bad.push('Nema nijednog kontakta — upiši telefon <b>ili</b> e-mail, inače te poslodavac ne može dobiti.');
   if(!val('addr')) bad.push('Fali adresa u Njemačkoj.');
   if(!/\b(a1|a2|b1|b2|c1|c2)\b/i.test(val('langs')+' '+JSON.stringify(S.qual)))
     bad.push('Nigdje ne stoji nivo njemačkog. Dodaj B2 ili koji već imaš — to je prvo što gledaju.');
@@ -586,27 +700,33 @@ function runCheck(){
   var gaps=[], reach=null;
   for(var i=0;i<iv.length;i++){
     if(reach===null){reach=iv[i][1];continue;}
-    if(iv[i][0]-reach>2 && reach<9999999) gaps.push(fmt(reach)+' → '+fmt(iv[i][0]));
+    var g=iv[i][0]-reach-1;
+    if(g>=3 && reach<9999999) gaps.push(fmt(reach+1)+' – '+fmt(iv[i][0]-1)+' ('+g+' mj.)');
     if(iv[i][1]>reach) reach=iv[i][1];
   }
-  if(gaps.length) bad.push('<b>Rupa u godinama:</b> '+gaps.join(' · ')+
-    '. I LfP i poslodavac traže životopis bez rupa — dodaj stavku za taj period, makar pisalo „Elternzeit", „Sprachkurs" ili „Umzug nach Deutschland".');
+  if(gaps.length) bad.push('<b>Prekid u hronologiji:</b> '+gaps.join(' &middot; ')+
+    '. I ured i poslodavac vole životopis bez praznina — dodaj stavku za taj period, makar pisalo „Elternzeit", „Sprachkurs" ili „Umzug nach Deutschland".');
 
-  var chars=(document.getElementById('paper').innerText||'').length;
-  if(chars>3600) bad.push('Životopis je vjerovatno duži od dvije stranice. Probaj dizajn „Kompakt" ili skrati opise starijih poslova.');
+  var pg=pageCount();
+  if(pg>2) bad.push('Dokument izlazi na oko <b>'+pg+' stranice</b>. Njemački Lebenslauf u pravilu staje na jednu do dvije — probaj dizajn „Kompakt" ili skrati opise starijih poslova.');
+
+  var t=TPLS.filter(function(x){return x.id===TPL;})[0];
+  var extra = (t&&t.ats===0) ? '<p class="hint" style="margin-top:8px">Dizajn <b>'+t.name+
+    '</b> je ukrasan. Ako prijavu šalješ kroz portal koji dokument čita automatski (ATS), sigurniji su „Klasik", „Kompakt" ili „Obrazac".</p>' : '';
 
   document.getElementById('check').innerHTML='<div class="cap">Provjera prije slanja</div>'+
     (bad.length ? '<ul class="bad"><li>'+bad.join('</li><li>')+'</li></ul>'
-                : '<div class="ok">Sve osnovno je tu — nema rupa u godinama, kontakt i nivo jezika su navedeni.</div>');
+                : '<div class="ok">Sve osnovno je tu — nema prekida u hronologiji, kontakt i nivo jezika su navedeni.</div>')+extra;
 }
 
 function collect(){
-  var o={S:S,PIC:PIC,TPL:TPL,AC:AC,f:{}};
+  var o={v:1,S:S,PIC:PIC,TPL:TPL,AC:AC,f:{}};
   ['fname','lname','role','phone','mail','addr','dob','nat','langs','skills','place','sdate',
    'lFirm','lPers','lAddr','lPos','lRef','lP1','lP2','lP3','lP4'].forEach(function(id){o.f[id]=val(id);});
   return o;
 }
 function saveData(){
+  if(!confirm('Fajl koji preuzimaš sadrži SVE što si upisao — ime, adresu, telefon, e-mail i sliku — u običnom, nešifrovanom obliku.\n\nČuvaj ga kao i sam životopis: ne šalji ga nepoznatima i ne ostavljaj na tuđem računaru.\n\nPreuzeti fajl?')) return;
   var blob=new Blob([JSON.stringify(collect(),null,1)],{type:'application/json'});
   var a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
@@ -614,19 +734,54 @@ function saveData(){
   document.body.appendChild(a);a.click();document.body.removeChild(a);
   setTimeout(function(){URL.revokeObjectURL(a.href);},1500);
 }
+var OKTPL=['t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11','t12'];
+var OKAC=['#14524a','#1a3a5c','#7a2e39','#2f3437','#5a3a63','#8a5a1e'];
+var OKF=['fname','lname','role','phone','mail','addr','dob','nat','langs','skills','place','sdate',
+         'lFirm','lPers','lAddr','lPos','lRef','lP1','lP2','lP3','lP4'];
+var LOADMAX=12*1024*1024, MAXITEMS=40, MAXLEN=1500, MAXPIC=4*1024*1024;
+function str(x,max){return typeof x==='string'?x.slice(0,max||MAXLEN):'';}
+function cleanRows(arr){
+  if(!Array.isArray(arr)) return [{a:'',b:'',c:'',d:''}];
+  var out=arr.slice(0,MAXITEMS).map(function(it){
+    if(!it||typeof it!=='object'||Array.isArray(it)) return null;
+    return {a:str(it.a),b:str(it.b),c:str(it.c),d:str(it.d)};
+  }).filter(Boolean);
+  return out.length?out:[{a:'',b:'',c:'',d:''}];
+}
 document.getElementById('loadf').addEventListener('change',function(e){
-  var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  var f=e.target.files[0];if(!f)return;
+  if(f.size>LOADMAX){alert('Fajl je prevelik za ovaj alat (preko 12 MB). To vjerovatno nije fajl sa ove stranice.');e.target.value='';return;}
+  var r=new FileReader();
+  r.onerror=function(){alert('Fajl se ne može pročitati.');};
   r.onload=function(ev){
-    try{
-      var o=JSON.parse(ev.target.result);
-      if(o.S)S=o.S;
-      if(typeof o.PIC==='string')PIC=o.PIC;
-      if(o.TPL)TPL=o.TPL;
-      if(o.AC){AC=o.AC;document.documentElement.style.setProperty('--ac',AC);}
-      if(o.f)Object.keys(o.f).forEach(function(id){var el=document.getElementById(id);if(el)el.value=o.f[id];});
-      if(PIC)document.getElementById('thumb').src=PIC;
-      renderThumbs();['qual','work','edu','fort'].forEach(renderForm);draw();
-    }catch(err){alert('Fajl nije ispravan. Učitaj onaj koji si ranije sačuvao ovdje.');}
+    var o;
+    try{o=JSON.parse(ev.target.result);}
+    catch(err){alert('Ovo nije ispravan fajl. Učitaj onaj koji si ranije sačuvao ovdje.');e.target.value='';return;}
+    if(!o||typeof o!=='object'||Array.isArray(o)||!o.S||typeof o.S!=='object'){
+      alert('Fajl je ispravan JSON, ali nije napravljen ovim alatom.');e.target.value='';return;}
+    if(o.v!==undefined&&o.v!==1){
+      if(!confirm('Fajl je napravljen drugom verzijom alata. Pokušati ga svejedno učitati?')){e.target.value='';return;}}
+    var skip=[];
+    ['qual','work','edu','fort'].forEach(function(k){S[k]=cleanRows(o.S[k]);});
+    // slika: dozvoljena je samo ugrađena slika, nikakav udaljeni URL
+    PIC='';
+    if(typeof o.PIC==='string'&&o.PIC){
+      if(/^data:image\/(png|jpeg|jpg|webp|gif);base64,[A-Za-z0-9+\/=\s]*$/.test(o.PIC)&&o.PIC.length<=MAXPIC) PIC=o.PIC;
+      else skip.push('slika (nije ugrađena slika ili je prevelika)');
+    }
+    if(typeof o.TPL==='string'&&OKTPL.indexOf(o.TPL)>-1) TPL=o.TPL; else if(o.TPL!==undefined) skip.push('dizajn');
+    if(typeof o.AC==='string'&&OKAC.indexOf(o.AC)>-1) AC=o.AC; else if(o.AC!==undefined) skip.push('boja');
+    document.documentElement.style.setProperty('--ac',AC);
+    if(o.f&&typeof o.f==='object'&&!Array.isArray(o.f)){
+      OKF.forEach(function(id){var el=document.getElementById(id);
+        if(el) el.value = typeof o.f[id]==='string' ? str(o.f[id],400) : '';});
+    }
+    var th=document.getElementById('thumb');
+    if(PIC) th.src=PIC; else th.removeAttribute('src');
+    picMsg(PIC?'Slika je učitana iz fajla i ostaje na tvom uređaju.':PICNOTE);
+    renderThumbs();markColor();['qual','work','edu','fort'].forEach(renderForm);draw();
+    e.target.value='';
+    if(skip.length) alert('Učitano, ali ovo je preskočeno jer nije bilo ispravno:\n\n• '+skip.join('\n• '));
   };
   r.readAsText(f);
 });
@@ -645,19 +800,52 @@ function clearAll(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function doPrint(which){
+  var m = which==='cv'?missingCv():missingLt();
+  var naziv = which==='cv'?'Lebenslauf':'Anschreiben';
+  if(m.length && !confirm(naziv+' ti još nema:\n\n• '+m.join('\n• ')+
+      '\n\nOvakav dokument se u Njemačkoj u pravilu ne uzima u obzir.\n\nSvejedno otvoriti prozor za štampu?')) return;
   document.body.className = which==='cv'?'pr-cv':'pr-lt';
   window.print();
   setTimeout(function(){document.body.className='';},800);
 }
 
-function draw(){drawCv();drawLetter();runCheck();}
+// ---- uvećanje pregleda: A4 ostaje A4 i na telefonu ----
+var ZOOM=null; // null = prilagodi širini
+function zoom(d){
+  if(d===0) ZOOM=null;
+  else{
+    var cur=ZOOM===null?fitScale():ZOOM;
+    ZOOM=Math.min(2,Math.max(0.3,Math.round((cur+d*0.15)*100)/100));
+  }
+  applyZoom();
+}
+function fitScale(){
+  var box=document.getElementById('wrapCv');
+  return Math.min(1,(box.clientWidth||840)/840);
+}
+function applyZoom(){
+  var s=ZOOM===null?fitScale():ZOOM;
+  ['paper','letter'].forEach(function(id){
+    var el=document.getElementById(id); if(!el) return;
+    var box=el.parentNode;
+    el.style.width='840px';
+    el.style.transform = s===1?'none':'scale('+s+')';
+    box.style.height = s===1?'' : Math.ceil(el.offsetHeight*s)+'px';
+    box.style.overflowX = (840*s > box.clientWidth+1) ? 'auto' : 'hidden';
+  });
+  document.getElementById('zlvl').textContent=Math.round(s*100)+'%';
+  document.getElementById('zhint').textContent = s<0.999 ? 'stvarna veličina A4 stranice' : '';
+}
+window.addEventListener('resize',function(){if(ZOOM===null)applyZoom();});
+
+function draw(){drawCv();drawLetter();runCheck();applyZoom();}
 
 (function(){var d=new Date(),p=function(n){return (n<10?'0':'')+n;};
   document.getElementById('sdate').value=p(d.getDate())+'.'+p(d.getMonth()+1)+'.'+d.getFullYear();})();
 ['fname','lname','role','phone','mail','addr','dob','nat','langs','skills','place','sdate',
  'lFirm','lPers','lAddr','lPos','lRef','lP1','lP2','lP3','lP4'].forEach(function(id){
   var el=document.getElementById(id); if(el) el.addEventListener('input',draw);});
-document.querySelector('.dot').className='dot on';
+markColor();
 renderThumbs();
 ['qual','work','edu','fort'].forEach(renderForm);
 draw();

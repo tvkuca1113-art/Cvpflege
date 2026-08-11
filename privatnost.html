@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privatnost i podaci — Njega u Njemačkoj</title>
+<meta name="description" content="Šta se dešava sa podacima koje upišeš u alat za Lebenslauf: ništa ne odlazi sa tvog uređaja. Šta ipak vidi hosting. Bez kolačića, bez registracije.">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="style.css">
+<style>
+.lead{background:linear-gradient(160deg,#0f4a42,#14524a 60%,#1c6a5e);color:#fff}
+.lead .in{max-width:820px;margin:0 auto;padding:34px 18px 38px}
+.lead .kick{font-size:11.5px;letter-spacing:2.3px;text-transform:uppercase;font-weight:700;color:#8fd3c4;margin-bottom:12px}
+.lead h1{color:#fff;font-size:29px;line-height:1.14;letter-spacing:-.9px;margin:0 0 12px}
+@media(min-width:640px){.lead h1{font-size:35px}}
+.lead p{color:#d3e7e2;font-size:17px;margin:0;max-width:36em}
+h2{font-size:20px;margin:30px 0 9px;padding-bottom:6px;border-bottom:2px solid var(--brand)}
+h3{font-size:16px;margin:20px 0 6px}
+p,li{font-size:15.5px;line-height:1.62}
+ul{padding-left:19px}
+li{margin-bottom:6px}
+.yn{display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0}
+@media(min-width:620px){.yn{grid-template-columns:1fr 1fr}}
+.yn>div{border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:#fff}
+.yn .t{font-weight:800;font-size:13px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:7px}
+.yn .no .t{color:#2c5530}
+.yn .yes .t{color:#8a5a1e}
+.yn ul{margin:0;padding-left:18px;font-size:14.5px}
+.todo{background:#fff8ec;border:1.5px solid #dfa457;border-radius:11px;padding:15px 17px;margin:16px 0}
+.todo .h{font-weight:800;color:#8a4f14;margin-bottom:7px;font-size:16px}
+code{background:#eef4f3;padding:1px 6px;border-radius:4px;font-size:14px}
+.upd{font-size:13px;color:var(--muted);margin-top:26px}
+</style>
+</head>
+<body>
+<a class="skip" href="#glavni">Preskoči na sadržaj</a>
+
+<nav class="nav"><div class="in">
+  <a class="logo" href="index.html">Njega u Njemačkoj<small>Pflege in Deutschland &middot; na našem jeziku</small></a>
+  <div class="links"><a href="lebenslauf.html">Lebenslauf</a><a href="anerkennung.html">Anerkennung</a><a href="rjecnik.html">Rječnik</a></div>
+</div></nav>
+
+<div class="lead"><div class="in">
+  <div class="kick">Privatnost &middot; Datenschutz</div>
+  <h1>Šta se dešava sa tvojim podacima</h1>
+  <p>Kratko: sve što upišeš u alat za životopis ostaje u tvom pregledniku. Nama ne
+  stiže ništa. Ispod piše i ono što nam se <em>ne</em> uklapa u tu rečenicu — jer i
+  to trebaš znati.</p>
+</div></div>
+
+<div class="page" id="glavni" tabindex="-1">
+
+<h2>Kratak odgovor</h2>
+
+<div class="yn">
+  <div class="no">
+    <div class="t">Ne postoji</div>
+    <ul>
+      <li>nema registracije ni naloga</li>
+      <li>nema baze podataka — nemamo gdje da te upišemo</li>
+      <li>nema kolačića (cookies)</li>
+      <li>nema mjerenja posjeta, nema alata za analitiku</li>
+      <li>nema reklamnih mreža</li>
+      <li>ništa se ne prodaje i ne prosljeđuje</li>
+    </ul>
+  </div>
+  <div class="yes">
+    <div class="t">Postoji, budi svjestan</div>
+    <ul>
+      <li>hosting vidi tehničke podatke svake posjete</li>
+      <li>fajl koji sam preuzmeš je nešifrovan</li>
+      <li>PDF pravi tvoj preglednik — njegova pravila važe</li>
+      <li>ako nam pišeš e-mailom, taj e-mail postoji kod nas i kod tvog provajdera</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Alat za Lebenslauf i Anschreiben</h2>
+
+<p>Alat je obična HTML stranica. Kad je otvoriš, preglednik preuzme fajl i dalje sve
+radi <b>na tvom uređaju</b>. Ime, adresa, telefon, e-mail, datum rođenja, slika,
+poslovi, škole — sve to postoji samo u memoriji tvog preglednika dok je stranica
+otvorena.</p>
+
+<ul>
+  <li><b>Ništa se ne šalje nama.</b> Ne postoji server koji bi to primio. Nema
+  slanja obrasca, nema poziva na pozadinski servis.</li>
+  <li><b>Slika se obrađuje kod tebe.</b> Kad je izabereš, preglednik je smanji na
+  najviše 600 × 800 piksela i ugradi u pregled. Ne ide nikuda.</li>
+  <li><b>Ništa se ne pamti.</b> Ne koristimo <code>localStorage</code> ni
+  <code>sessionStorage</code>. Kad zatvoriš stranicu ili je osvježiš, podaci nestanu.
+  Zato i postoji dugme <i>Sačuvaj podatke u fajl</i>.</li>
+  <li><b>PDF nastaje u tvom pregledniku</b>, kroz njegov prozor za štampu. Mi ga ne
+  vidimo i ne pravimo.</li>
+</ul>
+
+<h3>Fajl koji sam sačuvaš</h3>
+<p>Dugme <i>Sačuvaj podatke u fajl</i> pravi <code>.json</code> fajl na tvom uređaju.
+U njemu je <b>sve što si upisao, uključujući sliku, u čitljivom i nešifrovanom
+obliku</b>. Taj fajl je jednako osjetljiv kao i sam životopis: ne šalji ga
+nepoznatima, ne ostavljaj ga na tuđem ili javnom računaru, i obriši ga kad ti više
+ne treba.</p>
+
+<h3>Fajl koji učitaš</h3>
+<p>Alat prima samo fajlove sa ove stranice. Prije učitavanja provjerava veličinu,
+oblik i sadržaj: dozvoljeni su samo poznati dizajni i boje, a slika se prihvata
+isključivo ako je ugrađena u fajl. <b>Adresa slike sa interneta se odbija</b> — tako
+tuđi fajl ne može natjerati tvoj preglednik da negdje javi da si ga otvorio.</p>
+
+<h2>Šta ipak vidi hosting</h2>
+
+<p>Ovo je dio koji se često prećuti, pa ga pišemo otvoreno. Stranica mora negdje
+stajati, a taj server — kao i svaki server na internetu — obrađuje uobičajene
+tehničke podatke o posjeti: <b>IP adresu, vrijeme, adresu tražene stranice, vrstu
+preglednika i uređaja</b>. To je tehnički potreban minimum da bi stranica uopšte
+stigla do tebe, i dešava se prije nego što se ijedan naš red koda izvrši.</p>
+
+<p>Stranicu hostuje <b>Vercel Inc.</b> Njihova pravila o obradi tih podataka stoje u
+<a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noopener">Vercelovoj politici privatnosti</a>.
+Mi ta pravila ne možemo mijenjati i nemamo pristup pojedinačnim zapisima o posjetama.</p>
+
+<p>Ako želiš potpuno izbjeći i to: preuzmi fajlove stranice i otvori
+<code>lebenslauf.html</code> lokalno, sa svog uređaja, bez interneta. Alat radi
+jednako.</p>
+
+<h2>Vanjski linkovi</h2>
+<p>Vodič kroz priznavanje sadrži linkove na stranice njemačkih ureda i propisa. Kad
+klikneš na takav link, važe pravila te stranice, ne naša.</p>
+
+<h2>Tvoja prava</h2>
+<p>Po Općoj uredbi o zaštiti podataka (GDPR / DSGVO) imaš pravo na uvid, ispravku,
+brisanje, ograničenje obrade i prigovor, kao i pravo na žalbu nadzornom organu.
+Napomena bez uvijanja: <b>mi ne držimo nikakvu tvoju evidenciju</b>, pa kod nas nema
+šta da se obriše. Za tehničke zapise koje vodi hosting, obrati se na kontakt ispod
+i proslijedićemo zahtjev.</p>
+
+<div class="todo">
+  <div class="h">Ovo mora popuniti vlasnik stranice prije objave</div>
+  <p style="margin:0 0 8px">Ovaj dokument je iskren opis kako alat radi, ali <b>nije
+  pravni tekst i nije ga pisao pravnik</b>. Čim stranica postane komercijalna (reklame,
+  affiliate linkovi, plaćeni oglasi), njemačko pravo traži i puni <b>Impressum</b> sa
+  pravim imenom i adresom odgovornog lica, kao i politiku privatnosti koja odgovara
+  stvarnom stanju.</p>
+  <p style="margin:0"><b>Popuni prije objave:</b> odgovorno lice, adresa, e-mail za
+  kontakt, i — ako se doda mjerenje posjeta ili bilo kakva reklama — poseban odjeljak
+  o tome i, gdje je potrebno, traka za pristanak. Do tada ovdje namjerno ne stoji
+  izmišljeno ime.</p>
+</div>
+
+<p class="upd">Verzija 1.0 &middot; avgust 2026. Ako se nešto na stranici promijeni
+tako da ovaj tekst više ne odgovara istini, mijenja se i ovaj tekst.</p>
+
+<p style="margin-top:22px"><a class="btn" href="lebenslauf.html">&larr; Nazad na alat</a></p>
+
+</div>
+
+<footer class="site"><div class="in">
+  <b>Njega u Njemačkoj</b> &middot; besplatno, bez registracije i bez naplate.<br>
+  Sadržaj je orijentacija, a ne pravni savjet.
+</div></footer>
+
+</body>
+</html>
