@@ -72,6 +72,11 @@ textarea{resize:vertical;min-height:62px}
 .check .ok{color:#2c5530;font-weight:600}
 .check .bad li{color:var(--warn)}
 
+.sample{background:#fff8ec;border:1.5px solid #dfa457;border-radius:11px;padding:14px 16px;margin-bottom:14px;font-size:14px;line-height:1.55}
+.sample .st{display:inline-block;background:#c9701f;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.sample p{margin:0 0 11px}
+.sample .btn{border-color:#dfa457;color:#8a4f14;font-size:13.5px;padding:8px 14px}
+.sample .btn:hover{background:#fdefdb;border-color:#c9701f}
 .actions{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:12px}
 @media(min-width:520px){.actions{grid-template-columns:1fr 1fr}}
 .filebtns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
@@ -259,27 +264,27 @@ textarea{resize:vertical;min-height:62px}
   </div>
 
   <div id="pane-cv">
-    <div class="tip" style="margin-top:0"><b>Ništa se ne šalje na internet.</b> Sve se računa kod tebe. Zatvoriš stranicu — nema traga.</div>
+    <div class="tip" style="margin-top:0"><b>Ništa ne odlazi sa tvog uređaja.</b> Dokument se sastavlja u tvom pregledniku i nestaje kad zatvoriš stranicu. Zato i nema registracije — nema šta da se registruje.</div>
 
     <fieldset><legend>Lični podaci</legend>
       <div class="row"><div><label>Ime</label><input id="fname" value="Amina"></div><div><label>Prezime</label><input id="lname" value="Hodžić"></div></div>
       <label>Zanimanje na njemačkom</label><input id="role" value="Pflegefachkraft (Anerkennung läuft)">
-      <p class="hint">Ako Anerkennung još traje — napiši to otvoreno. Poslodavci to cijene više nego da saznaju kasnije.</p>
+      <p class="hint">Ako priznavanje još traje, napiši to otvoreno. Poslodavci to cijene daleko više nego da saznaju kasnije.</p>
       <div class="row"><div><label>Telefon</label><input id="phone" value="+49 176 12345678"></div><div><label>E-mail</label><input id="mail" value="amina.hodzic@email.de"></div></div>
       <label>Adresa u Njemačkoj</label><input id="addr" value="Musterstraße 12, 80331 München">
       <div class="row"><div><label>Datum rođenja</label><input id="dob" value="14.03.1993"></div><div><label>Državljanstvo</label><input id="nat" value="bosnisch"></div></div>
-      <p class="hint">Datum rođenja, državljanstvo i slika <b>nisu obavezni</b> u Njemačkoj.</p>
+      <p class="hint">Datum rođenja, državljanstvo i slika <b>nisu obavezni</b> u Njemačkoj. Ostaviš li polje prazno, ono jednostavno nestane sa dokumenta.</p>
       <label>Slika (nije obavezna)</label>
       <div class="photo"><img id="thumb" alt=""><div style="flex:1"><input type="file" id="pic" accept="image/*" style="font-size:13px;padding:6px"><button class="mini del" onclick="clearPic()" style="margin-top:6px">ukloni sliku</button></div></div>
     </fieldset>
 
     <fieldset><legend>Anerkennung i kvalifikacije</legend><div id="qual"></div>
       <button class="add" onclick="add('qual')">+ dodaj stavku</button>
-      <p class="hint">Status priznavanja, B2, Kenntnisprüfung, licence. Njemački poslodavac ovo gleda prvo.</p></fieldset>
+      <p class="hint">Status priznavanja, B2, Kenntnisprüfung, licence. To je prvo što njemački poslodavac traži — zato ova sekcija stoji na vrhu dokumenta.</p></fieldset>
 
     <fieldset><legend>Radno iskustvo</legend><div id="work"></div>
       <button class="add" onclick="add('work')">+ dodaj posao</button>
-      <p class="hint warn">Bez rupa u godinama. Bio si bez posla, na porodiljskom, na kursu? Napiši to kao stavku.</p></fieldset>
+      <p class="hint warn">Nijedna godina ne smije ostati prazna. Bio si bez posla, na porodiljskom, na kursu, selio se? Upiši to kao stavku — prazan period izaziva pitanja, iskren odgovor ne.</p></fieldset>
 
     <fieldset><legend>Školovanje</legend><div id="edu"></div><button class="add" onclick="add('edu')">+ dodaj školu</button></fieldset>
     <fieldset><legend>Kursevi i usavršavanja</legend><div id="fort"></div><button class="add" onclick="add('fort')">+ dodaj kurs</button></fieldset>
@@ -298,12 +303,12 @@ Umgang mit demenzerkrankten Patienten</textarea></fieldset>
   </div>
 
   <div id="pane-lt" style="display:none">
-    <div class="tip" style="margin-top:0"><b>Anschreiben je u Njemačkoj obavezan.</b> Bez njega prijava izgleda nedovršeno. Ime, adresa i dizajn se preuzimaju iz Lebenslaufa.</div>
+    <div class="tip" style="margin-top:0"><b>U Njemačkoj se bez propratnog pisma prijava rijetko shvata ozbiljno.</b> Ime, adresa i dizajn se preuzimaju iz Lebenslaufa, pa dokumenti izgledaju kao komplet.</div>
     <fieldset><legend>Kome pišeš</legend>
-      <label>Ustanova</label><input id="lFirm" value="München Klinik Schwabing">
+      <label>Ustanova</label><input id="lFirm" value="Klinikum rechts der Isar">
       <label>Kontakt osoba (ako je znaš)</label><input id="lPers" value="Frau Sabine Weber">
-      <label>Adresa</label><input id="lAddr" value="Kölner Platz 1, 80804 München">
-      <p class="hint">Ako ne znaš ime, ostavi prazno — pozdrav se sam mijenja u „Sehr geehrte Damen und Herren".</p>
+      <label>Adresa</label><input id="lAddr" value="Ismaninger Straße 22, 81675 München">
+      <p class="hint">Ako ne znaš ime osobe, ostavi prazno — pozdrav se sam prebaci na „Sehr geehrte Damen und Herren".</p>
     </fieldset>
     <fieldset><legend>Radno mjesto</legend>
       <label>Pozicija</label><input id="lPos" value="Pflegefachkraft (m/w/d), Innere Medizin">
@@ -313,12 +318,12 @@ Umgang mit demenzerkrankten Patienten</textarea></fieldset>
       <label>Uvod — zašto pišeš</label>
       <textarea id="lP1" style="min-height:78px">mit großem Interesse habe ich Ihre Stellenanzeige gelesen. Als examinierte Pflegekraft mit neun Jahren Berufserfahrung auf einer chirurgischen Station suche ich eine Position, in der ich meine Erfahrung einbringen und meine Anerkennung als Pflegefachkraft abschließen kann.</textarea>
       <label>Šta donosiš — iskustvo</label>
-      <textarea id="lP2" style="min-height:96px">In Bosnien und Herzegowina habe ich neun Jahre auf einer chirurgischen Station mit 40 Betten im Schichtdienst gearbeitet und war für die Wundversorgung sowie die prä- und postoperative Betreuung verantwortlich. Seit September 2025 arbeite ich als Pflegehelferin auf einer internistischen Station in München und kenne den deutschen Stationsalltag, die Dokumentation und die Abläufe im Team.</textarea>
+      <textarea id="lP2" style="min-height:96px">In Bosnien und Herzegowina habe ich neun Jahre auf einer chirurgischen Station mit 40 Betten im Schichtdienst gearbeitet und war für die Wundversorgung sowie die prä- und postoperative Betreuung verantwortlich. Seit September 2025 arbeite ich als Pflegehelferin auf einer internistischen Station und kenne den deutschen Stationsalltag, die Dokumentation und die Abläufe im Team.</textarea>
       <label>Anerkennung i jezik</label>
       <textarea id="lP3" style="min-height:78px">Mein Anerkennungsverfahren läuft beim Bayerischen Landesamt für Pflege. Den Defizitbescheid habe ich erhalten, die Kenntnisprüfung ist für November 2026 geplant. Mein Deutschzertifikat B2 habe ich im März 2025 erworben und besuche derzeit einen Fachsprachkurs.</textarea>
       <label>Završetak</label>
       <textarea id="lP4">Über die Einladung zu einem persönlichen Gespräch würde ich mich sehr freuen.</textarea>
-      <p class="hint warn">Ovo su primjeri — prepiši ih svojim slučajem. Kadrovska prepozna prepisan tekst iz sto metara.</p>
+      <p class="hint warn">Ovo su samo primjeri. Prepiši ih svojim riječima i svojim slučajem — kadrovska prepozna prepisan tekst iz sto metara.</p>
     </fieldset>
   </div>
 </div>
@@ -326,7 +331,7 @@ Umgang mit demenzerkrankten Patienten</textarea></fieldset>
 <div class="panel out">
 
   <div class="designer noprint">
-    <div class="cap">Izaberi dizajn — primjer se mijenja odmah</div>
+    <div class="cap">Izaberi dizajn — pregled se mijenja odmah</div>
     <div class="thumbs" id="thumbs"></div>
     <div class="colors">
       <span class="lbl">Boja:</span>
@@ -349,8 +354,18 @@ Umgang mit demenzerkrankten Patienten</textarea></fieldset>
     <button class="btn" onclick="saveData()">Sačuvaj podatke u fajl</button>
     <label class="btn" style="cursor:pointer">Učitaj iz fajla<input type="file" id="loadf" accept=".json,application/json" style="display:none"></label>
   </div>
-  <p class="hint noprint" style="margin:0 0 16px">Pošto ništa ne čuvamo na serveru, sačuvaj podatke u fajl da ih ne kucaš ponovo. Kod štampe izaberi <b>„Sačuvaj kao PDF"</b>.</p>
+  <p class="hint noprint" style="margin:0 0 16px">Pošto ništa ne čuvamo na serveru, sačuvaj podatke u fajl da ih drugi put ne kucaš iznova. U prozoru za štampu izaberi <b>„Sačuvaj kao PDF"</b>.</p>
 
+  <div class="sample noprint">
+    <div class="st">Primjer</div>
+    <p>Ispod je <b>popunjen primjer</b>, da odmah vidiš kako izgleda gotov dokument.
+    Čim promijeniš bilo koje polje lijevo, mijenja se i on. <b>U PDF ide samo ono
+    što ti upišeš</b> — ova napomena se ne štampa.</p>
+    <p class="small" style="color:#8a6a3a">Primjer je pisan za osobu u Münchenu.
+    Tvoj nadležni ured zavisi od pokrajine u kojoj radiš —
+    <a href="anerkennung.html">tabela za svih šesnaest je u vodiču</a>.</p>
+    <button class="btn" onclick="clearAll()">Isprazni primjer i počni od nule</button>
+  </div>
   <div id="wrapCv"><div class="paper t1" id="paper"></div></div>
   <div id="wrapLetter" style="margin-top:22px"><div class="letter t1" id="letter"></div></div>
 </div>
@@ -366,7 +381,7 @@ var PIC='', TPL='t1', AC='#14524a';
 var S={
 qual:[{a:'seit 06/2025',b:'Anerkennungsverfahren Pflegefachkraft',c:'Bayerisches Landesamt für Pflege (LfP), Amberg',d:'Defizitbescheid erhalten · Kenntnisprüfung geplant für 11/2026'},
       {a:'03/2025',b:'Deutschzertifikat B2',c:'telc GmbH',d:''}],
-work:[{a:'seit 09/2025',b:'Pflegehelferin',c:'München Klinik Schwabing, München',d:'Grundpflege auf einer internistischen Station mit 32 Betten\nUnterstützung bei Behandlungspflege und Dokumentation'},
+work:[{a:'seit 09/2025',b:'Pflegehelferin',c:'Klinikum rechts der Isar, München',d:'Grundpflege auf einer internistischen Station mit 32 Betten\nUnterstützung bei Behandlungspflege und Dokumentation'},
       {a:'08/2025 – 08/2025',b:'Umzug nach Deutschland, Wohnungssuche und Behördengänge',c:'',d:''},
       {a:'07/2016 – 07/2025',b:'Medizinische Schwester',c:'Kantonsspital Zenica, Bosnien und Herzegowina',d:'Chirurgische Station, 40 Betten, Schichtdienst\nWundversorgung, prä- und postoperative Betreuung'}],
 edu:[{a:'09/2012 – 06/2016',b:'Medizinische Fachschule — Krankenpflege',c:'Srednja medicinska škola Zenica, Bosnien und Herzegowina',d:'Abschluss: Medizinische Schwester / Krankenpflegerin'}],
@@ -562,6 +577,18 @@ document.getElementById('loadf').addEventListener('change',function(e){
   r.readAsText(f);
 });
 
+function clearAll(){
+  if(!confirm('Ovo briše sav tekst iz primjera i ostavlja prazna polja. Nastaviti?')) return;
+  S={qual:[{a:'',b:'',c:'',d:''}],work:[{a:'',b:'',c:'',d:''}],
+     edu:[{a:'',b:'',c:'',d:''}],fort:[{a:'',b:'',c:'',d:''}]};
+  ['fname','lname','role','phone','mail','addr','dob','nat','langs','skills',
+   'lFirm','lPers','lAddr','lPos','lRef','lP1','lP2','lP3','lP4']
+    .forEach(function(id){var e=document.getElementById(id); if(e) e.value='';});
+  clearPic();
+  ['qual','work','edu','fort'].forEach(renderForm);
+  draw();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 function doPrint(which){
   document.body.className = which==='cv'?'pr-cv':'pr-lt';
   window.print();
