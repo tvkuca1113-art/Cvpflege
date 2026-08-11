@@ -27,6 +27,21 @@
 table.lands{font-size:13.5px}
 table.lands th{position:sticky;top:0}
 table.lands td:first-child{font-weight:700;white-space:nowrap;color:var(--brand)}
+.picker{background:#fff;border:1.5px solid var(--brand);border-radius:12px;padding:15px 17px;margin:6px 0 16px}
+.picker .cap{font-size:11.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--brand);margin-bottom:9px}
+.picker select{width:100%;padding:12px 12px;border:1.5px solid var(--line);border-radius:9px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+.picker select:focus{outline:2px solid var(--focus);outline-offset:-1px}
+.picker .rst{margin-top:9px}
+#detail{margin:0 0 16px;display:none}
+#detail .box{background:var(--soft);border:1.5px solid var(--brand);border-radius:12px;padding:17px 19px}
+#detail h3{margin:0 0 3px;font-size:22px;color:var(--brand)}
+#detail .sub{font-size:13px;color:var(--muted);margin-bottom:13px}
+#detail dl{margin:0;display:grid;grid-template-columns:1fr;gap:9px}
+@media(min-width:620px){#detail dl{grid-template-columns:1fr 1fr}}
+#detail dt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin-bottom:2px}
+#detail dd{margin:0;font-size:14.5px;line-height:1.5}
+#detail .full{grid-column:1/-1}
+#detail .note{margin-top:12px;font-size:13.5px;background:#fff;border-radius:8px;padding:10px 12px;color:#4a5754}
 table.lands a{word-break:break-word}
 .na{color:#8b9693;font-style:italic}
 .src{font-size:12.5px;color:var(--muted);margin-top:-6px}
@@ -86,73 +101,81 @@ razlikuje.</p>
 zapošljavanje. Oni besplatno savjetuju ljude koji su još u inostranstvu i upute te
 na pravu pokrajinu.</div>
 
-<div class="tablewrap"><table class="lands">
+<div class="picker">
+  <div class="cap">Izaberi svoju pokrajinu</div>
+  <select id="landSel" aria-label="Pokrajina">
+    <option value="">Prikaži sve pokrajine</option>
+  </select>
+  <div class="rst"><button class="btn" id="rstBtn" style="display:none" onclick="pick('')">Prikaži ponovo sve pokrajine</button></div>
+</div>
+<div id="detail"></div>
+<div class="tablewrap"><table class="lands" id="landTable">
 <thead><tr><th>Pokrajina</th><th>Nadležni ured</th><th>Grad</th><th>Taksa</th></tr></thead>
 <tbody>
-<tr><td>Baden-Württemberg</td>
+<tr data-l="Baden-Württemberg"><td>Baden-Württemberg</td>
   <td>Regierungspräsidium Stuttgart — Landesanerkennungsstelle für Gesundheitsberufe<br>
       <a href="https://rp.baden-wuerttemberg.de/themen/bildung/ausbildung/seiten/gesundheitsberufe-ausland/de/">rp.baden-wuerttemberg.de</a><br>
       <span class="small">Zahtjev samo poštom, nema online prijave</span></td>
   <td>Stuttgart</td><td>100 € + 250 € za ispravu</td></tr>
-<tr><td>Bayern</td>
+<tr data-l="Bayern"><td>Bayern</td>
   <td>Bayerisches Landesamt für Pflege (LfP)<br>
       <a href="https://www.lfp.bayern.de/anerkennung/pflegefachkraft/">lfp.bayern.de</a></td>
   <td>Amberg</td><td>40–70 € + 40 € za ispravu</td></tr>
-<tr><td>Berlin</td>
+<tr data-l="Berlin"><td>Berlin</td>
   <td>LAGeSo — Landesprüfungsamt für Gesundheitsberufe<br>
       <a href="https://www.berlin.de/lageso/gesundheit/berufe-im-gesundheitswesen/">berlin.de/lageso</a></td>
   <td>Berlin</td><td>oko 164 €</td></tr>
-<tr><td>Brandenburg</td>
+<tr data-l="Brandenburg"><td>Brandenburg</td>
   <td>Landesamt für Arbeitsschutz, Verbraucherschutz und Gesundheit (LAVG)<br>
       <a href="https://lavg.brandenburg.de/lavg/de/gesundheit/gesundheitsfachberufe/anerkennung-auslaendischer-ausbildung/">lavg.brandenburg.de</a></td>
   <td>Potsdam</td><td>170–845 € + 53–226 €</td></tr>
-<tr><td>Bremen</td>
+<tr data-l="Bremen"><td>Bremen</td>
   <td>Senatorin für Gesundheit, Frauen und Verbraucherschutz<br>
       <a href="https://www.gesundheit.bremen.de/gesundheit/berufe-im-gesundheitswesen/anerkennung-auslaendischer-diplome-in-gesundheitsfachberufen-46172">gesundheit.bremen.de</a></td>
   <td>Bremen</td><td class="na">nije objavljeno</td></tr>
-<tr><td>Hamburg</td>
+<tr data-l="Hamburg"><td>Hamburg</td>
   <td>Sozialbehörde — Landesprüfungsamt für Gesundheitsberufe<br>
       <a href="https://www.hamburg.de/politik-und-verwaltung/behoerden/sozialbehoerde/einrichtungen/lpa">hamburg.de</a></td>
   <td>Hamburg</td><td>200–750 € + 42 €</td></tr>
-<tr><td>Hessen</td>
+<tr data-l="Hessen"><td>Hessen</td>
   <td>Hessisches Landesamt für Gesundheit und Pflege (HLfGP)<br>
       <a href="https://hlfgp.hessen.de/pflegefachberufe/auslaendische-abschluesse-pflege-antrag-und-anerkennungsverfahren">hlfgp.hessen.de</a></td>
   <td>Darmstadt</td><td>110 € + 110 €</td></tr>
-<tr><td>Mecklenburg-Vorpommern</td>
+<tr data-l="Mecklenburg-Vorpommern"><td>Mecklenburg-Vorpommern</td>
   <td>LAGuS — Landesprüfungsamt für Heilberufe<br>
       <a href="https://www.lagus.mv-regierung.de/LPH/Auslaendische-Bildungsabschluesse/">lagus.mv-regierung.de</a></td>
   <td>Rostock</td><td>50–150 €</td></tr>
-<tr><td>Niedersachsen</td>
+<tr data-l="Niedersachsen"><td>Niedersachsen</td>
   <td>Landesamt für Soziales, Jugend und Familie — Außenstelle Lüneburg<br>
       <a href="https://soziales.niedersachsen.de/startseite/soziales_amp_gesundheit/gesundheit_und_pflege/nichtarztliche_heilberufe/anerkennungsverfahren_von_im_ausland_abgeschlossenen_ausbildungen/anerkennungsverfahren-von-auslandischen-gesundheitsfachberufen-101995.html">soziales.niedersachsen.de</a></td>
   <td>Lüneburg</td><td>60–200 € + 53 €</td></tr>
-<tr><td>Nordrhein-Westfalen</td>
+<tr data-l="Nordrhein-Westfalen"><td>Nordrhein-Westfalen</td>
   <td>Bezirksregierung Münster — ZAG-PuG<br>
       <a href="https://www.brms.nrw.de/themen/gesundheit-und-soziales/zentrale-anerkennungsstelle-fuer-gesundheitsberufe/zag-pug">brms.nrw.de</a><br>
       <span class="small">Sve za cijeli NRW ide u Münster, ne u Düsseldorf</span></td>
   <td>Münster</td><td>112–350 €</td></tr>
-<tr><td>Rheinland-Pfalz</td>
+<tr data-l="Rheinland-Pfalz"><td>Rheinland-Pfalz</td>
   <td>Landesamt für Soziales, Jugend und Versorgung (LSJV)<br>
       <a href="https://lsjv.rlp.de/themen/gesundheit/gesundheitsberufe/nichtakademische-heilberufe">lsjv.rlp.de</a></td>
   <td>Landau</td><td>50–300 € + 44 €</td></tr>
-<tr><td>Saarland</td>
+<tr data-l="Saarland"><td>Saarland</td>
   <td>Landesamt für Soziales — Landesprüfungsamt<br>
       <a href="https://www.saarland.de/las/DE/themen/gesundheitsberufe/gesundheitsberufe">saarland.de/las</a></td>
   <td>Saarbrücken</td><td class="na">nije objavljeno</td></tr>
-<tr><td>Sachsen</td>
+<tr data-l="Sachsen"><td>Sachsen</td>
   <td>Kommunaler Sozialverband Sachsen (KSV)<br>
       <a href="https://www.ksv-sachsen.de/auslaendische-Berufsqualifikationen.html">ksv-sachsen.de</a><br>
       <span class="small">Nudi i put bez procjene istovrijednosti — odmah na ispit</span></td>
   <td>Leipzig</td><td class="na">nije objavljeno</td></tr>
-<tr><td>Sachsen-Anhalt</td>
+<tr data-l="Sachsen-Anhalt"><td>Sachsen-Anhalt</td>
   <td>Landesverwaltungsamt — Landesprüfungsamt für Gesundheitsberufe<br>
       <a href="https://lvwa.sachsen-anhalt.de/das-lvwa/landespruefungsamt-fuer-gesundheitsberufe">lvwa.sachsen-anhalt.de</a></td>
   <td>Halle</td><td>90–100 €</td></tr>
-<tr><td>Schleswig-Holstein</td>
+<tr data-l="Schleswig-Holstein"><td>Schleswig-Holstein</td>
   <td>SHIBB — Institut für Berufliche Bildung<br>
       <a href="https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/SHIBB/Themen/Themenfelder/Gesundheitsfachberufe/Gesundheitsberufe_node">schleswig-holstein.de</a></td>
   <td>Kiel</td><td>40–225 €</td></tr>
-<tr><td>Thüringen</td>
+<tr data-l="Thüringen"><td>Thüringen</td>
   <td>Thüringer Landesverwaltungsamt<br>
       <a href="https://landesverwaltungsamt.thueringen.de/migration/anerkennung-auslaendischer-berufsabschluesse-in-gesundheits-und-sozialberufen/">landesverwaltungsamt.thueringen.de</a></td>
   <td>Weimar</td><td>80–590 €</td></tr>
@@ -355,5 +378,42 @@ vraćaju unazad.</div>
   u tabeli.
 </div></footer>
 
+<script>
+(function(){
+  var sel=document.getElementById('landSel');
+  var rows=[].slice.call(document.querySelectorAll('#landTable tbody tr'));
+  rows.forEach(function(r){
+    var n=r.getAttribute('data-l');
+    var o=document.createElement('option'); o.value=n; o.textContent=n; sel.appendChild(o);
+  });
+  sel.addEventListener('change',function(){pick(sel.value);});
+  window.pick=function(name){
+    sel.value=name;
+    document.getElementById('rstBtn').style.display=name?'inline-block':'none';
+    rows.forEach(function(r){r.style.display=(!name||r.getAttribute('data-l')===name)?'':'none';});
+    var d=document.getElementById('detail');
+    if(!name){d.style.display='none';d.innerHTML='';return;}
+    var r=rows.filter(function(x){return x.getAttribute('data-l')===name;})[0];
+    if(!r){d.style.display='none';return;}
+    var c=r.children;
+    var office=c[1].cloneNode(true);
+    var note=office.querySelector('.small');
+    var noteTxt=note?note.textContent:'';
+    if(note) note.remove();
+    d.innerHTML='<div class="box"><h3>'+name+'</h3>'+
+      '<div class="sub">Ovo vrijedi za tebe ako ćeš raditi u ovoj pokrajini</div>'+
+      '<dl>'+
+      '<div class="full"><dt>Nadležni ured</dt><dd>'+office.innerHTML+'</dd></div>'+
+      '<div><dt>Grad</dt><dd>'+c[2].innerHTML+'</dd></div>'+
+      '<div><dt>Taksa</dt><dd>'+c[3].innerHTML+'</dd></div>'+
+      '</dl>'+
+      (noteTxt?'<div class="note"><b>Napomena:</b> '+noteTxt+'</div>':'')+
+      '<div class="note"><b>Rok:</b> zakonski najviše četiri mjeseca od potpunog zahtjeva. '+
+      'To je maksimum, ne stvarnost — računaj na duže.</div>'+
+      '</div>';
+    d.style.display='block';
+  };
+})();
+</script>
 </body>
 </html>

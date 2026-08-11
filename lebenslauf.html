@@ -35,6 +35,13 @@ textarea{resize:vertical;min-height:62px}
 .add{width:100%;border:1px dashed var(--ac);background:#fff;border-radius:8px;padding:10px;font:inherit;font-size:14.5px;color:var(--ac);font-weight:700;cursor:pointer}
 .hint{font-size:12.5px;color:var(--muted);margin:5px 0 0;line-height:1.5}
 .hint.warn{color:var(--warn)}
+.lab{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:10px 0 3px}
+.lab label{margin:0}
+.lab .x{border:none;background:none;font:inherit;font-size:12px;color:var(--warn);
+  cursor:pointer;padding:0 2px;text-decoration:underline;opacity:.75}
+.lab .x:hover{opacity:1}
+.optnote{font-size:12.5px;color:var(--muted);background:#f6f9f8;border-radius:7px;
+  padding:8px 11px;margin:6px 0 2px;line-height:1.5}
 .photo{display:flex;gap:11px;align-items:center;margin-top:8px}
 .photo img{width:56px;height:70px;object-fit:cover;border:1px solid var(--line);border-radius:4px;background:#eef4f3}
 
@@ -62,6 +69,14 @@ textarea{resize:vertical;min-height:62px}
 .th.on span{color:var(--ac)}
 .colors{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap;align-items:center}
 .colors .lbl{font-size:12.5px;color:var(--muted)}
+.point{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px;
+  display:flex;align-items:center;gap:11px;font-size:14.5px;color:var(--brand);font-weight:700}
+.point .arw{width:30px;height:30px;border-radius:50%;background:var(--ac);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 auto;
+  animation:bob 1.5s ease-in-out infinite}
+.point small{display:block;font-weight:400;color:var(--muted);font-size:12.8px;margin-top:2px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@media(prefers-reduced-motion:reduce){.point .arw{animation:none}}
 .dot{width:25px;height:25px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer}
 .dot.on{box-shadow:0 0 0 2.5px var(--ink)}
 
@@ -268,12 +283,27 @@ textarea{resize:vertical;min-height:62px}
 
     <fieldset><legend>Lični podaci</legend>
       <div class="row"><div><label>Ime</label><input id="fname" value="Amina"></div><div><label>Prezime</label><input id="lname" value="Hodžić"></div></div>
-      <label>Zanimanje na njemačkom</label><input id="role" value="Pflegefachkraft (Anerkennung läuft)">
+      <div class="lab"><label>Zanimanje na njemačkom</label><button class="x" onclick="wipe('role')">ukloni</button></div>
+      <input id="role" value="Krankenschwester (Abschluss in BiH) · Anerkennung als Pflegefachfrau läuft">
       <p class="hint">Ako priznavanje još traje, napiši to otvoreno. Poslodavci to cijene daleko više nego da saznaju kasnije.</p>
-      <div class="row"><div><label>Telefon</label><input id="phone" value="+49 176 12345678"></div><div><label>E-mail</label><input id="mail" value="amina.hodzic@email.de"></div></div>
-      <label>Adresa u Njemačkoj</label><input id="addr" value="Musterstraße 12, 80331 München">
-      <div class="row"><div><label>Datum rođenja</label><input id="dob" value="14.03.1993"></div><div><label>Državljanstvo</label><input id="nat" value="bosnisch"></div></div>
-      <p class="hint">Datum rođenja, državljanstvo i slika <b>nisu obavezni</b> u Njemačkoj. Ostaviš li polje prazno, ono jednostavno nestane sa dokumenta.</p>
+      <div class="row">
+        <div><div class="lab"><label>Telefon</label><button class="x" onclick="wipe('phone')">ukloni</button></div>
+          <input id="phone" value="+49 176 12345678"></div>
+        <div><div class="lab"><label>E-mail</label><button class="x" onclick="wipe('mail')">ukloni</button></div>
+          <input id="mail" value="amina.hodzic@email.de"></div>
+      </div>
+      <div class="lab"><label>Adresa u Njemačkoj</label><button class="x" onclick="wipe('addr')">ukloni</button></div>
+      <input id="addr" value="Musterstraße 12, 80331 München">
+      <div class="row">
+        <div><div class="lab"><label>Datum rođenja</label><button class="x" onclick="wipe('dob')">ukloni</button></div>
+          <input id="dob" value="14.03.1993"></div>
+        <div><div class="lab"><label>Državljanstvo</label><button class="x" onclick="wipe('nat')">ukloni</button></div>
+          <input id="nat" value="bosnisch"></div>
+      </div>
+      <div class="optnote"><b>Šta smiješ izostaviti.</b> Po njemačkom zakonu o
+      jednakom postupanju (AGG) datum rođenja, državljanstvo, bračno stanje i slika
+      <b>nisu obavezni</b> i sve više ljudi ih izostavlja. Klikni <b>ukloni</b> pored
+      polja — nestane i sa dokumenta. Ime, prezime i bar jedan kontakt moraju ostati.</div>
       <label>Slika (nije obavezna)</label>
       <div class="photo"><img id="thumb" alt=""><div style="flex:1"><input type="file" id="pic" accept="image/*" style="font-size:13px;padding:6px"><button class="mini del" onclick="clearPic()" style="margin-top:6px">ukloni sliku</button></div></div>
     </fieldset>
@@ -297,7 +327,7 @@ Englisch – Grundkenntnisse</textarea>
 Wundversorgung
 Medikamentengabe
 Dokumentation (ORBIS)
-Umgang mit demenzerkrankten Patienten</textarea></fieldset>
+Betreuung von Menschen mit Demenz</textarea></fieldset>
 
     <fieldset><legend>Potpis</legend><div class="row"><div><label>Mjesto</label><input id="place" value="München"></div><div><label>Datum</label><input id="sdate" value=""></div></div></fieldset>
   </div>
@@ -316,11 +346,11 @@ Umgang mit demenzerkrankten Patienten</textarea></fieldset>
     </fieldset>
     <fieldset><legend>Tekst pisma</legend>
       <label>Uvod — zašto pišeš</label>
-      <textarea id="lP1" style="min-height:78px">mit großem Interesse habe ich Ihre Stellenanzeige gelesen. Als examinierte Pflegekraft mit neun Jahren Berufserfahrung auf einer chirurgischen Station suche ich eine Position, in der ich meine Erfahrung einbringen und meine Anerkennung als Pflegefachkraft abschließen kann.</textarea>
+      <textarea id="lP1" style="min-height:78px">mit großem Interesse habe ich Ihre Stellenanzeige gelesen. Als examinierte Krankenschwester mit neun Jahren Berufserfahrung auf einer chirurgischen Station suche ich eine Position, in der ich meine Erfahrung einbringen und meine Anerkennung als Pflegefachfrau abschließen kann.</textarea>
       <label>Šta donosiš — iskustvo</label>
-      <textarea id="lP2" style="min-height:96px">In Bosnien und Herzegowina habe ich neun Jahre auf einer chirurgischen Station mit 40 Betten im Schichtdienst gearbeitet und war für die Wundversorgung sowie die prä- und postoperative Betreuung verantwortlich. Seit September 2025 arbeite ich als Pflegehelferin auf einer internistischen Station und kenne den deutschen Stationsalltag, die Dokumentation und die Abläufe im Team.</textarea>
+      <textarea id="lP2" style="min-height:96px">In Bosnien und Herzegowina habe ich neun Jahre auf einer chirurgischen Station mit 40 Betten im Schichtdienst gearbeitet und war für die Wundversorgung sowie die prä- und postoperative Betreuung verantwortlich. Seit September 2025 arbeite ich als Pflegehelferin auf einer internistischen Station und kenne den deutschen Stationsalltag, die Pflegedokumentation und die Abläufe im Team.</textarea>
       <label>Anerkennung i jezik</label>
-      <textarea id="lP3" style="min-height:78px">Mein Anerkennungsverfahren läuft beim Bayerischen Landesamt für Pflege. Den Defizitbescheid habe ich erhalten, die Kenntnisprüfung ist für November 2026 geplant. Mein Deutschzertifikat B2 habe ich im März 2025 erworben und besuche derzeit einen Fachsprachkurs.</textarea>
+      <textarea id="lP3" style="min-height:78px">Mein Anerkennungsverfahren als Pflegefachfrau läuft bei der zuständigen Anerkennungsstelle. Den Defizitbescheid habe ich erhalten, die Kenntnisprüfung ist für November 2026 geplant. Mein Deutschzertifikat B2 habe ich im März 2025 erworben und besuche derzeit einen Fachsprachkurs.</textarea>
       <label>Završetak</label>
       <textarea id="lP4">Über die Einladung zu einem persönlichen Gespräch würde ich mich sehr freuen.</textarea>
       <p class="hint warn">Ovo su samo primjeri. Prepiši ih svojim riječima i svojim slučajem — kadrovska prepozna prepisan tekst iz sto metara.</p>
@@ -342,6 +372,10 @@ Umgang mit demenzerkrankten Patienten</textarea></fieldset>
       <div class="dot" style="background:#5a3a63" onclick="setColor('#5a3a63',this)" title="Šljiva"></div>
       <div class="dot" style="background:#8a5a1e" onclick="setColor('#8a5a1e',this)" title="Oker"></div>
     </div>
+    <div class="point"><span class="arw">&#8595;</span>
+      <span>Primjer dokumenta je odmah ispod
+        <small>Kako izabereš dizajn, tako se odmah promijeni i primjer. Pomjeri malo dole.</small>
+      </span></div>
   </div>
 
   <div class="check noprint" id="check"></div>
@@ -379,12 +413,12 @@ Umgang mit demenzerkrankten Patienten</textarea></fieldset>
 <script>
 var PIC='', TPL='t1', AC='#14524a';
 var S={
-qual:[{a:'seit 06/2025',b:'Anerkennungsverfahren Pflegefachkraft',c:'Bayerisches Landesamt für Pflege (LfP), Amberg',d:'Defizitbescheid erhalten · Kenntnisprüfung geplant für 11/2026'},
-      {a:'03/2025',b:'Deutschzertifikat B2',c:'telc GmbH',d:''}],
-work:[{a:'seit 09/2025',b:'Pflegehelferin',c:'Klinikum rechts der Isar, München',d:'Grundpflege auf einer internistischen Station mit 32 Betten\nUnterstützung bei Behandlungspflege und Dokumentation'},
+qual:[{a:'seit 06/2025',b:'Anerkennung als Pflegefachfrau — Verfahren läuft',c:'Bayerisches Landesamt für Pflege (LfP), Amberg',d:'Defizitbescheid erhalten · Kenntnisprüfung geplant für 11/2026'},
+      {a:'03/2025',b:'Zertifikat Deutsch B2',c:'telc gGmbH',d:''}],
+work:[{a:'seit 09/2025',b:'Pflegehelferin',c:'Klinikum rechts der Isar, München',d:'Grundpflege auf einer internistischen Station mit 32 Betten\nUnterstützung bei der Behandlungspflege und Dokumentation'},
       {a:'08/2025 – 08/2025',b:'Umzug nach Deutschland, Wohnungssuche und Behördengänge',c:'',d:''},
-      {a:'07/2016 – 07/2025',b:'Medizinische Schwester',c:'Kantonsspital Zenica, Bosnien und Herzegowina',d:'Chirurgische Station, 40 Betten, Schichtdienst\nWundversorgung, prä- und postoperative Betreuung'}],
-edu:[{a:'09/2012 – 06/2016',b:'Medizinische Fachschule — Krankenpflege',c:'Srednja medicinska škola Zenica, Bosnien und Herzegowina',d:'Abschluss: Medizinische Schwester / Krankenpflegerin'}],
+      {a:'07/2016 – 07/2025',b:'Gesundheits- und Krankenpflegerin',c:'Kantonalna bolnica Zenica (Kantonskrankenhaus), Bosnien und Herzegowina',d:'Chirurgische Station, 40 Betten, Schichtdienst\nWundversorgung, prä- und postoperative Betreuung'}],
+edu:[{a:'09/2012 – 06/2016',b:'Ausbildung in der Gesundheits- und Krankenpflege',c:'Srednja medicinska škola (Medizinische Fachschule), Zenica, Bosnien und Herzegowina',d:'Abschluss: Krankenschwester'}],
 fort:[{a:'02/2026',b:'Fachsprachkurs Pflege B2/C1',c:'Volkshochschule München',d:''}]};
 var FIELDS={qual:['Period','Šta','Ko je izdao','Detalji'],work:['Period','Radno mjesto','Poslodavac i grad','Šta si radio'],
   edu:['Period','Škola / smjer','Ustanova i mjesto','Zvanje'],fort:['Period','Naziv kursa','Organizator','Detalji']};
@@ -487,10 +521,17 @@ function drawLetter(){
   l.className='letter '+TPL;
   var per=val('lPers'), greet;
   if(per){
-    var clean=per.replace(/^\s*(Frau|Fr\.|Herr|Hr\.)\s*/i,'').split(',')[0].trim();
-    if(/^\s*(Frau|Fr\.)/i.test(per)) greet='Sehr geehrte Frau '+esc(clean)+',';
-    else if(/^\s*(Herr|Hr\.)/i.test(per)) greet='Sehr geehrter Herr '+esc(clean)+',';
-    else greet='Sehr geehrte(r) '+esc(clean)+',';
+    // njemački standard: u pozdravu ide SAMO prezime, bez imena i bez titule funkcije
+    var body=per.split(',')[0].trim();
+    var isFrau=/^\s*(Frau|Fr\.)\b/i.test(body), isHerr=/^\s*(Herr|Hr\.)\b/i.test(body);
+    var name=body.replace(/^\s*(Frau|Fr\.|Herr|Hr\.)\s*/i,'')
+                 .replace(/\b(Dr|Prof|med|Dipl|MSc|BSc)\.?\b/gi,'').trim();
+    var parts=name.split(/\s+/).filter(Boolean);
+    var last=parts.length?parts[parts.length-1]:'';
+    var titel=/\bProf\./i.test(body)?'Prof. ':(/\bDr\./i.test(body)?'Dr. ':'');
+    if(isFrau&&last) greet='Sehr geehrte Frau '+esc(titel+last)+',';
+    else if(isHerr&&last) greet='Sehr geehrter Herr '+esc(titel+last)+',';
+    else greet='Sehr geehrte Damen und Herren,';
   } else greet='Sehr geehrte Damen und Herren,';
   var paras=[val('lP1'),val('lP2'),val('lP3'),val('lP4')].filter(Boolean).map(function(t){return '<p>'+esc(t)+'</p>';}).join('');
   l.innerHTML='<div class="lsender"><b>'+fullName()+'</b>'+
@@ -577,6 +618,7 @@ document.getElementById('loadf').addEventListener('change',function(e){
   r.readAsText(f);
 });
 
+function wipe(id){var e=document.getElementById(id); if(!e) return; e.value=''; draw(); e.focus();}
 function clearAll(){
   if(!confirm('Ovo briše sav tekst iz primjera i ostavlja prazna polja. Nastaviti?')) return;
   S={qual:[{a:'',b:'',c:'',d:''}],work:[{a:'',b:'',c:'',d:''}],

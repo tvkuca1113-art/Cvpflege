@@ -43,14 +43,37 @@
   color:#8fd3c4;font-size:10px;display:flex;align-items:center;justify-content:center;
   flex:0 0 auto;font-weight:800}
 
-/* paper artwork */
-.art{position:relative;height:300px}
-@media(min-width:940px){.art{height:392px}}
-.sheet{position:absolute;background:#fff;border-radius:7px;
-  box-shadow:0 22px 55px rgba(0,0,0,.30);overflow:hidden}
-.sheet.back{width:60%;height:82%;left:2%;top:11%;transform:rotate(-6.5deg);opacity:.62}
-.sheet.mid{width:60%;height:86%;left:17%;top:8%;transform:rotate(-2.5deg);opacity:.82}
-.sheet.front{width:64%;height:96%;right:1%;top:2%;transform:rotate(2.6deg)}
+/* ---- 3D paper artwork ---- */
+.art{position:relative;height:310px;perspective:1300px;perspective-origin:52% 46%}
+@media(min-width:940px){.art{height:410px}}
+.stage{position:absolute;inset:0;transform-style:preserve-3d;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1);will-change:transform}
+.sheet{position:absolute;background:#fff;border-radius:8px;overflow:hidden;
+  transform-style:preserve-3d;backface-visibility:hidden;
+  box-shadow:0 26px 60px rgba(0,0,0,.34),0 3px 10px rgba(0,0,0,.16)}
+.sheet.back{width:58%;height:80%;left:1%;top:12%;
+  transform:translateZ(-130px) rotateY(17deg) rotateZ(-6deg);opacity:.55;
+  animation:fl1 9s ease-in-out infinite}
+.sheet.mid{width:59%;height:85%;left:16%;top:9%;
+  transform:translateZ(-62px) rotateY(11deg) rotateZ(-2.6deg);opacity:.8;
+  animation:fl2 8s ease-in-out infinite .5s}
+.sheet.front{width:63%;height:95%;right:0;top:2%;
+  transform:translateZ(24px) rotateY(-9deg) rotateZ(2.4deg);
+  animation:fl3 7.5s ease-in-out infinite .2s}
+@keyframes fl1{0%,100%{transform:translateZ(-130px) rotateY(17deg) rotateZ(-6deg) translateY(0)}
+  50%{transform:translateZ(-130px) rotateY(20deg) rotateZ(-7deg) translateY(-13px)}}
+@keyframes fl2{0%,100%{transform:translateZ(-62px) rotateY(11deg) rotateZ(-2.6deg) translateY(0)}
+  50%{transform:translateZ(-62px) rotateY(14deg) rotateZ(-3.4deg) translateY(-9px)}}
+@keyframes fl3{0%,100%{transform:translateZ(24px) rotateY(-9deg) rotateZ(2.4deg) translateY(0)}
+  50%{transform:translateZ(24px) rotateY(-12deg) rotateZ(3.1deg) translateY(-16px)}}
+.gleam{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.55) 47%,transparent 60%);
+  transform:translateX(-120%);animation:sweep 6.5s ease-in-out infinite 1.4s}
+@keyframes sweep{0%{transform:translateX(-120%)}38%,100%{transform:translateX(130%)}}
+@media(prefers-reduced-motion:reduce){
+  .sheet,.gleam{animation:none!important}
+  .stage{transition:none}
+}
 .sheet .band{height:24%;background:#14524a;padding:14px 15px;display:flex;
   flex-direction:column;justify-content:center}
 .sheet .band .l1{height:9px;width:56%;background:rgba(255,255,255,.95);border-radius:2px}
@@ -60,7 +83,7 @@
 .sheet .r{height:3px;background:#dfe5e4;border-radius:2px}
 .sheet .r.s{width:82%}.sheet .r.xs{width:64%}
 .sheet.back .band,.sheet.mid .band{background:#0f3f39}
-.badge{position:absolute;right:-4px;bottom:6px;background:#fff;color:#0f4a42;
+.badge{position:absolute;right:-4px;bottom:6px;transform:translateZ(70px);background:#fff;color:#0f4a42;
   border-radius:9px;padding:10px 15px;box-shadow:0 12px 30px rgba(0,0,0,.26);
   font-size:12.5px;font-weight:700;line-height:1.3;text-align:center}
 .badge b{display:block;font-size:22px;letter-spacing:-.6px}
@@ -125,7 +148,8 @@
     </div>
   </div>
 
-  <div class="art" aria-hidden="true">
+  <div class="art" aria-hidden="true" id="art">
+   <div class="stage" id="stage">
     <div class="sheet back"><div class="band"><div class="l1"></div><div class="l2"></div></div>
       <div class="body"><div class="h"></div><div class="r"></div><div class="r s"></div>
         <div class="h"></div><div class="r"></div><div class="r xs"></div></div></div>
@@ -136,8 +160,10 @@
       <div class="body">
         <div class="h"></div><div class="r"></div><div class="r s"></div><div class="r xs"></div>
         <div class="h"></div><div class="r"></div><div class="r s"></div>
-        <div class="h"></div><div class="r xs"></div></div></div>
+        <div class="h"></div><div class="r xs"></div></div>
+      <div class="gleam"></div></div>
     <div class="badge"><b>12</b>dizajna</div>
+   </div>
   </div>
 </div></header>
 
@@ -238,5 +264,25 @@
   Izvori su navedeni u <a href="anerkennung.html">vodiču</a>.
 </div></footer>
 
+<script>
+(function(){
+  var art=document.getElementById('art'), stage=document.getElementById('stage');
+  if(!art||!stage) return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!window.matchMedia||!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var raf=null,tx=0,ty=0;
+  art.addEventListener('mousemove',function(e){
+    var r=art.getBoundingClientRect();
+    tx=((e.clientX-r.left)/r.width-.5)*2;   // -1 .. 1
+    ty=((e.clientY-r.top)/r.height-.5)*2;
+    if(!raf) raf=requestAnimationFrame(apply);
+  });
+  art.addEventListener('mouseleave',function(){tx=0;ty=0;if(!raf)raf=requestAnimationFrame(apply);});
+  function apply(){
+    raf=null;
+    stage.style.transform='rotateY('+(tx*9).toFixed(2)+'deg) rotateX('+(-ty*7).toFixed(2)+'deg)';
+  }
+})();
+</script>
 </body>
 </html>
